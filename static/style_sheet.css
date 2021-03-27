@@ -1,0 +1,25 @@
+html {
+    border: red 1px solid;
+    height: 100%;
+    overflow: scroll;
+}
+
+body {
+    height: 100%;
+    border: green 2px solid;
+}
+
+div {
+    border: red 2px solid;
+}
+
+header {
+    border: blue 2px solid;
+}
+
+footer {
+    border: blue 2px solid;
+    position: fixed;
+    display: flex;
+    width: 100%;
+}
