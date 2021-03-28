@@ -1,25 +1,27 @@
 html {
-    border: red 1px solid;
+    border: red 5px solid;
     height: 100%;
     overflow: scroll;
 }
 
 body {
+    border: blue 4px solid;
     height: 100%;
-    border: green 2px solid;
+    overflow: scroll;
 }
 
-div {
-    border: red 2px solid;
+header section {
+    border: green 3px dotted;
 }
 
-header {
-    border: blue 2px solid;
+main {
+    border: pink 3px dotted;
+    height: 80%;
 }
 
 footer {
-    border: blue 2px solid;
+    border: green 3px dotted;
     position: fixed;
-    display: flex;
-    width: 100%;
+    bottom: 0;
+    width: 100%
 }

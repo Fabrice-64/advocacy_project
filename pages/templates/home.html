@@ -1,25 +1,26 @@
 {% extends "base.html" %}
-
-{% block title %}Accueil{% endblock title %}
-
-{% block content %}
-<header>
-    <h1> Home Page </h1>
-
-    {% if user.is_authenticated %}
-        Bonjour {{ user.email }}
-        <a href="{% url 'logout' %}">Déconnexion</a>
-    {% else %}
-        <p>Vous n'êtes pas loggé</p>
-        <a href="{% url 'login' %}">Connexion</a>
-    {% endif %}
-</header>
-<section class="main-section">
-    <p>Section principale</p>
-</section>
-<footer>
-    Pied de page
-</footer>
+{% load static %}
 
 
-{% endblock content%}
+{% block body %}
+    <header>
+        <section id="login-status">
+            {% if user.is_authenticated %}
+            Bonjour {{ user.username }}
+            <a href="{% url 'accounts:logout' %}">Déconnexion</a>
+            {% else %}
+            <p>Vous n'êtes pas loggé</p>
+            <a href="{% url 'accounts:login' %}">Connexion</a>
+            {% endif %}
+        </section>
+        <section>Menu</section>
+    </header>
+    <main>
+        {% block main %}
+        <h1>Bienvenue sur la page d'accueil</h1>
+        {%endblock main %}
+    </main>
+    <footer>
+        Footer
+    </footer>
+{% endblock %}
