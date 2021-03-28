@@ -13,7 +13,11 @@
             <a href="{% url 'accounts:login' %}">Connexion</a>
             {% endif %}
         </section>
-        <section>Menu</section>
+        <section>
+            <p>Menu</p>
+            {% if user.is_staff %}
+            <a href="{% url 'accounts:signup' %}">Nouveau Compte</a></section>
+            {% endif %}
     </header>
     <main>
         {% block main %}
