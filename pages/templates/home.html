@@ -7,10 +7,10 @@
         <section id="login-status">
             {% if user.is_authenticated %}
             Bonjour {{ user.username }}
-            <a href="{% url 'accounts:logout' %}">Déconnexion</a>
+            <a href="{% url 'accounts:logout' %}" id="header-deconnection">Déconnexion</a>
             {% else %}
             <p>Vous n'êtes pas loggé</p>
-            <a href="{% url 'accounts:login' %}">Connexion</a>
+            <a href="{% url 'accounts:login' %}" id="header-connection">Connexion</a>
             {% endif %}
         </section>
         <section>
