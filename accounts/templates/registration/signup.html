@@ -1,0 +1,16 @@
+{% extends "../home.html" %}
+
+{% block title %}Nouvel Utilisateur{% endblock title %}
+
+{% block main %}
+
+<h1>Création de Compte</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Validation</button>
+</form>
+
+{% endblock main %}

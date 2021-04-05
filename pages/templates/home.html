@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block body %}
+    <header>
+        <section id="login-status">
+            {% if user.is_authenticated %}
+            Bonjour {{ user.username }}
+            <a href="{% url 'accounts:logout' %}" id="header-deconnection">Déconnexion</a>
+            {% else %}
+            <p>Vous n'êtes pas loggé</p>
+            <a href="{% url 'accounts:login' %}" id="header-connection">Connexion</a>
+            {% endif %}
+        </section>
+        <section>
+            <p>Menu</p>
+            {% if user.is_staff %}
+            <a href="{% url 'accounts:signup' %}">Nouveau Compte</a></section>
+            {% endif %}
+    </header>
+    <main>
+        {% block main %}
+        <h1>Bienvenue sur la page d'accueil</h1>
+        {%endblock main %}
+    </main>
+    <footer>
+        Footer
+    </footer>
+{% endblock %}
