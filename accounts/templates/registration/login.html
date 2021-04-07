@@ -4,7 +4,8 @@
 {% block title %}{% trans "Log in" %}{% endblock %}
 
 {% block content %}
-Ceci est Mon Login
+<h1>Connexion</h1>
+<p>Veuillez vous identifier</p>
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}

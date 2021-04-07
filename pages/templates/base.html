@@ -26,8 +26,10 @@
             {% if user.is_staff and user.is_authenticated %}
                 <p>Menu Manager</p>
                 <a href="{% url 'registration_register' %}">Nouvel Utilisateur</a>
-            {% else %}
+            {% elif not user.is_staff and user.is_authenticated %}
                 <p>Menu Bénévole</p>
+            {% else %}
+                <p>Menu Accueil</p>
             {% endif %}
         </section>
     </header>

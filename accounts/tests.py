@@ -27,7 +27,7 @@ class CustomUserTest(TestCase):
         self.assertEqual(admin_user.email, "paul@test.com")
         self.assertTrue(admin_user.is_staff)
         self.assertTrue(admin_user.is_superuser)
-
+"""
 class SignUpPageTest(TestCase):
 
     def setUp(self):
@@ -38,11 +38,11 @@ class SignUpPageTest(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertTemplateUsed(self.response, 'registration/signup.html')
         self.assertContains(self.response, 'Création de Compte')
-
+"""
 class LoginTest(TestCase):
 
     def setUp(self):
-        url = reverse('accounts:login')
+        url = reverse('auth_login')
         self.response = self.client.get(url)
 
     def test_login(self):
@@ -53,9 +53,10 @@ class LoginTest(TestCase):
 
 class LogoutTest(TestCase):
     def setUp(self):
-        url = reverse('accounts:logout')
+        url = reverse('auth_logout')
         self.response = self.client.get(url)
 
     def test_logout(self):
         # status_code is 302 as logout redirects to homepage iaw the settings.
         self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, '/')
