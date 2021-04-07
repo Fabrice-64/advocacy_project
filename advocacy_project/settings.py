@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Project
-    #'accounts',
+    'accounts',
     'pages',
 ]
 
@@ -132,7 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
 
 ACCOUNT_ACTIVATION_DAYS = 1
 ACCOUNT_AUTHENTICATED_REGISTRATION_REDIRECTS = False

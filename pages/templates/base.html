@@ -13,23 +13,23 @@
 
 <body>
     <header>
-        {% if user.is_authenticated %}
-            Salut {{ user.username }}
-            <a href="{% url 'auth_logout' %}">LOGOUT</a>
+        <section>
+            <p>Tous Unis</p>
+                {% if user.is_authenticated %}
+                    Bonjour {{ user.username }}
+                    <a href="{% url 'auth_logout' %}">LOGOUT</a>
+                {% else %}
+                    <a href="{% url 'auth_login' %}">LOGIN</a>
+                {% endif %}
+        </section>
+        <section>
+            {% if user.is_staff and user.is_authenticated %}
+                <p>Menu Manager</p>
+                <a href="{% url 'registration_register' %}">Nouvel Utilisateur</a>
             {% else %}
-            <a href="{% url 'auth_login' %}">LOGIN</a>
-        {% endif %}
-
-            {% if user.is_staff %}
-                <p>Vous avez du travail</p>
-            {% else %}
-                <p>Vous êtes un bénévole</p>
+                <p>Menu Bénévole</p>
             {% endif %}
-
-            {% if user.is_authenticated %}
-                <p> Re_OK</p>
-                <a href="{% url 'registration_register' %}">Nouveau Gars</a>
-            {% endif %}
+        </section>
     </header>
     <main>
         {% block content %}{% endblock %}
