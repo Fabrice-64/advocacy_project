@@ -4,7 +4,7 @@
 {% block title %}{% trans "Register for an account" %}{% endblock %}
 
 {% block content %}
-Je suis le nouveau client
+<h1>Saisie d'un Nouvel Utilisateur</h1>
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}

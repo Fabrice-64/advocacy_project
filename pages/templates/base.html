@@ -13,19 +13,19 @@
 
 <body>
     <header>
-        <section>
+        <section id="login-status">
             <p>Tous Unis</p>
                 {% if user.is_authenticated %}
                     Bonjour {{ user.username }}
-                    <a href="{% url 'auth_logout' %}">LOGOUT</a>
+                    <a id="header-deconnection" href="{% url 'auth_logout' %}">LOGOUT</a>
                 {% else %}
-                    <a href="{% url 'auth_login' %}">LOGIN</a>
+                    <a id="header-connection" href="{% url 'auth_login' %}">LOGIN</a>
                 {% endif %}
         </section>
         <section>
             {% if user.is_staff and user.is_authenticated %}
                 <p>Menu Manager</p>
-                <a href="{% url 'registration_register' %}">Nouvel Utilisateur</a>
+                <a id="menu-new-user" href="{% url 'registration_register' %}">Nouvel Utilisateur</a>
             {% elif not user.is_staff and user.is_authenticated %}
                 <p>Menu Bénévole</p>
             {% else %}

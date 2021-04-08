@@ -11,7 +11,7 @@
 from django.test import LiveServerTestCase
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver import Firefox
-
+import os
 class CustomUserTest(LiveServerTestCase):
     fixtures = ['users.json']
 
@@ -31,7 +31,7 @@ class CustomUserTest(LiveServerTestCase):
             The user wants to authenticate in order to have access to
             the functionalities of the website
         """
-        self.browser.get('%s%s' % (self.live_server_url, ''))
+        self.browser.get(os.path.join(self.live_server_url, ''))
         # Leila gets access to the website
         # L. is logged out and is offered to log in
         self.browser.find_element_by_id("login-status")
@@ -40,13 +40,11 @@ class CustomUserTest(LiveServerTestCase):
         # L. enters her username
         user_input = self.browser.find_element_by_id("id_username")
         user_input.send_keys('fabricejaouen')
-        # L. enters her password (she makes a mistake)
-        user_input_pwd = self.browser.find_element_by_id("id_password")
-        user_input_pwd.send_keys('admin_wrong')
-        self.browser.find_element_by_tag_name("button").click()
-        # Then L. enters her password again
+        # L. enters her password
         user_input_pwd = self.browser.find_element_by_id("id_password")
         user_input_pwd.send_keys('admin')
-        self.browser.find_element_by_tag_name("button").click()
-        # Then the a menu is displayed
+        self.browser.find_element_by_xpath('//input[@type="submit"]').click()
+        # Finally the logged in page is displayed
         self.browser.find_element_by_id("header-deconnection")
+        #print(self.browser.page_source)
+

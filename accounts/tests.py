@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from django.core import mail
 # Create your tests here.
 
 class CustomUserTest(TestCase):
@@ -27,18 +28,7 @@ class CustomUserTest(TestCase):
         self.assertEqual(admin_user.email, "paul@test.com")
         self.assertTrue(admin_user.is_staff)
         self.assertTrue(admin_user.is_superuser)
-"""
-class SignUpPageTest(TestCase):
 
-    def setUp(self):
-        url = reverse('accounts:signup')
-        self.response = self.client.get(url)
-
-    def test_signup_template(self):
-        self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, 'registration/signup.html')
-        self.assertContains(self.response, 'Création de Compte')
-"""
 class LoginTest(TestCase):
 
     def setUp(self):
@@ -60,3 +50,21 @@ class LogoutTest(TestCase):
         # status_code is 302 as logout redirects to homepage iaw the settings.
         self.assertEqual(self.response.status_code, 302)
         self.assertRedirects(self.response, '/')
+
+class RegistrationTest(TestCase):
+    def setUp(self):
+        url = reverse('registration_register')
+        self.response = self.client.get(url)
+
+    def test_registration(self):
+        self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed('registration/registration_form.html')
+        self.assertContains(self.response, "Saisie d\'un Nouvel Utilisateur")
+        
+    def test_sendmail(self):
+        mail.send_mail(
+            'Création de Compte', 'Corps du Message',
+            'from@example.com', ['to@example.com'],
+            fail_silently=False)
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].subject, "Création de Compte")
