@@ -48,3 +48,31 @@ class CustomUserTest(LiveServerTestCase):
         self.browser.find_element_by_id("header-deconnection")
         #print(self.browser.page_source)
 
+
+    def test_plaid_2_create_new_user(self):
+        """
+            The manager creates a new user, who gets an email for the account
+            activation.
+        """
+        self.browser.get(os.path.join(self.live_server_url, ''))
+        # Sébastien logs in to get access to the admin interface
+        self.browser.find_element_by_id("login-status")
+        self.browser.find_element_by_id("header-connection").click()
+        user_input = self.browser.find_element_by_id("id_username")
+        user_input.send_keys('sebastien')
+        # S. enters his password
+        user_input_pwd = self.browser.find_element_by_id("id_password")
+        user_input_pwd.send_keys('admin')
+        self.browser.find_element_by_xpath('//input[@type="submit"]').click()
+        self.browser.find_element_by_id('menu-new-user').click()
+        username_input = self.browser.find_element_by_id('id_username')
+        username_input.send_keys('Albert')
+        email_input = self.browser.find_element_by_id('id_email')
+        email_input.send_keys("albert@test.com")
+        password1_input = self.browser.find_element_by_id('id_password1')
+        password1_input.send_keys('test@1234')
+        password2_input = self.browser.find_element_by_id('id_password2')
+        password2_input.send_keys('test@1234')
+        self.browser.find_element_by_xpath('//input[@type="submit"]').click()
+        print(self.browser.page_source)
+
