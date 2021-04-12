@@ -39,7 +39,7 @@ class CustomUserTest(LiveServerTestCase):
         # Then L. clicks on connexion to access the template
         # L. enters her username
         user_input = self.browser.find_element_by_id("id_username")
-        user_input.send_keys('fabricejaouen')
+        user_input.send_keys('sebastien')
         # L. enters her password
         user_input_pwd = self.browser.find_element_by_id("id_password")
         user_input_pwd.send_keys('admin')
