@@ -69,6 +69,8 @@ class CustomUserTest(LiveServerTestCase):
         username_input.send_keys('Albert')
         email_input = self.browser.find_element_by_id('id_email')
         email_input.send_keys("albert@test.com")
+        phone_number = self.browser.find_element_by_id('id_phone_number')
+        phone_number.send_keys("01 02 03 04 05")
         password1_input = self.browser.find_element_by_id('id_password1')
         password1_input.send_keys('test@1234')
         password2_input = self.browser.find_element_by_id('id_password2')
