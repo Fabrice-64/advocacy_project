@@ -9,7 +9,7 @@
 
 
 from django.test import LiveServerTestCase
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver import Firefox
 import os
 class CustomUserTest(LiveServerTestCase):
@@ -71,6 +71,8 @@ class CustomUserTest(LiveServerTestCase):
         email_input.send_keys("albert@test.com")
         phone_number = self.browser.find_element_by_id('id_phone_number')
         phone_number.send_keys("01 02 03 04 05")
+        team = Select(self.browser.find_element_by_id('id_team'))
+        team.select_by_value("STBN")
         password1_input = self.browser.find_element_by_id('id_password1')
         password1_input.send_keys('test@1234')
         password2_input = self.browser.find_element_by_id('id_password2')

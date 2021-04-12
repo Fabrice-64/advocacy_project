@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
+from .teams import Teams
 
 # Create your models here.
 class CustomUser(AbstractUser):
@@ -14,5 +15,12 @@ class CustomUser(AbstractUser):
         max_length = 14,
         blank = True,
         help_text="Veuillez entrer un numéro Français",
-        verbose_name="Numéro de Téléphone"
+        verbose_name="Téléphone"
+    )
+
+    team = models.CharField(
+        max_length=4,
+        choices=Teams.choices,
+        default=Teams.STRASBOURG_VILLE,
+        verbose_name="Equipe"
     )
