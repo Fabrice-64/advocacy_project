@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Project
     'accounts',
     'pages',
+    'communities',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -82,7 +83,7 @@ WSGI_APPLICATION = 'advocacy_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+#DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
