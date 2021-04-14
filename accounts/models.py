@@ -59,6 +59,7 @@ class Volunteer(CustomUser):
 
     class Meta:
         proxy = True
+        permissions = [("can_view_interview", "consulter une fiche d'entretien")]
         
 
 class Employee(CustomUser):
