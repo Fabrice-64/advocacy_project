@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'pages',
     'communities',
     'officials',
+    'interviews',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
