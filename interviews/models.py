@@ -13,18 +13,31 @@ class AdvocacyTopic(models.Model):
                             verbose_name="Lien vers la source")
 
 class Interview(models.Model):
-    class InterviewStatus(models.TextChoices):
-        PENDING = 'PDG', "Interview Prévue"
-        XED = 'XED', "Interview Annulée"
-        DONE = 'DON', "Interview Réalisée"
+    class InterviewStatus(models.Model):
+        PENDING = 'PDG' 
+        XED = 'XED'
+        DONE = 'DON'
+        ITW_STATUS = [
+            (PENDING, "Interview Prévue"),
+            (XED, "Interview Annulée"),
+            (DONE, "Interview Réalisée"),
+        ]      
     
-    class InterviewAssessment(models.TextChoices):
-        GOAL_100_PC = "100PC", "Objectif Totalement Atteint"
-        GOAL_75_PC = "75PC", "Objectif Largement Atteint"
-        GOAL_50_PC = "50PC", "Objectif à Moitié Atteint"
-        GOAL_25_PC = "25PC", "Atteinte limitée de l'Objectif"
-        GOAL_0_PC = "0PC", "Echec de l'Entretien"
-        TBD = "TBD", "Non Renseigné"
+    class InterviewAssessment(models.Model):
+        GOAL_100_PC = "100PC"
+        GOAL_75_PC = "75PC"
+        GOAL_50_PC = "50PC"
+        GOAL_25_PC = "25PC"
+        GOAL_0_PC = "0PC"
+        TBD = "TBD"
+        ITW_ASSESS = [
+            (GOAL_100_PC, "Objectif Totalement Atteint"),
+            (GOAL_75_PC, "Objectif Largement Atteint"),
+            (GOAL_50_PC, "Objectif à Moitié Atteint"),
+            (GOAL_25_PC, "Atteinte limitée de l'Objectif"),
+            (GOAL_0_PC, "Echec de l'Entretien"),
+            (TBD, "Non Renseigné"),
+        ]
 
 
     date_planned = models.DateField(verbose_name="Date prévue")
@@ -33,7 +46,7 @@ class Interview(models.Model):
                             blank=False,
                             null=False,
                             default=InterviewStatus.PENDING,
-                            choices=InterviewStatus.choices,
+                            choices=InterviewStatus.ITW_STATUS,
                             verbose_name="Statut de l'interview")
     goal = models.CharField(max_length=420,
                             blank=False,
@@ -44,7 +57,7 @@ class Interview(models.Model):
                             default="Résultats de l'interview")
     assessment = models.CharField(max_length=5,
                             default=InterviewAssessment.TBD,
-                            choices=InterviewAssessment.choices,
+                            choices=InterviewAssessment.ITW_ASSESS,
                             verbose_name="Evaluation de l'entretien")
     comments = models.CharField(max_length=420,
                                 blank=True,

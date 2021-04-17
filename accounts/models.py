@@ -12,14 +12,15 @@ class CustomUser(AbstractUser):
         EMPLOYEE = "EMPLOYEE"
         STATUS = [
             (MANAGER, "Manager"),
-            (EMPLOYEE, "Employee"),
-            (VOLUNTEER, "Volunteer"),
+            (EMPLOYEE, "Employé"),
+            (VOLUNTEER, "Bénévole"),
         ]
        
-    type = models.CharField(
+    status_type = models.CharField(
         max_length=50,
         choices=StatusType.STATUS, 
-        default=StatusType.VOLUNTEER)
+        default=StatusType.VOLUNTEER,
+        verbose_name="Statut")
 
     id = models.BigAutoField(primary_key=True)
     phone_regex = RegexValidator(
@@ -43,15 +44,15 @@ class CustomUser(AbstractUser):
 
 class VolunteerManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(type=CustomUser.Types.VOLUNTEER)
+        return super().get_queryset(*args, **kwargs).filter(status_type=CustomUser.StatusType.VOLUNTEER)
 
 class ManagerManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(type=CustomUser.Types.MANAGER)
+        return super().get_queryset(*args, **kwargs).filter(status_type=CustomUser.StatusType.MANAGER)
 
 class EmployeeManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(type=CustomUser.Types.EMPLOYEE)
+        return super().get_queryset(*args, **kwargs).filter(status_type=CustomUser.StatusType.EMPLOYEE)
 
 
 class Volunteer(CustomUser):

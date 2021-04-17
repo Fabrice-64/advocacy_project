@@ -1,3 +1,19 @@
 from django.contrib import admin
-
+import communities.models as comms
 # Register your models here.
+
+@admin.register(comms.Region)
+class RegionAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(comms.Department)
+class DepartmentAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(comms.City)
+class CityAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(comms.Intercom)
+class IntercomAdmin(admin.ModelAdmin):
+    pass
