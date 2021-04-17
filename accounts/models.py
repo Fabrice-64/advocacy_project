@@ -59,7 +59,7 @@ class Volunteer(CustomUser):
 
     class Meta:
         proxy = True
-        permissions = [("can_view_interview", "consulter une fiche d'entretien")]
+        permissions = [("view_interview", "consulter une fiche d'entretien")]
         
 
 class Employee(CustomUser):
@@ -74,3 +74,4 @@ class Manager(CustomUser):
     
     class Meta:
         proxy = True
+        permissions=[("communities.add_intercom", "ajouter intercommunalité")
