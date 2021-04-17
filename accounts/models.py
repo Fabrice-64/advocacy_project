@@ -6,7 +6,7 @@ from .teams import Teams
 # Create your models here.
 class CustomUser(AbstractUser):
 
-    class Types(models.Model):
+    class StatusType(models.Model):
         VOLUNTEER = "VOLUNTEER"
         MANAGER = "MANAGER"
         EMPLOYEE = "EMPLOYEE"
@@ -18,8 +18,8 @@ class CustomUser(AbstractUser):
        
     type = models.CharField(
         max_length=50,
-        choices=Types.STATUS, 
-        default=Types.VOLUNTEER)
+        choices=StatusType.STATUS, 
+        default=StatusType.VOLUNTEER)
 
     id = models.BigAutoField(primary_key=True)
     phone_regex = RegexValidator(

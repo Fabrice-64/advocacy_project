@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import Volunteer
+import communities.models as comms
 # Create your models here.
 class Official(models.Model):
     class InfluenceLevel(models.TextChoices):
@@ -33,3 +34,99 @@ class Official(models.Model):
                     on_delete=models.CASCADE,
                     verbose_name="Bénévole dédié",
                     blank=True)
+    intercoms = models.ManyToManyField(comms.Intercom,
+                            through='MandateIntercom')
+
+class MandateInterCom(models.Model):
+    class MandateLevel(models.TextChoices):
+        CHAIR =  "CHAIR", "Président"
+        VICE_CHAIR = "VCHAIR", "Vice-Président"
+        COUNSELLOR = "COUNS", "Conseiller"
+        UNK = "UNK", "Non Renseigné"
+    verbose_name="Mandat Intercommunal"
+    official = models.ForeignKey(Official,
+            on_delete=models.CASCADE)
+    intercom = models.ForeignKey(comms.Intercom, 
+            on_delete=models.CASCADE)
+    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    function = models.CharField(max_length=6,
+                            blank=False,
+                            null=False,
+                            default=MandateLevel.UNK,
+                            choices=MandateLevel.choices,
+                            verbose_name="Fonction Occupée")
+
+class MandateCity(models.Model):
+    class MandateLevel(models.TextChoices):
+        CHAIR =  "CHAIR", "Président"
+        VICE_CHAIR = "VCHAIR", "Vice-Président"
+        COUNSELLOR = "COUNS", "Conseiller"
+        UNK = "UNK", "Non Renseigné"
+    verbose_name="Mandat Municipal"
+    official = models.ForeignKey(Official,
+            on_delete=models.CASCADE)
+    city = models.ForeignKey(comms.City, 
+            on_delete=models.CASCADE)
+    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    function = models.CharField(max_length=6,
+                            blank=False,
+                            null=False,
+                            default=MandateLevel.UNK,
+                            choices=MandateLevel.choices,
+                            verbose_name="Fonction Occupée")
+
+class MandateDepartment(models.Model):
+    class MandateLevel(models.TextChoices):
+        CHAIR =  "CHAIR", "Président"
+        VICE_CHAIR = "VCHAIR", "Vice-Président"
+        COUNSELLOR = "COUNS", "Conseiller"
+        UNK = "UNK", "Non Renseigné"
+    verbose_name="Mandat Conseil Départemental"
+    official = models.ForeignKey(Official,
+            on_delete=models.CASCADE)
+    department = models.ForeignKey(comms.Department, 
+            on_delete=models.CASCADE)
+    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    function = models.CharField(max_length=6,
+                            blank=False,
+                            null=False,
+                            default=MandateLevel.UNK,
+                            choices=MandateLevel.choices,
+                            verbose_name="Fonction Occupée")
+
+class MandateRegion(models.Model):
+    class MandateLevel(models.TextChoices):
+        CHAIR =  "CHAIR", "Président"
+        VICE_CHAIR = "VCHAIR", "Vice-Président"
+        COUNSELLOR = "COUNS", "Conseiller"
+        UNK = "UNK", "Non Renseigné"
+    verbose_name="Mandat Conseil Régional"
+    official = models.ForeignKey(Official,
+            on_delete=models.CASCADE)
+    region = models.ForeignKey(comms.Region, 
+            on_delete=models.CASCADE)
+    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    function = models.CharField(max_length=6,
+                            blank=False,
+                            null=False,
+                            default=MandateLevel.UNK,
+                            choices=MandateLevel.choices,
+                            verbose_name="Fonction Occupée")
+
+
+class NationalMandate(models.Model):
+    class MandateType(models.TextChoices):
+       MP = "MP", "Député"
+       SEN = "SEN", "Sénateur"
+       UNK = "UNK",, "Non Renseigné"
+    official = models.ForeignKey(Official,
+            on_delete=models.CASCADE)
+    department = models.ForeignKey(comms.Department, 
+            on_delete=models.CASCADE)
+    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    function = models.CharField(max_length=6,
+                            blank=False,
+                            null=False,
+                            default=MandateType.UNK,
+                            choices=MandateType.choices,
+                            verbose_name="Mandat National")
