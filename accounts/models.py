@@ -74,4 +74,4 @@ class Manager(CustomUser):
     
     class Meta:
         proxy = True
-        permissions=[("communities.add_intercom", "ajouter intercommunalité")
+        permissions=[("communities.add_intercom", "ajouter intercommunalité")]
