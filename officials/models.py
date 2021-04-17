@@ -118,7 +118,7 @@ class NationalMandate(models.Model):
     class MandateType(models.TextChoices):
        MP = "MP", "Député"
        SEN = "SEN", "Sénateur"
-       UNK = "UNK",, "Non Renseigné"
+       UNK = "UNK", "Non Renseigné"
     official = models.ForeignKey(Official,
             on_delete=models.CASCADE)
     department = models.ForeignKey(comms.Department, 
