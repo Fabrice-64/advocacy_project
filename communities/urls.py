@@ -5,5 +5,6 @@ from django.contrib.auth.decorators import permission_required
 app_name = 'communities'
 
 urlpatterns = [
-    path("regions/list/", views.RegionsListView.as_view())
+    path('', views.communities, name='list'),
+    path("regions/list/", views.RegionsListView.as_view(), name="region_list")
 ]

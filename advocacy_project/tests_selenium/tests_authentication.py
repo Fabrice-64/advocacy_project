@@ -13,7 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver import Firefox
 import os
 class CustomUserTest(LiveServerTestCase):
-    fixtures = ['users.json']
+    fixtures = ['users.json', 'communities.json']
 
     @classmethod
     def setUpClass(cls):
@@ -78,5 +78,20 @@ class CustomUserTest(LiveServerTestCase):
         password2_input = self.browser.find_element_by_id('id_password2')
         password2_input.send_keys('test@1234')
         self.browser.find_element_by_xpath('//input[@type="submit"]').click()
-        print(self.browser.page_source)
 
+    def test_plaid_2_check_rights(self):
+        self.browser.get(os.path.join(self.live_server_url, ''))
+        # Sébastien logs in to get access to the admin interface
+        self.browser.find_element_by_id("header-connection").click()
+        user_input = self.browser.find_element_by_id("id_username")
+        user_input.send_keys('Pierre')
+        # S. enters his password
+        user_input_pwd = self.browser.find_element_by_id("id_password")
+        user_input_pwd.send_keys('@dmin1234')
+        self.browser.find_element_by_xpath('//input[@type="submit"]').click()
+        self.browser.find_element_by_id("link-communities").click()
+        self.browser.find_element_by_id("region-list").click()
+        regions = self.browser.find_elements_by_tag_name("li")
+        self.assertEqual(len(regions), 2)
+
+        

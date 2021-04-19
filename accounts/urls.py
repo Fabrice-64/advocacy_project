@@ -3,5 +3,5 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('', include('registration.backends.default.urls')),
+    path('', include('registration.backends.default.urls'), name="regions_list"),
 ]

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Aller sur les Pages des Collectivités Territoriales</h1>
+    <ul>
+       <li><a href="{% url 'communities:region_list' %}" id="region-list">Liste des Régions</a></li>
+    </ul>
+{% endblock %}
