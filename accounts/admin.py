@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth import get_user_model
 # Register your models here.
 from .forms import CustomUserChangeForm, CustomUserCreationForm
+from accounts.models import Volunteer
 
 CustomUser = get_user_model()
 
