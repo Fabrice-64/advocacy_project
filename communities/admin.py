@@ -16,4 +16,4 @@ class CityAdmin(admin.ModelAdmin):
 
 @admin.register(comms.Intercom)
 class IntercomAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['id', 'name', 'department']

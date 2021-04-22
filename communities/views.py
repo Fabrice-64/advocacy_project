@@ -4,9 +4,14 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 from django_oso.auth import authorize
 
-
-# Create your views here.
 from communities.models import Region, City, Department, Intercom
+
+
+def load_intercom(request):
+    department_id = request.GET.get('department')
+    intercoms = Intercom.objects.filter(department_id=department_id).order_by('name')
+    return render(request, 'communities/intercom_dropdown_list.html', 
+                    {'intercoms': intercoms})
 
 def communities(request):
     return render(request, "communities/communities.html")

@@ -2,12 +2,31 @@
 
 {% block content %}
     <h1>Créer une Commune</h1>
-    <form method="post">{% csrf_token %}
+    <form method="post" id="city-form" data-intercom-url="{% url 'communities:ajax_load_intercom' %}" novalidate>{% csrf_token %}
+    {% csrf_token %}
     <p>Ville : {{ form.name}}</p>
     <p>Département : {{ form.department }}</p>
     <p>Intercommunalité: {{ form.intercom }}</p>
         <input type="submit" value="Créer">
     </form>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $("#id_department").change(function(){
+            var url = $("#city-form").attr("data-intercom-url");
+            var departmentId = $(this).val();
+            $.ajax({
+                url: url,
+                data: {
+                    'department': departmentId
+                },
+                success: function(data){
+                    $("#id_intercom").html(data);
+                }
+            })
+        })
+    </script>
 {% endblock %}
 
 
