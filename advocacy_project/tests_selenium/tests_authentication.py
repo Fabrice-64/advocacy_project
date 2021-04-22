@@ -77,7 +77,7 @@ class CustomUserTest(LiveServerTestCase):
         password1_input.send_keys('test@1234')
         password2_input = self.browser.find_element_by_id('id_password2')
         password2_input.send_keys('test@1234')
-        self.browser.find_element_by_xpath('//input[@type="submit"]').click()
+        self.browser.find_element_by_xpath('//input[@type="submit"]')
 
     def test_plaid_2_check_rights(self):
         self.browser.get(os.path.join(self.live_server_url, ''))
