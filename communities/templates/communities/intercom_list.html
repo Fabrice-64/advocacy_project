@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Liste des Intercommunalités</h1>
+    <ul>
+        {{ user.status_type }}
+        {% for intercom in object_list %}
+            <li>{{ intercom.name }} : {{ intercom.department }}</li>
+        {% endfor %}
+    </ul>
+    {% if user.status_type == "MANAGER" %}
+    <form action="{% url 'communities:intercom_create' %}" id="intercom-create">
+        <button type="submit">Créer Une Intercommunalité</button>
+    </form>
+    {% endif %}
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Liste des Régions</h1>
+    <h1>Liste des Départements</h1>
     <ul>
         {{ user.status_type }}
         {% for region in object_list %}
@@ -9,8 +9,8 @@
         {% endfor %}
     </ul>
     {% if user.status_type == "MANAGER" %}
-    <form action="{% url 'communities:region_create' %}" id="region-create">
-        <button type="submit">Créer Une Région</button>
+    <form action="{% url 'communities:department_create' %}" id="region-create">
+        <button type="submit">Créer Un Département</button>
     </form>
     {% endif %}
 {% endblock %}

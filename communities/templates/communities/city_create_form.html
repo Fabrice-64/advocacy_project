@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Créer une Commune</h1>
+    <form method="post">{% csrf_token %}
+    <p>Ville : {{ form.name}}</p>
+    <p>Département : {{ form.department }}</p>
+    <p>Intercommunalité: {{ form.intercom }}</p>
+        <input type="submit" value="Créer">
+    </form>
+{% endblock %}
+
+

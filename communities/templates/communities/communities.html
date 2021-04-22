@@ -2,7 +2,21 @@
 
 {% block content %}
     <h1>Aller sur les Pages des Collectivités Territoriales</h1>
+    <h2>Régions</h2>
     <ul>
-       <li><a href="{% url 'communities:region_list' %}" id="region-list">Liste des Régions</a></li>
+        <li><a href="{% url 'communities:region_list' %}" id="region-list">Liste des Régions</a></li>
     </ul>
+    <h2>Départements</h2>
+    <ul>
+        <li><a href="{% url 'communities:department_list' %}" id="department-list">Liste des Départements</a></li>
+    </ul>
+    <h2>Intercommunalités</h2>
+    <ul>
+        <li><a href="{% url 'communities:intercom_list' %}" id="intercom-list">Liste des Intercommunalités</a></li>
+    </ul>
+    <h2>Communes</h2>
+    <ul>
+        <li><a href="{% url 'communities:city_list' %}" id="city-list">Liste des Communes</a></li>
+    </ul>
+
 {% endblock %}

@@ -23,17 +23,12 @@
                 {% endif %}
         </section>
         <section>
-            {% if user.is_staff and user.is_authenticated %}
-            
-                <p>Menu Créateur</p>
-                <a id="menu-new-user" href="{% url 'registration_register' %}">Nouvel Utilisateur</a>
-            {% elif not user.is_staff and user.is_authenticated %}
-                {% if user.status_type == "MANAGER" %}
-                    <p>Menu Manager</p>
-                    <a href="{% url 'communities:list' %}" id="link-communities">Collectivités</a>
-                {% else %}
-                    <p>Menu Accueil</p>
-                {% endif %}
+            {% if user.status_type == "MANAGER" %}
+                <p>Menu Manager</p>
+                <a id="menu-new-user" href="{% url 'registration_register' %}">Nouvel Utilisateur</a><br>
+                <a href="{% url 'communities:list' %}" id="link-communities">Collectivités</a>
+            {% else %}
+                <p>Menu Accueil</p>
             {% endif %}
         </section>
     </header>

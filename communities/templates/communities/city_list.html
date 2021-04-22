@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Liste des Villes</h1>
+    <ul>
+        {{ user.status_type }}
+        {% for city in object_list %}
+            <li>{{ city.name }} : {{ city.intercom}}, {{city.department}}</li>
+        {% endfor %}
+    </ul>
+    {% if user.status_type == "MANAGER" %}
+    <form action="{% url 'communities:city_create' %}" id="city-create">
+        <button type="submit">Créer Une Commune</button>
+    </form>
+    {% endif %}
+{% endblock %}

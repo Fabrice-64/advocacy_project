@@ -4,11 +4,11 @@ import communities.models as comms
 
 @admin.register(comms.Region)
 class RegionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["id", "name"]
 
 @admin.register(comms.Department)
 class DepartmentAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['id', 'name', 'dept_number']
 
 @admin.register(comms.City)
 class CityAdmin(admin.ModelAdmin):
