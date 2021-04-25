@@ -2,7 +2,9 @@
 {% load i18n %}
 
 {% block title %}{% trans "Account Activated" %}{% endblock %}
-
+{% block meta %}
+    <meta http-equiv = "refresh" content ="3; url ='{% url "change_password" %}' "  />
+{% endblock meta %}
 {% block content %}
 <p>
     

@@ -4,8 +4,8 @@
     <h1>Liste des Départements</h1>
     <ul>
         {{ user.status_type }}
-        {% for region in object_list %}
-            <li>{{ region.name }}</li>
+        {% for department in object_list %}
+            <li>{{ department.name }}</li>
         {% endfor %}
     </ul>
     {% if user.status_type == "MANAGER" %}

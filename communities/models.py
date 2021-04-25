@@ -1,7 +1,7 @@
 from django.db import models
-from django_oso.models import AuthorizedModel
+
 # Create your models here.
-class Region(AuthorizedModel):
+class Region(models.Model):
     name = models.CharField(verbose_name="Région",
                             max_length=240,
                             unique=True)

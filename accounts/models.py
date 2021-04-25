@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from .teams import Teams
+from django.contrib.auth.models import Group
 
 # Create your models here.
 class CustomUser(AbstractUser):
@@ -15,7 +16,7 @@ class CustomUser(AbstractUser):
             (EMPLOYEE, "Employé"),
             (VOLUNTEER, "Bénévole"),
         ]
-       
+   
     status_type = models.CharField(
         max_length=50,
         choices=StatusType.STATUS, 

@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'communities',
     'officials',
     'interviews',
-    'django_oso',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

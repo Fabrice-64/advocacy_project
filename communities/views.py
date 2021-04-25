@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
-from django_oso.auth import authorize
 
 from communities.models import Region, City, Department, Intercom
 
@@ -20,7 +19,7 @@ class RegionsListView(ListView):
     model = Region
 
     def get_queryset(self):
-        return Region.objects.authorize(self.request, action="read")
+        return Region.objects.get(self.request, action="read")
 
 class RegionCreateView(CreateView):
     model = Region
