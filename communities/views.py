@@ -18,8 +18,6 @@ def communities(request):
 class RegionsListView(ListView):
     model = Region
 
-    def get_queryset(self):
-        return Region.objects.get(self.request, action="read")
 
 class RegionCreateView(CreateView):
     model = Region

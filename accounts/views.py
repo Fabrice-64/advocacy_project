@@ -10,6 +10,7 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user, data=request.POST)
         if form.is_valid():
             user = form.save()
+            # Attributes to a user a group depending on his status.
             user.groups.add(Group.objects.get(name=user.status_type))
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Your password was successfully updated!')
