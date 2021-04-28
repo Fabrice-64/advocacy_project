@@ -18,18 +18,19 @@
             <p>Tous Unis</p>
                 {% if user.is_authenticated %}
                     Bonjour {{ user.username }}
-                    <a id="header-deconnection" href="{% url 'auth_logout' %}">LOGOUT</a>
+                    <a id="header-deconnection" href="{% url 'logout' %}">LOGOUT</a>
                 {% else %}
-                    <a id="header-connection" href="{% url 'auth_login' %}">LOGIN</a>
+                    <a id="header-connection" href="{% url 'login' %}">LOGIN</a>
                 {% endif %}
         </section>
         <section>
             {% if user.status_type == "MANAGER" %}
                 <p>Menu Manager</p>
-                <a id="menu-new-user" href="{% url 'registration_register' %}">Nouvel Utilisateur</a><br>
-                <a href="{% url 'communities:list' %}" id="link-communities">Collectivités</a>
-            {% else %}
+                <a id="menu-new-user" href="{% url 'new_user' %}">Nouvel Utilisateur</a><br>
+            {% endif %}
+            {% if user.is_authenticated %}
                 <p>Menu Accueil</p>
+                <a href="{% url 'communities:list' %}" id="link-communities">Collectivités</a>
             {% endif %}
         </section>
     </header>

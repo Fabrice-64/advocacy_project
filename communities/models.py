@@ -26,7 +26,7 @@ class Intercom(models.Model):
     department = models.ForeignKey(Department,
                                 on_delete=models.CASCADE,
                                 verbose_name="Département",
-                                default="14")
+                                default="1")
     def __str__(self):
         return self.name 
 
@@ -36,7 +36,7 @@ class City(models.Model):
     department = models.ForeignKey(Department,
                                 on_delete=models.CASCADE,
                                 verbose_name="Département",
-                                default="14")
+                                default="3")
     intercom = models.ForeignKey(Intercom,
                         on_delete=models.CASCADE,
                         verbose_name="Intercommunalité",
