@@ -36,9 +36,6 @@ class RegionCreateView(UserAccessMixin, CreateView):
     template_name="communities/region_create_form.html"
     success_url = reverse_lazy("communities:region_create")
 
-    
-    
-
 
 class DepartmentListView(ListView):
     model = Department

@@ -1,7 +1,9 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.core import mail
+from accounts.models import CustomUser
+from .views import change_password
 # Create your tests here.
 
 class CustomUserTest(TestCase):
@@ -32,18 +34,18 @@ class CustomUserTest(TestCase):
 class LoginTest(TestCase):
 
     def setUp(self):
-        url = reverse('auth_login')
+        url = reverse('login')
         self.response = self.client.get(url)
 
     def test_login(self):
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, 'registration/login.html')
+        self.assertTemplateUsed(self.response, 'accounts/login.html')
         self.assertContains(self.response, 'Connexion')
 
 
 class LogoutTest(TestCase):
     def setUp(self):
-        url = reverse('auth_logout')
+        url = reverse('logout')
         self.response = self.client.get(url)
 
     def test_logout(self):
@@ -68,3 +70,40 @@ class RegistrationTest(TestCase):
             fail_silently=False)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, "Création de Compte")
+
+
+class ChangePasswordTest(TestCase):
+    
+    def setUp(self):
+        self.user = CustomUser.objects.create_user(username="paul", password="pwd", is_active=True)
+        self.url = reverse('change_password')
+        self.response = self.client.post(self.url, {"username": "paul", "old_password":"pwd"})
+        self.client = Client()
+    
+    def test_password_change_not_logged_in(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, '/accounts/login/?next=/accounts/change_password/')
+    
+    def test_password_change_logged_in(self):
+        logged_in = self.client.login(username="paul", password="pwd")
+        self.assertTrue(logged_in)
+        self.response = self.client.post(self.url, {
+            "username": "paul", "old_password":"pwd",
+            "new_password1":"pwd1", "new_password2":"pwd1", "status_type":"VOLUNTEER"}, follow=True)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertIsNotNone(self.response.context['form'])
+
+    def test_password_change_short_password(self):
+        logged_in = self.client.login(username="paul", password="pwd")
+        self.assertTrue(logged_in)
+        self.response = self.client.post(self.url, {
+            "username": "paul", "old_password":"pwd",
+            "new_password1":"pwd1", "new_password2":"pwd1", "status_type":"VOLUNTEER"}, follow=True)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertIsNotNone(self.response.context['messages'])
+        self.assertTemplateUsed('accounts/change_password.html')
+        self.assertFormError(self.response, 
+            "form", "new_password2", 
+            ['Ce mot de passe est trop court. Il doit contenir au minimum 8 caractères.'])
+        
+

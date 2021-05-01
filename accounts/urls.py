@@ -6,15 +6,10 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('new_user/', views.UserRegistrationView.as_view(), name="new_user"),
-    #path('register/', include('registration.backends.default.urls'), name="registration_register"),
-    #path('change_password/', views.change_password, name='change_password'),
+    path('change_password/', views.change_password, name='change_password'),
     path('logout/', auth_views.LogoutView.as_view(
         template_name="accounts/logout.html"), name='logout'),
     path('login/', auth_views.LoginView.as_view(
         template_name="accounts/login.html"), name='login'),
-    path('password/reset/', auth_views.PasswordResetView.as_view(
-        template_name="accounts/password_reset_form.html",
-        email_template_name="accounts/password_reset_email.html",
-        success_url="done/"), name="password_reset"),
-    path('registration/activate/', views.UserActivationView.as_view(), name="registration_activate")
+    path('register/', include('registration.backends.default.urls'), name="registration_register"),
 ]

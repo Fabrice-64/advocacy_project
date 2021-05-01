@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse, reverse_lazy
 from . import fixture as f
 
+class IntercomViewTest(TestCase):
+    
 
 class RegionsListViewTest(TestCase):
 
