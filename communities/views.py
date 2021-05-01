@@ -13,7 +13,7 @@ def load_intercom(request):
     return render(request, 'communities/intercom_dropdown_list.html', 
                     {'intercoms': intercoms})
 
-def communities(request):
+def community_types(request):
     return render(request, "communities/communities.html")
 
 class UserAccessMixin(PermissionRequiredMixin):

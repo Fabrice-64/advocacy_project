@@ -9,13 +9,13 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from registration.backends.default.views import RegistrationView
 
+
 @login_required
 def change_password(request):
     """
         Used in the workflow at first connection of a new user.
         This function implements the Group to which the user belongs.
     """
-
     if request.method == "POST":
         form = PasswordChangeForm(user=request.user, data=request.POST)
         if form.is_valid():
