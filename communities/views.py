@@ -28,6 +28,7 @@ class UserAccessMixin(PermissionRequiredMixin):
 
 
 class RegionsListView(ListView):
+    paginate_by = 10
     model = Region
 
 
@@ -40,6 +41,7 @@ class RegionCreateView(UserAccessMixin, CreateView):
 
 
 class DepartmentListView(ListView):
+    paginate_by = 20
     model = Department
 
 
@@ -52,6 +54,7 @@ class DepartmentCreateView(UserAccessMixin, CreateView):
 
     
 class IntercomListView(ListView):
+    paginate_by = 20
     model = Intercom
 
 
@@ -64,6 +67,7 @@ class IntercomCreateView(UserAccessMixin, CreateView):
 
 
 class CityListView(ListView):
+    paginate_by = 20
     model = City
 
 

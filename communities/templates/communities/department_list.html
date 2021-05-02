@@ -9,8 +9,10 @@
         {% endfor %}
     </ul>
     {% if user.status_type == "MANAGER" %}
-    <form action="{% url 'communities:department_create' %}" id="region-create">
+    <form action="{% url 'communities:department_create' %}" id="department-create">
         <button type="submit">Créer Un Département</button>
     </form>
     {% endif %}
+    {% include "pagination_snippet.html" %}
 {% endblock %}
+
