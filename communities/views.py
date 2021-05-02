@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.views import redirect_to_login
 from communities.models import Region, City, Department, Intercom
+from communities import forms as forms
 
 
 def load_intercom(request):
@@ -25,6 +26,7 @@ class UserAccessMixin(PermissionRequiredMixin):
             return redirect(reverse_lazy("pages:home"))
         return super(UserAccessMixin, self).dispatch(request, *args, **kwargs)
 
+
 class RegionsListView(ListView):
     model = Region
 
@@ -32,7 +34,7 @@ class RegionsListView(ListView):
 class RegionCreateView(UserAccessMixin, CreateView):
     permission_required = 'communities.add_region'
     model = Region
-    fields = ['name']
+    form_class = forms.RegionForm
     template_name="communities/region_create_form.html"
     success_url = reverse_lazy("communities:region_create")
 
@@ -40,18 +42,21 @@ class RegionCreateView(UserAccessMixin, CreateView):
 class DepartmentListView(ListView):
     model = Department
 
-from communities.forms import DepartmentForm
-class DepartmentCreateView(CreateView):
+
+class DepartmentCreateView(UserAccessMixin, CreateView):
+    permission_required = "communities.add_department"
     model = Department
-    form_class = DepartmentForm
+    form_class = forms.DepartmentForm
     template_name="communities/department_create_form.html"
     success_url = reverse_lazy("communities:department_list")
+
     
 class IntercomListView(ListView):
     model = Intercom
 
-from communities import forms as forms
-class IntercomCreateView(CreateView):
+
+class IntercomCreateView(UserAccessMixin, CreateView):
+    permission_required = "communities.add_intercom"
     model = Intercom
     form_class = forms.IntercomForm
     template_name="communities/intercom_create_form.html"
@@ -61,8 +66,9 @@ class IntercomCreateView(CreateView):
 class CityListView(ListView):
     model = City
 
-from communities import forms as forms
-class CityCreateView(CreateView):
+
+class CityCreateView(UserAccessMixin, CreateView):
+    permission_required = "communities.add_city"
     model = City
     form_class = forms.CityForm
     template_name="communities/city_create_form.html"

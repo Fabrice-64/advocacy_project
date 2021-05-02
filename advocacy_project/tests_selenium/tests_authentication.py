@@ -92,6 +92,6 @@ class CustomUserTest(LiveServerTestCase):
         self.browser.find_element_by_id("link-communities").click()
         self.browser.find_element_by_id("region-list").click()
         regions = self.browser.find_elements_by_tag_name("li")
-        self.assertEqual(len(regions), 2)
+        self.assertEqual(len(regions), 7)
 
         

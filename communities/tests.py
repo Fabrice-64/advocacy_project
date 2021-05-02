@@ -1,7 +1,10 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Permission
 from django.urls import reverse, reverse_lazy
 from . import views as views
+from accounts.models import CustomUser
+
 
 class CommunityTypesTest(TestCase):
     
@@ -14,7 +17,7 @@ class CommunityTypesTest(TestCase):
         self.assertTemplateUsed(self.response, "communities/communities.html")
 
 
-class IntercomViewTest(TestCase):
+class LoadIntercomViewTest(TestCase):
     """
         Test AJAX Intercom view
     """
@@ -29,7 +32,7 @@ class IntercomViewTest(TestCase):
         self.assertTemplateUsed(self.response, "communities/intercom_dropdown_list.html")
 
 
-class RegionsListViewTest(TestCase):
+class RegionListViewTest(TestCase):
     fixtures = ['communities.json']
 
     def setUp(self):
@@ -42,3 +45,154 @@ class RegionsListViewTest(TestCase):
         self.assertTemplateUsed(self.response, "communities/region_list.html")
         # Authorization Requirements lead to display an empty list
         self.assertContains(self.response, "Grand-Est")
+
+
+class RegionCreateViewTest(TestCase):
+    fixtures = ['communities.json', 'permission.json']
+
+    def setUp(self):
+        self.url = reverse_lazy('communities:region_create')
+        self.response = self.client.post(self.url)
+        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
+        self.client = Client()
+
+    def test_region_create_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/communities/region/create/')
+
+    def test_region_create_authorized(self):
+        perm = Permission.objects.get(codename="add_region")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.post(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Région")
+
+
+class DepartmentListViewTest(TestCase):
+    fixtures = ['communities.json']
+
+    def setUp(self):
+        url = reverse_lazy('communities:department_list')
+        self.response = self.client.get(url)
+        
+    def test_regions_list_view(self):
+        #In this test the User is not logged-in.
+        self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed(self.response, "communities/department_list.html")
+        # Authorization Requirements lead to display an empty list
+        self.assertContains(self.response, "Bas-Rhin")
+
+
+class DepartmentCreateViewTest(TestCase):
+    fixtures = ['communities.json', 'permission.json']
+
+    def setUp(self):
+        self.url = reverse_lazy('communities:department_create')
+        self.response = self.client.post(self.url)
+        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
+        self.client = Client()
+
+    def test_department_create_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/communities/department/create/')
+
+    def test_department_create_authorized(self):
+        perm = Permission.objects.get(codename="add_department")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.post(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Département")
+
+class DepartmentListViewTest(TestCase):
+    fixtures = ['communities.json']
+
+    def setUp(self):
+        url = reverse_lazy('communities:department_list')
+        self.response = self.client.get(url)
+        
+    def test_regions_list_view(self):
+        #In this test the User is not logged-in.
+        self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed(self.response, "communities/department_list.html")
+        # Authorization Requirements lead to display an empty list
+        self.assertContains(self.response, "Bas-Rhin")
+
+class IntercomListViewTest(TestCase):
+    fixtures = ['communities.json']
+
+    def setUp(self):
+        url = reverse_lazy('communities:intercom_list')
+        self.response = self.client.get(url)
+        
+    def test_intercom_list_view(self):
+        #In this test the User is not logged-in.
+        self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed(self.response, "communities/intercom_list.html")
+        # Authorization Requirements lead to display an empty list
+        self.assertContains(self.response, "Eurométropole")
+
+class IntercomCreateViewTest(TestCase):
+    fixtures = ['communities.json', 'permission.json']
+
+    def setUp(self):
+        self.url = reverse_lazy('communities:intercom_create')
+        self.response = self.client.post(self.url)
+        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
+        self.client = Client()
+
+    def test_intercom_create_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/communities/intercom/create/')
+
+    def test_intercom_create_authorized(self):
+        perm = Permission.objects.get(codename="add_intercom")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.post(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Intercommunalité")
+    
+
+class IntercomListViewTest(TestCase):
+    fixtures = ['communities.json']
+
+    def setUp(self):
+        url = reverse_lazy('communities:intercom_list')
+        self.response = self.client.get(url)
+        
+    def test_intercom_list_view(self):
+        #In this test the User is not logged-in.
+        self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed(self.response, "communities/intercom_list.html")
+        # Authorization Requirements lead to display an empty list
+        self.assertContains(self.response, "Eurométropole")
+
+class CityCreateViewTest(TestCase):
+    fixtures = ['communities.json', 'permission.json']
+
+    def setUp(self):
+        self.url = reverse_lazy('communities:city_create')
+        self.response = self.client.post(self.url)
+        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
+        self.client = Client()
+
+    def test_city_create_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/communities/city/create/')
+
+    def test_city_create_authorized(self):
+        perm = Permission.objects.get(codename="add_city")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.post(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Commune")
+
+
+
