@@ -158,19 +158,19 @@ class IntercomCreateViewTest(TestCase):
         self.assertContains(self.response, "Intercommunalité")
     
 
-class IntercomListViewTest(TestCase):
+class CityListViewTest(TestCase):
     fixtures = ['communities.json']
 
     def setUp(self):
-        url = reverse_lazy('communities:intercom_list')
+        url = reverse_lazy('communities:city_list')
         self.response = self.client.get(url)
         
     def test_intercom_list_view(self):
         #In this test the User is not logged-in.
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, "communities/intercom_list.html")
+        self.assertTemplateUsed(self.response, "communities/city_list.html")
         # Authorization Requirements lead to display an empty list
-        self.assertContains(self.response, "Eurométropole")
+        self.assertContains(self.response, "Strasbourg")
 
 class CityCreateViewTest(TestCase):
     fixtures = ['communities.json', 'permission.json']

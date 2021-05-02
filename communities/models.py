@@ -5,6 +5,9 @@ class Region(models.Model):
     name = models.CharField(verbose_name="Région",
                             max_length=240,
                             unique=True)
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
         return self.name 
 
@@ -17,6 +20,10 @@ class Department(models.Model):
                                    unique=True)
     region = models.ForeignKey(Region, on_delete=models.CASCADE,
                             verbose_name="Région")
+    
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
         return self.name 
 
@@ -27,6 +34,9 @@ class Intercom(models.Model):
                                 on_delete=models.CASCADE,
                                 verbose_name="Département",
                                 default="1")
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
         return self.name 
 
@@ -41,5 +51,8 @@ class City(models.Model):
                         on_delete=models.CASCADE,
                         verbose_name="Intercommunalité",
                         default="4")
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
         return self.name 

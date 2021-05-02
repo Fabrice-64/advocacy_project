@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.core import mail
 from accounts.models import CustomUser
 from django.contrib.auth.models import Group
-from .views import change_password
+from accounts.views import change_password
 
 # Create your tests here.
 

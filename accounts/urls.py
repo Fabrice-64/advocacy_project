@@ -12,4 +12,5 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(
         template_name="accounts/login.html"), name='login'),
     path('register/', include('registration.backends.default.urls'), name="registration_register"),
+    path('volunteer/list/', views.VolunteerListView.as_view(), name='volunteer_list'),
 ]

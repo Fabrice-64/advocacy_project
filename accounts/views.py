@@ -7,7 +7,10 @@ from accounts.models import CustomUser
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, DetailView
 from registration.backends.default.views import RegistrationView
+from accounts.models import Volunteer
+from accounts.user_access import UserAccessMixin
 
 
 @login_required
@@ -36,3 +39,18 @@ class UserRegistrationView(PermissionRequiredMixin, RegistrationView):
     # Keeps the user registration for managers
     permission_required = "accounts.add_customuser"
 
+
+class VolunteerListView(UserAccessMixin, ListView):
+    permission_required = "accounts.view_volunteer"
+    paginate_by = 20
+    model = Volunteer
+
+
+class VolunteerDetailView(DetailView):
+    pass
+
+class EmployeeListView(ListView):
+    pass
+
+class EmployeeDetailView(DetailView):
+    pass

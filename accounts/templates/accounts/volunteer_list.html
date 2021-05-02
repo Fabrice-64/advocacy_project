@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Liste des Bénévoles</h1>
+    <ul>
+        {% for volunteer in object_list %}
+            <li> {{volunteer.first_name }} {{ volunteer.last_name }} Equipe: {{ volunteer.team }}</li>
+        {% endfor %}
+    </ul>
+    </form>
+    {% include "pagination_snippet.html" %}
+{% endblock %}

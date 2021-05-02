@@ -61,6 +61,7 @@ class Volunteer(CustomUser):
 
     class Meta:
         proxy = True
+        ordering = ["team", "last_name"]
         
 
 class Employee(CustomUser):
