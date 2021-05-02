@@ -3,7 +3,9 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.core import mail
 from accounts.models import CustomUser
+from django.contrib.auth.models import Group
 from .views import change_password
+
 # Create your tests here.
 
 class CustomUserTest(TestCase):
@@ -76,6 +78,7 @@ class ChangePasswordTest(TestCase):
     
     def setUp(self):
         self.user = CustomUser.objects.create_user(username="paul", password="pwd", is_active=True)
+        Group.objects.create(name="VOLUNTEER")
         self.url = reverse('change_password')
         self.response = self.client.post(self.url, {"username": "paul", "old_password":"pwd"})
         self.client = Client()
@@ -106,4 +109,14 @@ class ChangePasswordTest(TestCase):
             "form", "new_password2", 
             ['Ce mot de passe est trop court. Il doit contenir au minimum 8 caractères.'])
         
-
+    def test_password_change_compliant_password(self):
+        logged_in = self.client.login(username="paul", password="pwd")
+        self.assertTrue(logged_in)
+        self.response = self.client.post(self.url, {
+            "username": "paul", "old_password":"pwd",
+            "new_password1":"@password1", "new_password2":"@password1", "status_type":"VOLUNTEER"}, follow=True)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertIsNotNone(self.response.context['messages'])
+        self.assertTemplateUsed('accounts/change_password.html')
+        self.assertNotContains(self.response, "S\'il vous plait, corrigez l\'erreur.")
+        self.assertContains(self.response, "Votre mot de passe a été changé")
