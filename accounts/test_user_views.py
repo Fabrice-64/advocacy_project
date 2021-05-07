@@ -10,7 +10,7 @@ class VolunteerListViewTest(TestCase):
 
     def setUp(self):
         self.url = reverse_lazy('volunteer_list')
-        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
         self.response = self.client.get(self.url)
         
     def test_volunteer_list_view_not_authorized(self):
@@ -31,8 +31,8 @@ class VolunteerDetailViewTest(TestCase):
     fixtures = ['communities.json', 'users.json', 'permission.json']
     def setUp(self):
         self.url = reverse_lazy('volunteer_detail')
-        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
-        self.volunteer = Volunteer.objects.get(username="paul")
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.volunteer = Volunteer.objects.get(username="test_user")
         self.response = self.client.post(self.url)
 
     def test_volunteer_detail_view_not_authorized(self):

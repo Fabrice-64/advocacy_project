@@ -24,12 +24,12 @@ class LoadIntercomViewTest(TestCase):
     fixtures = ['communities.json']
 
     def setUp(self):
-        url = reverse_lazy('communities:ajax_load_intercom')
+        url = reverse_lazy('communities:ajax_load_departments')
         self.response = self.client.get(url)
     
     def test_load_intercom_view(self):
         self.assertEqual(self.response.status_code, 200),
-        self.assertTemplateUsed(self.response, "communities/intercom_dropdown_list.html")
+        self.assertTemplateUsed(self.response, "communities/department_dropdown_list.html")
 
 
 class RegionListViewTest(TestCase):
@@ -53,7 +53,7 @@ class RegionCreateViewTest(TestCase):
     def setUp(self):
         self.url = reverse_lazy('communities:region_create')
         self.response = self.client.post(self.url)
-        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
         self.client = Client()
 
     def test_region_create_not_authorized(self):
@@ -91,7 +91,7 @@ class DepartmentCreateViewTest(TestCase):
     def setUp(self):
         self.url = reverse_lazy('communities:department_create')
         self.response = self.client.post(self.url)
-        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
         self.client = Client()
 
     def test_department_create_not_authorized(self):
@@ -141,7 +141,7 @@ class IntercomCreateViewTest(TestCase):
     def setUp(self):
         self.url = reverse_lazy('communities:intercom_create')
         self.response = self.client.post(self.url)
-        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
         self.client = Client()
 
     def test_intercom_create_not_authorized(self):
@@ -178,7 +178,7 @@ class CityCreateViewTest(TestCase):
     def setUp(self):
         self.url = reverse_lazy('communities:city_create')
         self.response = self.client.post(self.url)
-        self.user1 = CustomUser.objects.create(username="paul", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
         self.client = Client()
 
     def test_city_create_not_authorized(self):

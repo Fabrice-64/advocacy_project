@@ -1,1 +1,177 @@
-[{"model": "communities.region", "pk": 1, "fields": {"name": "Grand-Est"}}, {"model": "communities.region", "pk": 2, "fields": {"name": "Hauts-de-France"}}]
+[
+{
+  "model": "communities.region",
+  "pk": 1,
+  "fields": {
+    "name": "Grand-Est"
+  }
+},
+{
+  "model": "communities.region",
+  "pk": 2,
+  "fields": {
+    "name": "Hauts-de-France"
+  }
+},
+{
+  "model": "communities.region",
+  "pk": 3,
+  "fields": {
+    "name": "Bretagne"
+  }
+},
+{
+  "model": "communities.region",
+  "pk": 4,
+  "fields": {
+    "name": "Provence"
+  }
+},
+{
+  "model": "communities.region",
+  "pk": 5,
+  "fields": {
+    "name": "Nouvelle-Aquitaine"
+  }
+},
+{
+  "model": "communities.region",
+  "pk": 6,
+  "fields": {
+    "name": "Auvergne"
+  }
+},
+{
+  "model": "communities.region",
+  "pk": 7,
+  "fields": {
+    "name": "Pays-de-Loire"
+  }
+},
+{
+  "model": "communities.department",
+  "pk": 3,
+  "fields": {
+    "name": "Bas-Rhin",
+    "dept_number": "67",
+    "region": 1
+  }
+},
+{
+  "model": "communities.department",
+  "pk": 10,
+  "fields": {
+    "name": "Haut-Rhin",
+    "dept_number": "68",
+    "region": 1
+  }
+},
+{
+  "model": "communities.department",
+  "pk": 11,
+  "fields": {
+    "name": "Finistère",
+    "dept_number": "29",
+    "region": 3
+  }
+},
+{
+  "model": "communities.department",
+  "pk": 12,
+  "fields": {
+    "name": "Gironde",
+    "dept_number": "33",
+    "region": 5
+  }
+},
+{
+  "model": "communities.department",
+  "pk": 13,
+  "fields": {
+    "name": "Landes",
+    "dept_number": "40",
+    "region": 5
+  }
+},
+{
+  "model": "communities.intercom",
+  "pk": 1,
+  "fields": {
+    "name": "Eurométropole Strasbourg",
+    "region": 1,
+    "department": 3
+  }
+},
+{
+  "model": "communities.intercom",
+  "pk": 2,
+  "fields": {
+    "name": "Bordeaux Métropole",
+    "region": 1,
+    "department": 12
+  }
+},
+{
+  "model": "communities.intercom",
+  "pk": 3,
+  "fields": {
+    "name": "Communauté d’Agglomération de Haguenau",
+    "region": 1,
+    "department": 3
+  }
+},
+{
+  "model": "communities.intercom",
+  "pk": 5,
+  "fields": {
+    "name": "Saverne",
+    "region": 1,
+    "department": 3
+  }
+},
+{
+  "model": "communities.intercom",
+  "pk": 6,
+  "fields": {
+    "name": "Métropole de Brest-Océan",
+    "region": 3,
+    "department": 11
+  }
+},
+{
+  "model": "communities.city",
+  "pk": 1,
+  "fields": {
+    "name": "Strasbourg",
+    "department": 3,
+    "intercom": 1
+  }
+},
+{
+  "model": "communities.city",
+  "pk": 2,
+  "fields": {
+    "name": "Bischheim",
+    "department": 3,
+    "intercom": 1
+  }
+},
+{
+  "model": "communities.city",
+  "pk": 3,
+  "fields": {
+    "name": "Bitche",
+    "department": 3,
+    "intercom": 1
+  }
+},
+{
+  "model": "communities.city",
+  "pk": 4,
+  "fields": {
+    "name": "Bischwiller",
+    "department": 3,
+    "intercom": 3
+  }
+}
+]

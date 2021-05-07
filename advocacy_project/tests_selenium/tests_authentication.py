@@ -54,6 +54,7 @@ class CustomUserTest(LiveServerTestCase):
             The manager creates a new user, who gets an email for the account
             activation.
         """
+
         self.browser.get(os.path.join(self.live_server_url, ''))
         # Sébastien logs in to get access to the admin interface
         self.browser.find_element_by_id("login-status")
@@ -84,14 +85,12 @@ class CustomUserTest(LiveServerTestCase):
         # Sébastien logs in to get access to the admin interface
         self.browser.find_element_by_id("header-connection").click()
         user_input = self.browser.find_element_by_id("id_username")
-        user_input.send_keys('Pierre')
+        user_input.send_keys('sebastien')
         # S. enters his password
         user_input_pwd = self.browser.find_element_by_id("id_password")
-        user_input_pwd.send_keys('@dmin1234')
+        user_input_pwd.send_keys('admin')
         self.browser.find_element_by_xpath('//input[@type="submit"]').click()
         self.browser.find_element_by_id("link-communities").click()
         self.browser.find_element_by_id("region-list").click()
         regions = self.browser.find_elements_by_tag_name("li")
         self.assertEqual(len(regions), 7)
-
-        
