@@ -1,0 +1,4 @@
+<option value="--------">---------</option>
+{% for intercom in intercoms %}
+<option value="{{ intercom.pk }}">{{ intercom.name }}</option>
+{% endfor %}

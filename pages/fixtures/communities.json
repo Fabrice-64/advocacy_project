@@ -139,10 +139,20 @@
   }
 },
 {
+  "model": "communities.intercom",
+  "pk": 7,
+  "fields": {
+    "name": "Communauté d'agglo de Landivisiau",
+    "region": 3,
+    "department": 11
+  }
+},
+{
   "model": "communities.city",
   "pk": 1,
   "fields": {
     "name": "Strasbourg",
+    "region": 1,
     "department": 3,
     "intercom": 1
   }
@@ -152,6 +162,7 @@
   "pk": 2,
   "fields": {
     "name": "Bischheim",
+    "region": 1,
     "department": 3,
     "intercom": 1
   }
@@ -161,6 +172,7 @@
   "pk": 3,
   "fields": {
     "name": "Bitche",
+    "region": 1,
     "department": 3,
     "intercom": 1
   }
@@ -170,8 +182,59 @@
   "pk": 4,
   "fields": {
     "name": "Bischwiller",
+    "region": 1,
     "department": 3,
     "intercom": 3
+  }
+},
+{
+  "model": "communities.city",
+  "pk": 5,
+  "fields": {
+    "name": "Plobsheim",
+    "region": 1,
+    "department": 3,
+    "intercom": 1
+  }
+},
+{
+  "model": "communities.city",
+  "pk": 6,
+  "fields": {
+    "name": "Oberhoffen-sur-Moder",
+    "region": 1,
+    "department": 3,
+    "intercom": 3
+  }
+},
+{
+  "model": "communities.city",
+  "pk": 7,
+  "fields": {
+    "name": "Brennilis",
+    "region": 3,
+    "department": 11,
+    "intercom": 7
+  }
+},
+{
+  "model": "communities.city",
+  "pk": 8,
+  "fields": {
+    "name": "Locmaria-Plouzané",
+    "region": 3,
+    "department": 11,
+    "intercom": 6
+  }
+},
+{
+  "model": "communities.city",
+  "pk": 9,
+  "fields": {
+    "name": "Oberhausbergen",
+    "region": 1,
+    "department": 3,
+    "intercom": 1
   }
 }
 ]

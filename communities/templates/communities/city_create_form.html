@@ -2,31 +2,49 @@
 
 {% block content %}
     <h1>Créer une Commune</h1>
-    <form method="post" id="city-form" data-intercom-url="{% url 'communities:ajax_load_intercom' %}" novalidate>{% csrf_token %}
-    {% csrf_token %}
-    <p>Ville : {{ form.name}}</p>
-    <p>Département : {{ form.department }}</p>
-    <p>Intercommunalité: {{ form.intercom }}</p>
-        <input type="submit" value="Créer">
+    <form method="post" id="cityForm" data-intercoms-url="{% url 'communities:ajax_load_intercoms' %}" novalidate>
+        {% csrf_token %}
+        <table>
+        {{ form.as_table}}
+        </table>
+        <button type="submit">Créer une Commune</button>
+        <a href="">Retour</a>
     </form>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
-        $("#id_department").change(function(){
-            var url = $("#city-form").attr("data-intercom-url");
-            var departmentId = $(this).val();
+        $("#id_region").change(function () {
+            // regions are at the top of the territorial hierarchy and are called first
+            var regionId = $(this).val();
             $.ajax({
-                url: url,
+                url: "{% url 'communities:ajax_load_departments' %}", 
                 data: {
-                    'department': departmentId
+                // add the region id to the GET parameters
+                'region': regionId       
                 },
-                success: function(data){
-                    $("#id_intercom").html(data);
+                success: function (data) {
+                    // id_department is provided by Django
+                    $("#id_department").html(data);
                 }
-            })
-        })
+            });
+        });
+        // Department choice is subordinated to the region
+        $("#id_department").change(function () {
+            var departmentId = $(this).val(); 
+            $.ajax({                 
+                url: "{% url 'communities:ajax_load_intercoms' %}",
+                data: {
+                // add the department to the GET parameters
+                'department': departmentId
+                },
+                success: function (data) { 
+                $("#id_intercom").html(data);
+                }
+            });
+        });
+        
     </script>
+
 {% endblock %}
 
 
