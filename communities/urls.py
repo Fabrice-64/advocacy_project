@@ -14,5 +14,5 @@ urlpatterns = [
     path("intercom/create/", views.IntercomCreateView.as_view(), name="intercom_create"),
     path("city/list/", views.CityListView.as_view(), name="city_list"),
     path("city/create/", views.CityCreateView.as_view(), name="city_create"),
-    path('ajax_load_intercoms/', views.load_intercom, name="ajax_load_intercom"),
+    path('ajax/load_departments/', views.load_department, name="ajax_load_departments"),
 ]

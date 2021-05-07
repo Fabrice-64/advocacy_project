@@ -16,7 +16,20 @@ class DepartmentForm(ModelForm):
 class IntercomForm(ModelForm):
     class Meta:
         model = comms.Intercom
-        fields = ['name', 'department']
+        fields = ['region', 'department', 'name']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['department'].queryset = comms.Intercom.objects.none()
+
+        if 'region' in self.data:
+            try:
+                region_id = int(self.data.get('region'))
+                self.fields['department'].queryset = comms.Department.objects.filter(region_id=region_id).order_by('name')
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['department'].queryset = self.instance.region.department_set.order_by('name')    
 
 
 class CityForm(ModelForm):

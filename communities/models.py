@@ -30,10 +30,10 @@ class Department(models.Model):
 class Intercom(models.Model):
     name = models.CharField(max_length=240,
                             verbose_name="Intercommunalité")
+    region = models.ForeignKey(Region, on_delete=models.CASCADE)
     department = models.ForeignKey(Department,
                                 on_delete=models.CASCADE,
-                                verbose_name="Département",
-                                default="1")
+                                verbose_name="Département")
     class Meta:
         ordering = ["name"]
 

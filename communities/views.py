@@ -7,11 +7,11 @@ from communities import forms as forms
 from accounts.user_access import UserAccessMixin
 
 
-def load_intercom(request):
-    department_id = request.GET.get('department')
-    intercoms = Intercom.objects.filter(department_id=department_id).order_by('name')
-    return render(request, 'communities/intercom_dropdown_list.html', 
-                    {'intercoms': intercoms})
+def load_department(request):
+    region_id = request.GET.get('region')
+    departments = Department.objects.filter(region_id=region_id).order_by('name')
+    return render(request, 'communities/department_dropdown_list.html', 
+                    {'departments': departments})
 
 def community_types(request):
     return render(request, "communities/communities.html")
