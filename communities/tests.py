@@ -156,7 +156,20 @@ class IntercomCreateViewTest(TestCase):
         self.response = self.client.post(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Intercommunalité")
+
+    def test_intercom_creation_tree(self):
+        perm = Permission.objects.get(codename="add_intercom")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.post(self.url, {'region': "1"})
+        self.assertContains(self.response, "Bas-Rhin")
     
+    def test_ajax_load_department(self):
+        self.url = reverse_lazy('communities:ajax_load_departments')
+        self.response = self.client.post(self.url, {"region": "1"})
+        self.assertEquals(self.response.status_code, 200)
+        self.assertTemplateUsed("communities/department_dropdown_list.html")
+
 
 class CityListViewTest(TestCase):
     fixtures = ['communities.json']
@@ -193,6 +206,20 @@ class CityCreateViewTest(TestCase):
         self.response = self.client.post(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Commune")
+
+    def test_city_creation_tree(self):
+        perm = Permission.objects.get(codename="add_city")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.post(self.url, {'region': "1", "department": "3"})
+        self.assertContains(self.response, "Eurométropole Strasbourg")
+    
+    def test_ajax_load_intercom(self):
+        self.url = reverse_lazy('communities:ajax_load_intercoms')
+        self.response = self.client.post(self.url, {"department": "3"})
+        self.assertEquals(self.response.status_code, 200)
+        self.assertTemplateUsed("communities/intercom_dropdown_list.html")
+
 
 
 
