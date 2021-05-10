@@ -1,8 +1,9 @@
+import uuid
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 from django.core.validators import RegexValidator
-from .teams import Teams
-from django.contrib.auth.models import Group
+from teams.models import Team
+from django.urls import reverse
 
 # Create your models here.
 class CustomUser(AbstractUser):
@@ -16,14 +17,18 @@ class CustomUser(AbstractUser):
             (EMPLOYEE, "Employé"),
             (VOLUNTEER, "Bénévole"),
         ]
-   
+
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False)
+
     status_type = models.CharField(
         max_length=50,
         choices=StatusType.STATUS, 
         default=StatusType.VOLUNTEER,
         verbose_name="Statut")
 
-    id = models.BigAutoField(primary_key=True)
     phone_regex = RegexValidator(
         regex=r"^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$",
         message="Veuillez entrer un numéro valide"
@@ -36,12 +41,8 @@ class CustomUser(AbstractUser):
         verbose_name="Téléphone"
     )
 
-    team = models.CharField(
-        max_length=4,
-        choices=Teams.choices,
-        default=Teams.STRASBOURG_VILLE,
-        verbose_name="Equipe"
-    )
+    team = models.ForeignKey(Team, verbose_name="Equipe", on_delete=models.CASCADE, default="Non Renseigné")
+
 
 class VolunteerManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
@@ -62,6 +63,9 @@ class Volunteer(CustomUser):
     class Meta:
         proxy = True
         ordering = ["team", "last_name"]
+    
+    def get_absolute_url(self):
+        return reverse('volunteer_detail', args=[str(self.id)])
         
 
 class Employee(CustomUser):

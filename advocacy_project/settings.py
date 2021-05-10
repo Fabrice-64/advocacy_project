@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'communities',
     'officials',
     'interviews',
+    'teams',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

@@ -3,13 +3,12 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import Group
-from accounts.models import CustomUser
+from accounts.models import CustomUser, Volunteer
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 from registration.backends.default.views import RegistrationView
-from accounts.models import Volunteer
 from accounts.user_access import UserAccessMixin
 
 
@@ -35,6 +34,9 @@ def change_password(request):
     return render(request, 'accounts/change_password.html', {'form': form})
 
 
+def user_types(request):
+    return render(request, "accounts/user_types.html")
+
 class UserRegistrationView(PermissionRequiredMixin, RegistrationView): 
     # Keeps the user registration for managers
     permission_required = "accounts.add_customuser"
@@ -47,10 +49,22 @@ class VolunteerListView(UserAccessMixin, ListView):
 
 
 class VolunteerDetailView(DetailView):
-    pass
+    permission_required = "accounts.view_volunteer"
+    model = Volunteer
+    template_name = "accounts/volunteer_detail.html"
 
 class EmployeeListView(ListView):
     pass
 
 class EmployeeDetailView(DetailView):
     pass
+
+class UserListView(ListView):
+    model = CustomUser
+    #permission_required = "accounts.view_user"
+    #context_object_name = "user_list"
+    paginate_by = 20
+
+class UserDetailView(DetailView):
+    model = CustomUser
+    template_name = 'accounts/user_detail.html'

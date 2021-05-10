@@ -27,10 +27,13 @@
             {% if user.status_type == "MANAGER" %}
                 <p>Menu Manager</p>
                 <a id="menu-new-user" href="{% url 'new_user' %}">Nouvel Utilisateur</a><br>
+                <a href="{% url 'user_types' %}" id="link-users">Utilisateurs</a>
             {% endif %}
             {% if user.is_authenticated %}
                 <p>Menu Accueil</p>
                 <a href="{% url 'communities:list' %}" id="link-communities">Collectivités</a>
+                <a href="" id="link-officials">Elus</a>
+                <a href="" id="link-interviews">Entretiens</a>
             {% endif %}
         </section>
     </header>

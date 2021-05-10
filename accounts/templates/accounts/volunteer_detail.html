@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+Volunteer Detail
+{% block content %}
+    <h1>Fiche Bénévole</h1>
+
+    <div id='volunteer-details'>
+        <p>Prénom : {{ volunteer.first_name }}</p>
+        <p>Nom de Famille: {{ volunteer.last_name }}</p>
+        <p>Equipe : {{ volunteer.team }}</p>
+    </div>
+
+{% endblock %}
