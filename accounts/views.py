@@ -46,6 +46,7 @@ class VolunteerListView(UserAccessMixin, ListView):
     permission_required = "accounts.view_volunteer"
     paginate_by = 20
     model = Volunteer
+    queryset = Volunteer.objects.order_by("team")
 
 
 class VolunteerDetailView(UserAccessMixin, DetailView):

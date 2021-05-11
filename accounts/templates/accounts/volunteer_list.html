@@ -1,12 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% regroup object_list by team as team_list %}
+
     <h1>Liste des Bénévoles</h1>
     <ul>
         {% for volunteer in object_list %}
-            <li><a href="{{ volunteer.get_absolute_url }}">{{volunteer.first_name }} {{ volunteer.last_name }}</a>Equipe: {{ volunteer.team }}</li>
+            <li><a href="{{ volunteer.get_absolute_url }}">{{volunteer.first_name }} {{ volunteer.last_name }}</a></li>
         {% endfor %}
+</ul>
+    <ul>
+    {% for team in team_list %}
+        <li><h2>{{ team.grouper }} </h2>
+            <ul>
+                {% for volunteer in team.list %}
+                    <li><a href="{{ volunteer.get_absolute_url }}">{{volunteer.first_name }} {{ volunteer.last_name }}</a></li>
+                {% endfor %}
+        </ul>
+            
+        </li>
+    {% endfor %}
     </ul>
-    </form>
+
     {% include "pagination_snippet.html" %}
 {% endblock %}
