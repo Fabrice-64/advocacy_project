@@ -13,7 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver import Firefox
 import os
 class CustomUserTest(LiveServerTestCase):
-    fixtures = ['users.json', 'communities.json']
+    fixtures = ['users.json', 'communities.json', 'teams.json']
 
     @classmethod
     def setUpClass(cls):
@@ -73,7 +73,7 @@ class CustomUserTest(LiveServerTestCase):
         phone_number = self.browser.find_element_by_id('id_phone_number')
         phone_number.send_keys("01 02 03 04 05")
         team = Select(self.browser.find_element_by_id('id_team'))
-        team.select_by_value("STBN")
+        team.select_by_value("1")
         password1_input = self.browser.find_element_by_id('id_password1')
         password1_input.send_keys('test@1234')
         password2_input = self.browser.find_element_by_id('id_password2')

@@ -4,6 +4,7 @@ from django.contrib.auth.models import Permission
 from django.urls import reverse, reverse_lazy
 from . import views as views
 from accounts.models import CustomUser
+from teams.models import Team
 
 
 class CommunityTypesTest(TestCase):

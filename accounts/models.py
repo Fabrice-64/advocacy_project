@@ -41,7 +41,10 @@ class CustomUser(AbstractUser):
         verbose_name="Téléphone"
     )
 
-    team = models.ForeignKey(Team, verbose_name="Equipe", on_delete=models.CASCADE, default="Non Renseigné")
+    team = models.ForeignKey(Team, verbose_name="Equipe", on_delete=models.CASCADE, null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('volunteer_detail', args=[str(self.id)])
 
 
 class VolunteerManager(models.Manager):

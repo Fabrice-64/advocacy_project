@@ -30,22 +30,20 @@ class VolunteerListViewTest(TestCase):
 class VolunteerDetailViewTest(TestCase):
     fixtures = ['communities.json', 'users.json', 'permission.json']
     def setUp(self):
-        self.url = reverse_lazy('volunteer_detail')
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
-        self.volunteer = Volunteer.objects.get(username="test_user")
-        self.response = self.client.post(self.url)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True, status_type="MANAGER")
+        self.volunteer = Volunteer.objects.create(username="test_user2", password="pwd", is_active=True, status_type="VOLUNTEER")
 
     def test_volunteer_detail_view_not_authorized(self):
         # Only members can get access to volunteer detail
+        perm = Permission.objects.get(codename="view_volunteer")
+        self.user1.user_permissions.remove(perm)
+        self.response = self.client.get(self.volunteer.get_absolute_url())
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
-            '/accounts/login/?next=/accounts/volunteer/detail/')
-    
+
     def test_volunteer_detail_view_authorized(self):
         perm = Permission.objects.get(codename="view_volunteer")
         self.user1.user_permissions.add(perm)
-        self.response = self.client.get(self.volunteer.get_absolute_url())
         self.client.force_login(self.user1)
-        self.response = self.client.get(self.url)
+        self.response = self.client.get(self.volunteer.get_absolute_url())
         self.assertEqual(self.response.status_code, 200)
-        self.assertContains(self.response, "Fiche de Bénévole")
+        self.assertContains(self.response, "volunteer-details")

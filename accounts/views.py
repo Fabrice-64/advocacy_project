@@ -48,10 +48,11 @@ class VolunteerListView(UserAccessMixin, ListView):
     model = Volunteer
 
 
-class VolunteerDetailView(DetailView):
+class VolunteerDetailView(UserAccessMixin, DetailView):
     permission_required = "accounts.view_volunteer"
     model = Volunteer
     template_name = "accounts/volunteer_detail.html"
+    success_url = reverse_lazy("volunteer_detail")
 
 class EmployeeListView(ListView):
     pass
