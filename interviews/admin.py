@@ -4,11 +4,10 @@ import interviews.models as itw
 
 @admin.register(itw.AdvocacyTopic)
 class AdvocacyTopicAdmin(admin.ModelAdmin):
-    pass
+    fields = ('created_by', 'source', 'key_statement', 'quote')
 
 
 @admin.register(itw.Interview)
 class InterviewAdmin(admin.ModelAdmin):
     pass
-
 

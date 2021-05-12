@@ -1,16 +1,27 @@
 from django.db import models
-from accounts.models import Volunteer
+from django.urls import reverse
+from accounts.models import Volunteer, CustomUser
+
 from officials.models import Official
+from datetime import date
 
 # Create your models here.
 class AdvocacyTopic(models.Model):
     key_statement = models.CharField(max_length=240, 
                                     blank=False, 
                                     null=False,
-                                    verbose_name="Phrases Clé")
+                                    verbose_name="Phrase Clé")
     source = models.URLField(max_length=240,
                             blank=True,
                             verbose_name="Lien vers la source")
+    quote = models.CharField(max_length=480,
+                            blank=True, null=True, verbose_name="Citation")
+    creation_date = models.DateField(auto_now_add=True, verbose_name="Date de Création")
+    updated_date = models.DateField(auto_now=True, verbose_name="Date de Mise à Jour")
+    created_by = models.ForeignKey(CustomUser, models.SET_NULL, null=True, blank=True, verbose_name="Rédacteur")
+
+    def get_absolute_url(self):
+        return reverse('advocacy_topic_detail', args=[str(key_statement), str(creation_date)])
 
 class Interview(models.Model):
     class InterviewStatus(models.Model):

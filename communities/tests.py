@@ -158,14 +158,7 @@ class IntercomCreateViewTest(TestCase):
         self.response = self.client.post(self.url, {'region': "1"})
         self.assertEqual(self.response.status_code, 302)
         #self.assertContains(self.response, "Intercommunalité")
-    """
-    def test_intercom_creation_tree(self):
-        perm = Permission.objects.get(codename="add_intercom")
-        self.user1.user_permissions.add(perm)
-        self.client.force_login(self.user1)
-        self.response = self.client.post(self.url, {'region': "1", 'department': "3"})
-        self.assertEquals(self.response.status_code, 302)
-        """   
+
     def test_ajax_load_department(self):
         self.url = reverse_lazy('communities:ajax_load_departments')
         self.response = self.client.post(self.url, {"region": "1"})
