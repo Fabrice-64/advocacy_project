@@ -11,8 +11,9 @@ class RegionForm(ModelForm):
 class DepartmentForm(ModelForm):
     class Meta:
         model = comms.Department
-        fields = ['name', 'dept_number', 'region']
+        fields = ['region', 'name', 'dept_number']
 
+from .ajax_functions import retrieve_departments_by_region, retrieve_intercoms_by_department
 class IntercomForm(ModelForm):
     class Meta:
         model = comms.Intercom
@@ -24,12 +25,13 @@ class IntercomForm(ModelForm):
 
         if 'region' in self.data:
             try:
-                region_id = int(self.data.get('region'))
-                self.fields['department'].queryset = comms.Department.objects.filter(region_id=region_id).order_by('name')
+                self.fields['department'].queryset = retrieve_departments_by_region(self.data)
             except (ValueError, TypeError):
                 pass
+        """
         elif self.instance.pk:
-            self.fields['department'].queryset = self.instance.region.department_set.order_by('name')    
+            self.fields['department'].queryset = self.instance.region.department_set.order_by('name')
+        """   
 
 
 class CityForm(ModelForm):
@@ -44,19 +46,20 @@ class CityForm(ModelForm):
         
         if 'region' in self.data:
             try:
-                region_id = int(self.data.get('region'))
-                self.fields['department'].queryset = comms.Department.objects.filter(region_id=region_id).order_by('name')
+                self.fields['department'].queryset = retrieve_departments_by_region(self.data)
             except (ValueError, TypeError):
                 pass
+        """
         elif self.instance.pk:
             self.fields['department'].queryset = self.instance.region.department_set.order_by('name')
+        """
 
         if 'department' in self.data:
             try:
-                department_id = int(self.data.get('department'))
-                self.fields['intercom'].queryset = comms.Intercom.objects.filter(department_id=department_id).order_by('name')
+                self.fields['intercom'].queryset = retrieve_intercoms_by_department(self.data)
             except (ValueError, TypeError):
                 pass
+        """
         elif self.instance.pk:
             self.fields['intercom'].queryset = self.instance.region.department.intercom_set.order_by('name')
-            self.fields['intercom'].queryset = self.instance.department.intercom_set.order_by('name')
+        """

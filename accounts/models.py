@@ -18,6 +18,20 @@ class CustomUser(AbstractUser):
             (VOLUNTEER, "Bénévole"),
         ]
 
+    class PositionType(models.Model):
+        NON_EMPLOYED = "Non Salarié"
+        MANAGER = "Manager"
+        EMPLOYEE = "Coordonnateur"
+        POSITION = [
+            (NON_EMPLOYED, "Non Salarié"),
+            (MANAGER, "Manager"),
+            (EMPLOYEE, "Coordonnateur"),
+        ]
+
+
+    def get_absolute_url(self):
+        return reverse('staff_details', args=[str(self.id)])
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -28,6 +42,12 @@ class CustomUser(AbstractUser):
         choices=StatusType.STATUS, 
         default=StatusType.VOLUNTEER,
         verbose_name="Statut")
+
+    position = models.CharField(
+        max_length=20,
+        choices=PositionType.POSITION,
+        default=PositionType.NON_EMPLOYED,
+        verbose_name="Position")
 
     phone_regex = RegexValidator(
         regex=r"^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$",
@@ -43,8 +63,6 @@ class CustomUser(AbstractUser):
 
     team = models.ForeignKey(Team, verbose_name="Equipe", on_delete=models.CASCADE, null=True, blank=True)
 
-    def get_absolute_url(self):
-        return reverse('volunteer_detail', args=[str(self.id)])
 
 
 class VolunteerManager(models.Manager):
@@ -68,7 +86,7 @@ class Volunteer(CustomUser):
         ordering = ["team", "last_name"]
     
     def get_absolute_url(self):
-        return reverse('volunteer_detail', args=[str(self.id)])
+        return reverse('volunteer_details', args=[str(self.id)])
         
 
 class Employee(CustomUser):

@@ -7,7 +7,7 @@
         <table>
         {{ form.as_table}}
         </table>
-        <button type="submit">Créer une Interommunalité</button>
+        <button type="submit">Créer une Intercommunalité</button>
         <a href="{% url 'communities:intercom_create' %}">Retour</a>
     </form>
 
@@ -15,16 +15,15 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     $("#id_region").change(function () {
-      var url = $("#intercomForm").attr("data-departments-url");  // get the url of the `load_cities` view
-      var regionId = $(this).val();  // get the selected country ID from the HTML input
-
+      var url = $("#intercomForm").attr("data-departments-url"); 
+      var regionId = $(this).val();
       $.ajax({                       // initialize an AJAX request
-        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        url: url,  
         data: {
-          'region': regionId       // add the country id to the GET parameters
+          'region': regionId
         },
-        success: function (data) {   // `data` is the return of the `load_cities` view function
-          $("#id_department").html(data);  // replace the contents of the city input with the data that came from the server
+        success: function (data) { 
+          $("#id_department").html(data);
         }
       });
     });

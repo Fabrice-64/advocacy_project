@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Fiche Salarié</h1>
+
+    <div id='employee-details'>
+        <p>Prénom : {{ customuser.first_name }}</p>
+        <p>Nom de Famille: {{ customuser.last_name }}</p>
+        <p>Position : {{ customuser.position }}</p>
+    </div>
+
+{% endblock %}

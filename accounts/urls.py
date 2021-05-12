@@ -16,5 +16,7 @@ urlpatterns = [
     # User management views
     path('user_types/', views.user_types, name="user_types"),
     path('volunteer/list/', views.VolunteerListView.as_view(), name='volunteer_list'),
-    path('volunteer_detail/<uuid:pk>/', views.VolunteerDetailView.as_view(), name='volunteer_detail'),
+    path('volunteer/detail/<uuid:pk>/', views.VolunteerDetailView.as_view(), name='volunteer_details'),
+    path('staff/list/', views.StaffListView.as_view(), name="staff_list"),
+    path('staff/detail/<uuid:pk>/', views.StaffDetailView.as_view(), name='staff_details'),
 ]

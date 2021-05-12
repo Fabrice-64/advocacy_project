@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 from registration.backends.default.views import RegistrationView
 from accounts.user_access import UserAccessMixin
+from django.db.models import Q
 
 
 @login_required
@@ -53,20 +54,19 @@ class VolunteerDetailView(UserAccessMixin, DetailView):
     permission_required = "accounts.view_volunteer"
     model = Volunteer
     template_name = "accounts/volunteer_detail.html"
-    success_url = reverse_lazy("volunteer_detail")
+    success_url = reverse_lazy("volunteer_details")
 
-class EmployeeListView(ListView):
-    pass
 
-class EmployeeDetailView(DetailView):
-    pass
-
-class UserListView(ListView):
-    model = CustomUser
-    #permission_required = "accounts.view_user"
-    #context_object_name = "user_list"
+class StaffListView(UserAccessMixin, ListView):
+    permission_required = "accounts.view_employee"
     paginate_by = 20
-
-class UserDetailView(DetailView):
     model = CustomUser
-    template_name = 'accounts/user_detail.html'
+    queryset = CustomUser.objects.filter(Q(status_type="MANAGER") | Q(status_type="EMPLOYEE")).order_by("position")
+    template_name = "accounts/staff_list.html"
+
+class StaffDetailView(UserAccessMixin, DetailView):
+    permission_required = "accounts.view_employee"
+    model = CustomUser
+    template_name = "accounts/staff_detail.html"
+    success_url = reverse_lazy('staff_details')
+

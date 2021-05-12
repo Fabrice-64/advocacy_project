@@ -33,7 +33,7 @@ class RegionCreateView(UserAccessMixin, CreateView):
     model = Region
     form_class = forms.RegionForm
     template_name="communities/region_create_form.html"
-    success_url = reverse_lazy("communities:region_create")
+    success_url = reverse_lazy("communities:region_list")
 
 
 class DepartmentListView(ListView):
