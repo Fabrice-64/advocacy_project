@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Liste des Equipes</h1>
+    <ul>
+        {% for team in object_list %}
+            <li>{{ team.city}} : {{ team.name }}</li>
+        {% endfor %}
+    </ul>
+    {% if user.status_type == "MANAGER" %}
+    <form action="{% url 'teams:team_create' %}" id="team-create">
+        <button type="submit">Créer Une Equipe</button>
+    </form>
+    {% endif %}
+    {% include "pagination_snippet.html" %}
+{% endblock %}

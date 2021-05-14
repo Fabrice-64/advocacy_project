@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from accounts.models import Volunteer, CustomUser
-
 from officials.models import Official
 from datetime import date
 
@@ -14,6 +13,7 @@ class AdvocacyTopic(models.Model):
                                     null=False,
                                     verbose_name="Phrase Clé")
     slug = models.SlugField(max_length=250, unique_for_date='creation_date', null=True)
+    source_title = models.CharField(max_length=140, null=True, blank=True, verbose_name="Titre de la Source")
     source = models.URLField(max_length=240,
                             blank=True,
                             verbose_name="Lien vers la source")

@@ -1,4 +1,4 @@
-from django.forms import ModelForm, ModelChoiceField
+from django.forms import ModelForm
 from django.shortcuts import render
 import communities.models as comms
 

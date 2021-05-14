@@ -5,6 +5,7 @@ from django.urls import reverse, reverse_lazy
 from . import views as views
 from accounts.models import CustomUser
 from teams.models import Team
+from .ajax_functions import retrieve_departments_by_region, retrieve_intercoms_by_department
 
 
 class CommunityTypesTest(TestCase):
@@ -213,7 +214,6 @@ class CityCreateViewTest(TestCase):
         self.assertTemplateUsed("communities/intercom_dropdown_list.html")
 
 
-from .ajax_functions import retrieve_departments_by_region, retrieve_intercoms_by_department
 class AjaxFunctionTest:
 
     def test_retrieve_departments_by_region(self):

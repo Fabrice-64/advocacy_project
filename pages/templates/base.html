@@ -27,7 +27,8 @@
             {% if user.status_type == "MANAGER" %}
                 <p>Menu Manager</p>
                 <a id="menu-new-user" href="{% url 'new_user' %}">Nouvel Utilisateur</a><br>
-                <a href="{% url 'user_types' %}" id="link-users">Utilisateurs</a>
+                <a href="{% url 'user_types' %}" id="link-users">Utilisateurs</a><br>
+                <a href="{% url 'teams:team_list' %}">Equipes</a>
             {% endif %}
             {% if user.is_authenticated %}
                 <p>Menu Accueil</p>

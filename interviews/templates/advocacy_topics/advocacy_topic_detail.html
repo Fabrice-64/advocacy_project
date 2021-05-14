@@ -1,8 +1,18 @@
-Détail d'un thème de Plaidoyer
+{% extends 'base.html' %}
 
-{{ advocacytopic.key_statement}}
 
-{{ advocacytopic.created_by.first_name}} {{ advocacytopic.creation_date}}  
-{{ advocacytopic.slug }} 
-{{ advocacytopic.created_by.last_name }} 
-{{ advocacytopic.created_by.status_type }} 
+
+{% block content %}
+    <h1>Fiche Thème de Plaidoyer</h1>
+
+    <div id='topic-details'>
+        <p>Thème : {{ advocacytopic.keyword }}</p>
+        <p>Phrase Clé : {{ advocacytopic.key_statement }}</p>
+        <p>Rédacteur : {{ advocacytopic.created_by.first_name }} {{ advocacytopic.created_by.last_name }}</p>
+        <p>Titre de la Source : {{ advocacytopic.source_title }}</p>
+        <p>Source : <a href="{{ advocacytopic.source}}" target="_blank">LIEN</a>
+        <p>Citation : {{ advocacytopic.quote | truncatewords:30 }}</p>
+        
+    </div>
+
+{% endblock %}
