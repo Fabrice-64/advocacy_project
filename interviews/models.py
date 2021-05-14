@@ -6,8 +6,27 @@ from datetime import date
 
 # Create your models here.
 class AdvocacyTopic(models.Model):
+    class Topics(models.Model):
+        JOBS = 'Emploi' 
+        EDUCATION = 'Formation'
+        MIGRATIONS = 'Migrations'
+        HOUSING = 'Logement'
+        ECOLOGY = 'Ecologie'
+        POVERTY = 'Pauvreté'
+        TOPICS = [
+            (JOBS, "Emploi"),
+            (EDUCATION, "Formation"),
+            (MIGRATIONS, "Migrations"),
+            (HOUSING, 'Logement'),
+            (ECOLOGY, 'Ecologie'),
+            (POVERTY, 'Pauvreté'),
+        ]
     is_active = models.BooleanField(verbose_name="Thème actif", null=True)
-    keyword = models.CharField(verbose_name="Mot-Clé", max_length=20, null=True, blank=True)
+    keyword = models.CharField(verbose_name="Mot-Clé", 
+                            max_length=20, 
+                            null=True, blank=True,
+                            default=None,
+                            choices=Topics.TOPICS)
     key_statement = models.CharField(max_length=240, 
                                     blank=False, 
                                     null=False,

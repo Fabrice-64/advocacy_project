@@ -7,7 +7,6 @@ from .models import AdvocacyTopic
 from accounts.models import CustomUser
 
 
-
 class AdvocacyTopicListViewTest(TestCase):
     
     def setUp(self):
@@ -24,27 +23,25 @@ class AdvocacyTopicListViewTest(TestCase):
         self.assertTemplateUsed(self.response, "advocacy_topics/advocacy_topic_list.html")
         self.assertContains(self.response, "Plaidoyer")
 
-"""
-class RegionCreateViewTest(TestCase):
-    fixtures = ['communities.json', 'permission.json']
+
+class AdvocacyTopicCreateViewTest(TestCase):
 
     def setUp(self):
-        self.url = reverse_lazy('communities:region_create')
+        self.url = reverse_lazy('interviews:advocacy_topic_create')
         self.response = self.client.post(self.url)
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
         self.client = Client()
 
-    def test_region_create_not_authorized(self):
+    def test_advocacy_topic_create_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
         self.assertRedirects(self.response, 
-            '/accounts/login/?next=/communities/region/create/')
+            '/accounts/login/?next=/interviews/advocacy_topic/create/')
 
-    def test_region_create_authorized(self):
-        perm = Permission.objects.get(codename="add_region")
+    def test_advocacy_topic_create_authorized(self):
+        perm = Permission.objects.get(codename="add_advocacytopic")
         self.user1.user_permissions.add(perm)
         self.client.force_login(self.user1)
-        self.response = self.client.post(self.url)
+        self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
-        self.assertContains(self.response, "Région")
+        self.assertContains(self.response, "Plaidoyer")
 # Create your tests here.
-"""

@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django.shortcuts import render
 import communities.models as comms
+from .ajax_functions import retrieve_departments_by_region, retrieve_intercoms_by_department
 
 
 class RegionForm(ModelForm):
@@ -13,7 +14,7 @@ class DepartmentForm(ModelForm):
         model = comms.Department
         fields = ['region', 'name', 'dept_number']
 
-from .ajax_functions import retrieve_departments_by_region, retrieve_intercoms_by_department
+
 class IntercomForm(ModelForm):
     class Meta:
         model = comms.Intercom
