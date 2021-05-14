@@ -7,10 +7,13 @@ from datetime import date
 
 # Create your models here.
 class AdvocacyTopic(models.Model):
+    is_active = models.BooleanField(verbose_name="Thème actif", null=True)
+    keyword = models.CharField(verbose_name="Mot-Clé", max_length=20, null=True, blank=True)
     key_statement = models.CharField(max_length=240, 
                                     blank=False, 
                                     null=False,
                                     verbose_name="Phrase Clé")
+    slug = models.SlugField(max_length=250, unique_for_date='creation_date', null=True)
     source = models.URLField(max_length=240,
                             blank=True,
                             verbose_name="Lien vers la source")
@@ -21,7 +24,10 @@ class AdvocacyTopic(models.Model):
     created_by = models.ForeignKey(CustomUser, models.SET_NULL, null=True, blank=True, verbose_name="Rédacteur")
 
     def get_absolute_url(self):
-        return reverse('advocacy_topic_detail', args=[str(key_statement), str(creation_date)])
+        return reverse('interviews:advocacy_topic_detail', args=[str(self.slug)])
+
+    def __str__(self):
+        return self.key_statement
 
 class Interview(models.Model):
     class InterviewStatus(models.Model):

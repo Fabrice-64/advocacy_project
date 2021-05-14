@@ -4,7 +4,8 @@ import interviews.models as itw
 
 @admin.register(itw.AdvocacyTopic)
 class AdvocacyTopicAdmin(admin.ModelAdmin):
-    fields = ('created_by', 'source', 'key_statement', 'quote')
+    fields = ('is_active', 'keyword', 'created_by', 'source', 'key_statement', 'slug', 'quote')
+    prepopulated_fields = {'slug': ('key_statement',)}
 
 
 @admin.register(itw.Interview)

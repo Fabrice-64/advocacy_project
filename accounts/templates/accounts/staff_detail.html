@@ -7,7 +7,7 @@
     <div id='employee-details'>
         <p>Prénom : {{ customuser.first_name }}</p>
         <p>Nom de Famille: {{ customuser.last_name }}</p>
-        <p>Position : {{ customuser.position }}</p>
+        <p>Position : {{ customuser.position }}</p> {{ customuser.team.id}}
     </div>
 
 {% endblock %}

@@ -4,25 +4,27 @@ from django.contrib.auth.models import Permission
 from django.urls import reverse, reverse_lazy
 from . import views as views
 from .models import AdvocacyTopic
+from accounts.models import CustomUser
 
 
 
 class AdvocacyTopicListViewTest(TestCase):
     
     def setUp(self):
-        url = reverse_lazy('interviews:advocacy_topic_list')
-        self.response = self.client.get(url)
-        
-    def test_reference_list_view(self):
-        pass
-        """
-        #In this test the User is not logged-in.
+        self.url = reverse_lazy('interviews:advocacy_topic_list')
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_advocacy_topics_list_view(self):
+        # Only a user with the rights can see the list.
+        perm = Permission.objects.get(codename="view_advocacytopic")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, "communities/region_list.html")
-        # Authorization Requirements lead to display an empty list
-        self.assertContains(self.response, "Grand-Est")
+        self.assertTemplateUsed(self.response, "advocacy_topics/advocacy_topic_list.html")
+        self.assertContains(self.response, "Plaidoyer")
 
-
+"""
 class RegionCreateViewTest(TestCase):
     fixtures = ['communities.json', 'permission.json']
 
@@ -45,5 +47,4 @@ class RegionCreateViewTest(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Région")
 # Create your tests here.
-
 """

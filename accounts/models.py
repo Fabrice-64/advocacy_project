@@ -61,7 +61,7 @@ class CustomUser(AbstractUser):
         verbose_name="Téléphone"
     )
 
-    team = models.ForeignKey(Team, verbose_name="Equipe", on_delete=models.CASCADE, null=True, blank=True)
+    team = models.ForeignKey(Team, verbose_name="Equipe", on_delete=models.DO_NOTHING, null=True, blank=True)
 
 
 

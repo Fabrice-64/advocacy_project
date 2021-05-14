@@ -47,7 +47,6 @@ class LoadIntercomViewTest(TestCase):
         self.assertTemplateUsed(self.response, "communities/intercom_dropdown_list.html")
 
 
-
 class RegionListViewTest(TestCase):
     fixtures = ['communities.json']
 
@@ -64,7 +63,6 @@ class RegionListViewTest(TestCase):
 
 
 class RegionCreateViewTest(TestCase):
-    fixtures = ['communities.json', 'permission.json']
 
     def setUp(self):
         self.url = reverse_lazy('communities:region_create')
@@ -102,7 +100,6 @@ class DepartmentListViewTest(TestCase):
 
 
 class DepartmentCreateViewTest(TestCase):
-    fixtures = ['communities.json', 'permission.json']
 
     def setUp(self):
         self.url = reverse_lazy('communities:department_create')
@@ -181,7 +178,7 @@ class CityListViewTest(TestCase):
         self.assertContains(self.response, "Strasbourg")
 
 class CityCreateViewTest(TestCase):
-    fixtures = ['communities.json', 'permission.json']
+    fixtures = ['communities.json']
 
     def setUp(self):
         self.url = reverse_lazy('communities:city_create')

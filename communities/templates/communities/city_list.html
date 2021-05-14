@@ -3,7 +3,6 @@
 {% block content %}
     <h1>Liste des Villes</h1>
     <ul>
-        {{ user.status_type }}
         {% for city in object_list %}
             <li>{{ city.name }} : {{ city.intercom}}, {{city.department}}</li>
         {% endfor %}

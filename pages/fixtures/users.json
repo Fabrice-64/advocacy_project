@@ -1,1 +1,120 @@
-[{"model": "accounts.customuser", "pk": 1, "fields": {"password": "pbkdf2_sha256$216000$1oztc5WQQ3uL$oO7q10cYVE6+AtBHFBWJDYPEICCHxrSy2vo91n64idM=", "last_login": "2021-04-19T16:40:30.846Z", "is_superuser": true, "username": "sebastien", "first_name": "", "last_name": "", "email": "fabricejaouen@yahoo.com", "is_staff": true, "is_active": true, "date_joined": "2021-04-19T15:24:03.704Z", "status_type": "MANAGER", "phone_number": "", "groups": [], "user_permissions": []}}, {"model": "accounts.customuser", "pk": 2, "fields": {"password": "pbkdf2_sha256$216000$gYsu29T1TBXn$AtDCAoKbP0FHHP2+rst85VNhVXrMfZx+sI42vJT3dDE=", "last_login": "2021-04-19T17:01:47.477Z", "is_superuser": false, "username": "Pierre", "first_name": "Pierre", "last_name": "Manager", "email": "pierre@test.com", "is_staff": false, "is_active": true, "date_joined": "2021-04-19T16:39:07.706Z", "status_type": "MANAGER", "phone_number": "0102030405", "groups": [], "user_permissions": []}}, {"model": "accounts.customuser", "pk": 3, "fields": {"password": "pbkdf2_sha256$216000$MVnH2ZCw9dRt$IfO4o6Dal6m7VuwuxeGVrt7ThH5SX1ibEcA9LQhv7Qk=", "last_login": null, "is_superuser": false, "username": "Paul", "first_name": "Paul", "last_name": "Bénévole", "email": "paul@mail.com", "is_staff": false, "is_active": false, "date_joined": "2021-04-19T16:39:58.351Z", "status_type": "VOLUNTEER", "phone_number": "0689436465", "groups": [], "user_permissions": []}}]
+[
+{
+  "model": "accounts.customuser",
+  "pk": "2c49b9ff-b56a-47a0-8ab1-e2a60881c560",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$trYqPurLzKV0$nrK+cIIJlr2LrpXkz8NTwOD+Be/9V9GrwFKSAWYb+xA=",
+    "last_login": "2021-05-13T18:56:39.450Z",
+    "is_superuser": true,
+    "username": "fabricejaouen",
+    "first_name": "Fabrice",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-05-10T17:17:12.156Z",
+    "status_type": "VOLUNTEER",
+    "position": "Non Salarié",
+    "phone_number": "",
+    "team": 1,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": "5f731d8f-6573-48db-81c1-60c711e759e9",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$yKJ68JXkIQEb$a8c6tIFIczKhiOuFEzx6i/OHSkqvDuImZm50yMrFmS8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "pierre",
+    "first_name": "Pierre",
+    "last_name": "Le Bénévole",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-11T04:56:13Z",
+    "status_type": "VOLUNTEER",
+    "position": "Non Salarié",
+    "phone_number": "0123456789",
+    "team": 2,
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": "6810108d-a865-4d46-95fe-43d6136d5b08",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$nOveNnbdbXr1$RyexY/C7woc3w7Qqy1tSeWu9WjiahLx5j3Nf1f7/2jk=",
+    "last_login": "2021-05-13T15:03:17.677Z",
+    "is_superuser": false,
+    "username": "alain",
+    "first_name": "Alain",
+    "last_name": "Autre Bénévole",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-11T09:12:25Z",
+    "status_type": "VOLUNTEER",
+    "position": "Non Salarié",
+    "phone_number": "0102030405",
+    "team": 2,
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": "8feb2921-47b4-42ea-81ee-243f2bc01816",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$ZqBTp70IhiB9$uL56bPg2lMKIU2n03NU7N2smTbZVdpEcrfRHwmqAnvc=",
+    "last_login": "2021-05-13T18:46:57.653Z",
+    "is_superuser": false,
+    "username": "leila",
+    "first_name": "Leila",
+    "last_name": "Manager",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-11T04:52:40Z",
+    "status_type": "MANAGER",
+    "position": "Manager",
+    "phone_number": "0123456789",
+    "team": 1,
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": "bfe1909a-9763-476b-8c0b-c925119211ef",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$RXoLO63J7pKC$XIHhBu10w0B8x+0xdFU1NY9gz3ogqM1T3lGN2OgdsU8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "armelle",
+    "first_name": "Armelle",
+    "last_name": "La Salariée",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-11T18:23:37Z",
+    "status_type": "EMPLOYEE",
+    "position": "Coordonnateur",
+    "phone_number": "0123456789",
+    "team": 1,
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+}
+]

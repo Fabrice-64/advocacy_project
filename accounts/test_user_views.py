@@ -6,7 +6,6 @@ from accounts.models import CustomUser, Volunteer
 
 
 class VolunteerListViewTest(TestCase):
-    fixtures = ['communities.json', 'users.json', 'permission.json']
 
     def setUp(self):
         self.url = reverse_lazy('volunteer_list')
@@ -28,7 +27,7 @@ class VolunteerListViewTest(TestCase):
         self.assertContains(self.response, "Bénévoles")
 
 class VolunteerDetailViewTest(TestCase):
-    fixtures = ['communities.json', 'users.json', 'permission.json']
+
     def setUp(self):
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True, status_type="MANAGER")
         self.volunteer = Volunteer.objects.create(username="test_user2", password="pwd", is_active=True, status_type="VOLUNTEER")
@@ -49,7 +48,6 @@ class VolunteerDetailViewTest(TestCase):
         self.assertContains(self.response, "volunteer-details")
 
 class StaffListViewTest(TestCase):
-    fixtures = ['communities.json', 'users.json', 'permission.json']
 
     def setUp(self):
         self.url = reverse_lazy('staff_list')
@@ -73,7 +71,7 @@ class StaffListViewTest(TestCase):
 
 
 class StaffDetailViewTest(TestCase):
-    fixtures = ['communities.json', 'users.json', 'permission.json']
+
     def setUp(self):
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True, status_type="MANAGER")
         self.employee = CustomUser.objects.create(username="test_user2", password="pwd", is_active=True, status_type="EMPLOYEE")

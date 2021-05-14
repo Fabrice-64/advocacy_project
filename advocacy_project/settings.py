@@ -42,12 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Project
+    'communities',
+    'teams',
     'accounts',
     'pages',
-    'communities',
     'officials',
     'interviews',
-    'teams',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

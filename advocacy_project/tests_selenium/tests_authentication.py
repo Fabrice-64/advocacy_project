@@ -13,7 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver import Firefox
 import os
 class CustomUserTest(LiveServerTestCase):
-    fixtures = ['users.json', 'communities.json', 'teams.json']
+    #fixtures = ['db.json']
 
     @classmethod
     def setUpClass(cls):

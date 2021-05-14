@@ -1,4 +1,26 @@
-Liste des Références documentaires
+{% extends "base.html" %}
+
+{% block content %}
+{% regroup object_list by keyword as keyword_list %}
+    <h1>Liste des Thèmes de Plaidoyer</h1>
+    <ul>
+        {% for keyword in keyword_list %}
+        <li><h2>{{ keyword.grouper }}</h2></li>
+            <ul>
+                {% for topic in keyword.list %}
+                    {% if topic.is_active %}
+                        <li><a href="{{ topic.get_absolute_url }}">{{ topic.key_statement }}</a></li>
+                    {% else %}
+                        <li>Sujet en Sommeil : {{ topic.key_statement }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+       {% endfor %}
+
+   </ul>
+    {% include "pagination_snippet.html" %}
+{% endblock %}
+
 Liens vers la fiche détaillée
 Pagination
 Bouton de création d'une nouvelle fiche

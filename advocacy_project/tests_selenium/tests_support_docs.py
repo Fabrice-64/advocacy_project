@@ -40,7 +40,7 @@ class CustomUserTest(LiveServerTestCase):
         user_input_pwd = self.browser.find_element_by_id("id_password")
         user_input_pwd.send_keys('admin')
         self.browser.find_element_by_xpath('//input[@type="submit"]').click()
-        # The homepage dedicated to connected people is displayed.
+        # The homepage dedicated to connected people is different
         # S. opens the "support documentation" page
         self.browser.find_element_by_id('link-support-docs').click()
         # Then a label "add a reference" is displayed
