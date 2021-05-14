@@ -13,7 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver import Firefox
 import os
 class CustomUserTest(LiveServerTestCase):
-    #fixtures = ['db.json']
+    fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json' ]
 
     @classmethod
     def setUpClass(cls):
@@ -31,6 +31,7 @@ class CustomUserTest(LiveServerTestCase):
             The user wants to authenticate in order to have access to
             the functionalities of the website
         """
+        
         self.browser.get(os.path.join(self.live_server_url, ''))
         # Leila gets access to the website
         # L. is logged out and is offered to log in
@@ -39,15 +40,14 @@ class CustomUserTest(LiveServerTestCase):
         # Then L. clicks on connexion to access the template
         # L. enters her username
         user_input = self.browser.find_element_by_id("id_username")
-        user_input.send_keys('sebastien')
+        user_input.send_keys('leila')
         # L. enters her password
         user_input_pwd = self.browser.find_element_by_id("id_password")
-        user_input_pwd.send_keys('admin')
+        user_input_pwd.send_keys('@dmin1234')
         self.browser.find_element_by_xpath('//input[@type="submit"]').click()
         # Finally the logged in page is displayed
         self.browser.find_element_by_id("header-deconnection")
         #print(self.browser.page_source)
-
 
     def test_plaid_2_create_new_user(self):
         """
@@ -60,10 +60,10 @@ class CustomUserTest(LiveServerTestCase):
         self.browser.find_element_by_id("login-status")
         self.browser.find_element_by_id("header-connection").click()
         user_input = self.browser.find_element_by_id("id_username")
-        user_input.send_keys('sebastien')
+        user_input.send_keys('leila')
         # S. enters his password
         user_input_pwd = self.browser.find_element_by_id("id_password")
-        user_input_pwd.send_keys('admin')
+        user_input_pwd.send_keys('@dmin1234')
         self.browser.find_element_by_xpath('//input[@type="submit"]').click()
         self.browser.find_element_by_id('menu-new-user').click()
         username_input = self.browser.find_element_by_id('id_username')
@@ -85,10 +85,10 @@ class CustomUserTest(LiveServerTestCase):
         # Sébastien logs in to get access to the admin interface
         self.browser.find_element_by_id("header-connection").click()
         user_input = self.browser.find_element_by_id("id_username")
-        user_input.send_keys('sebastien')
+        user_input.send_keys('leila')
         # S. enters his password
         user_input_pwd = self.browser.find_element_by_id("id_password")
-        user_input_pwd.send_keys('admin')
+        user_input_pwd.send_keys('@dmin1234')
         self.browser.find_element_by_xpath('//input[@type="submit"]').click()
         self.browser.find_element_by_id("link-communities").click()
         self.browser.find_element_by_id("region-list").click()

@@ -12,7 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver import Firefox
 import os
 class CustomUserTest(LiveServerTestCase):
-    fixtures = ['users.json', 'communities.json', 'teams.json']
+    fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json' ]
 
     @classmethod
     def setUpClass(cls):
@@ -36,14 +36,15 @@ class CustomUserTest(LiveServerTestCase):
         # From the beginning the advocacy coordinator is logged-in
         self.browser.find_element_by_id("header-connection").click()
         user_input = self.browser.find_element_by_id("id_username")
-        user_input.send_keys('sebastien')
+        user_input.send_keys('leila')
         user_input_pwd = self.browser.find_element_by_id("id_password")
-        user_input_pwd.send_keys('admin')
+        user_input_pwd.send_keys('@dmin1234')
         self.browser.find_element_by_xpath('//input[@type="submit"]').click()
         # The homepage dedicated to connected people is different
         # S. opens the "support documentation" page
         self.browser.find_element_by_id('link-support-docs').click()
-        # Then a label "add a reference" is displayed
+        # Then a label "add a Topic" is displayed
+        #self.browser.find_element_by_
         # S. clicks on this item
         # Then a window with several fields is displayed
         # The fields are the following ones:

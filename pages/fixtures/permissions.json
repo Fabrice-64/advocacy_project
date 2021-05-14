@@ -4,7 +4,10 @@
   "pk": 1,
   "fields": {
     "name": "Can add registration profile",
-    "content_type": 1,
+    "content_type": [
+      "registration",
+      "registrationprofile"
+    ],
     "codename": "add_registrationprofile"
   }
 },
@@ -13,7 +16,10 @@
   "pk": 2,
   "fields": {
     "name": "Can change registration profile",
-    "content_type": 1,
+    "content_type": [
+      "registration",
+      "registrationprofile"
+    ],
     "codename": "change_registrationprofile"
   }
 },
@@ -22,7 +28,10 @@
   "pk": 3,
   "fields": {
     "name": "Can delete registration profile",
-    "content_type": 1,
+    "content_type": [
+      "registration",
+      "registrationprofile"
+    ],
     "codename": "delete_registrationprofile"
   }
 },
@@ -31,7 +40,10 @@
   "pk": 4,
   "fields": {
     "name": "Can view registration profile",
-    "content_type": 1,
+    "content_type": [
+      "registration",
+      "registrationprofile"
+    ],
     "codename": "view_registrationprofile"
   }
 },
@@ -40,7 +52,10 @@
   "pk": 5,
   "fields": {
     "name": "Can add supervised registration profile",
-    "content_type": 2,
+    "content_type": [
+      "registration",
+      "supervisedregistrationprofile"
+    ],
     "codename": "add_supervisedregistrationprofile"
   }
 },
@@ -49,7 +64,10 @@
   "pk": 6,
   "fields": {
     "name": "Can change supervised registration profile",
-    "content_type": 2,
+    "content_type": [
+      "registration",
+      "supervisedregistrationprofile"
+    ],
     "codename": "change_supervisedregistrationprofile"
   }
 },
@@ -58,7 +76,10 @@
   "pk": 7,
   "fields": {
     "name": "Can delete supervised registration profile",
-    "content_type": 2,
+    "content_type": [
+      "registration",
+      "supervisedregistrationprofile"
+    ],
     "codename": "delete_supervisedregistrationprofile"
   }
 },
@@ -67,7 +88,10 @@
   "pk": 8,
   "fields": {
     "name": "Can view supervised registration profile",
-    "content_type": 2,
+    "content_type": [
+      "registration",
+      "supervisedregistrationprofile"
+    ],
     "codename": "view_supervisedregistrationprofile"
   }
 },
@@ -76,7 +100,10 @@
   "pk": 9,
   "fields": {
     "name": "Can add log entry",
-    "content_type": 3,
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
     "codename": "add_logentry"
   }
 },
@@ -85,7 +112,10 @@
   "pk": 10,
   "fields": {
     "name": "Can change log entry",
-    "content_type": 3,
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
     "codename": "change_logentry"
   }
 },
@@ -94,7 +124,10 @@
   "pk": 11,
   "fields": {
     "name": "Can delete log entry",
-    "content_type": 3,
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
     "codename": "delete_logentry"
   }
 },
@@ -103,7 +136,10 @@
   "pk": 12,
   "fields": {
     "name": "Can view log entry",
-    "content_type": 3,
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
     "codename": "view_logentry"
   }
 },
@@ -112,7 +148,10 @@
   "pk": 13,
   "fields": {
     "name": "Can add permission",
-    "content_type": 4,
+    "content_type": [
+      "auth",
+      "permission"
+    ],
     "codename": "add_permission"
   }
 },
@@ -121,7 +160,10 @@
   "pk": 14,
   "fields": {
     "name": "Can change permission",
-    "content_type": 4,
+    "content_type": [
+      "auth",
+      "permission"
+    ],
     "codename": "change_permission"
   }
 },
@@ -130,7 +172,10 @@
   "pk": 15,
   "fields": {
     "name": "Can delete permission",
-    "content_type": 4,
+    "content_type": [
+      "auth",
+      "permission"
+    ],
     "codename": "delete_permission"
   }
 },
@@ -139,7 +184,10 @@
   "pk": 16,
   "fields": {
     "name": "Can view permission",
-    "content_type": 4,
+    "content_type": [
+      "auth",
+      "permission"
+    ],
     "codename": "view_permission"
   }
 },
@@ -148,7 +196,10 @@
   "pk": 17,
   "fields": {
     "name": "Can add group",
-    "content_type": 5,
+    "content_type": [
+      "auth",
+      "group"
+    ],
     "codename": "add_group"
   }
 },
@@ -157,7 +208,10 @@
   "pk": 18,
   "fields": {
     "name": "Can change group",
-    "content_type": 5,
+    "content_type": [
+      "auth",
+      "group"
+    ],
     "codename": "change_group"
   }
 },
@@ -166,7 +220,10 @@
   "pk": 19,
   "fields": {
     "name": "Can delete group",
-    "content_type": 5,
+    "content_type": [
+      "auth",
+      "group"
+    ],
     "codename": "delete_group"
   }
 },
@@ -175,7 +232,10 @@
   "pk": 20,
   "fields": {
     "name": "Can view group",
-    "content_type": 5,
+    "content_type": [
+      "auth",
+      "group"
+    ],
     "codename": "view_group"
   }
 },
@@ -184,7 +244,10 @@
   "pk": 21,
   "fields": {
     "name": "Can add content type",
-    "content_type": 6,
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
     "codename": "add_contenttype"
   }
 },
@@ -193,7 +256,10 @@
   "pk": 22,
   "fields": {
     "name": "Can change content type",
-    "content_type": 6,
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
     "codename": "change_contenttype"
   }
 },
@@ -202,7 +268,10 @@
   "pk": 23,
   "fields": {
     "name": "Can delete content type",
-    "content_type": 6,
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
     "codename": "delete_contenttype"
   }
 },
@@ -211,7 +280,10 @@
   "pk": 24,
   "fields": {
     "name": "Can view content type",
-    "content_type": 6,
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
     "codename": "view_contenttype"
   }
 },
@@ -220,7 +292,10 @@
   "pk": 25,
   "fields": {
     "name": "Can add session",
-    "content_type": 7,
+    "content_type": [
+      "sessions",
+      "session"
+    ],
     "codename": "add_session"
   }
 },
@@ -229,7 +304,10 @@
   "pk": 26,
   "fields": {
     "name": "Can change session",
-    "content_type": 7,
+    "content_type": [
+      "sessions",
+      "session"
+    ],
     "codename": "change_session"
   }
 },
@@ -238,7 +316,10 @@
   "pk": 27,
   "fields": {
     "name": "Can delete session",
-    "content_type": 7,
+    "content_type": [
+      "sessions",
+      "session"
+    ],
     "codename": "delete_session"
   }
 },
@@ -247,7 +328,10 @@
   "pk": 28,
   "fields": {
     "name": "Can view session",
-    "content_type": 7,
+    "content_type": [
+      "sessions",
+      "session"
+    ],
     "codename": "view_session"
   }
 },
@@ -256,7 +340,10 @@
   "pk": 29,
   "fields": {
     "name": "Can add status type",
-    "content_type": 8,
+    "content_type": [
+      "accounts",
+      "statustype"
+    ],
     "codename": "add_statustype"
   }
 },
@@ -265,7 +352,10 @@
   "pk": 30,
   "fields": {
     "name": "Can change status type",
-    "content_type": 8,
+    "content_type": [
+      "accounts",
+      "statustype"
+    ],
     "codename": "change_statustype"
   }
 },
@@ -274,7 +364,10 @@
   "pk": 31,
   "fields": {
     "name": "Can delete status type",
-    "content_type": 8,
+    "content_type": [
+      "accounts",
+      "statustype"
+    ],
     "codename": "delete_statustype"
   }
 },
@@ -283,7 +376,10 @@
   "pk": 32,
   "fields": {
     "name": "Can view status type",
-    "content_type": 8,
+    "content_type": [
+      "accounts",
+      "statustype"
+    ],
     "codename": "view_statustype"
   }
 },
@@ -292,7 +388,10 @@
   "pk": 33,
   "fields": {
     "name": "Can add user",
-    "content_type": 9,
+    "content_type": [
+      "accounts",
+      "customuser"
+    ],
     "codename": "add_customuser"
   }
 },
@@ -301,7 +400,10 @@
   "pk": 34,
   "fields": {
     "name": "Can change user",
-    "content_type": 9,
+    "content_type": [
+      "accounts",
+      "customuser"
+    ],
     "codename": "change_customuser"
   }
 },
@@ -310,7 +412,10 @@
   "pk": 35,
   "fields": {
     "name": "Can delete user",
-    "content_type": 9,
+    "content_type": [
+      "accounts",
+      "customuser"
+    ],
     "codename": "delete_customuser"
   }
 },
@@ -319,7 +424,10 @@
   "pk": 36,
   "fields": {
     "name": "Can view user",
-    "content_type": 9,
+    "content_type": [
+      "accounts",
+      "customuser"
+    ],
     "codename": "view_customuser"
   }
 },
@@ -328,7 +436,10 @@
   "pk": 37,
   "fields": {
     "name": "Can add employee",
-    "content_type": 10,
+    "content_type": [
+      "accounts",
+      "employee"
+    ],
     "codename": "add_employee"
   }
 },
@@ -337,7 +448,10 @@
   "pk": 38,
   "fields": {
     "name": "Can change employee",
-    "content_type": 10,
+    "content_type": [
+      "accounts",
+      "employee"
+    ],
     "codename": "change_employee"
   }
 },
@@ -346,7 +460,10 @@
   "pk": 39,
   "fields": {
     "name": "Can delete employee",
-    "content_type": 10,
+    "content_type": [
+      "accounts",
+      "employee"
+    ],
     "codename": "delete_employee"
   }
 },
@@ -355,7 +472,10 @@
   "pk": 40,
   "fields": {
     "name": "Can view employee",
-    "content_type": 10,
+    "content_type": [
+      "accounts",
+      "employee"
+    ],
     "codename": "view_employee"
   }
 },
@@ -364,7 +484,10 @@
   "pk": 41,
   "fields": {
     "name": "Can add manager",
-    "content_type": 11,
+    "content_type": [
+      "accounts",
+      "manager"
+    ],
     "codename": "add_manager"
   }
 },
@@ -373,7 +496,10 @@
   "pk": 42,
   "fields": {
     "name": "Can change manager",
-    "content_type": 11,
+    "content_type": [
+      "accounts",
+      "manager"
+    ],
     "codename": "change_manager"
   }
 },
@@ -382,7 +508,10 @@
   "pk": 43,
   "fields": {
     "name": "Can delete manager",
-    "content_type": 11,
+    "content_type": [
+      "accounts",
+      "manager"
+    ],
     "codename": "delete_manager"
   }
 },
@@ -391,7 +520,10 @@
   "pk": 44,
   "fields": {
     "name": "Can view manager",
-    "content_type": 11,
+    "content_type": [
+      "accounts",
+      "manager"
+    ],
     "codename": "view_manager"
   }
 },
@@ -400,7 +532,10 @@
   "pk": 45,
   "fields": {
     "name": "Can add volunteer",
-    "content_type": 12,
+    "content_type": [
+      "accounts",
+      "volunteer"
+    ],
     "codename": "add_volunteer"
   }
 },
@@ -409,7 +544,10 @@
   "pk": 46,
   "fields": {
     "name": "Can change volunteer",
-    "content_type": 12,
+    "content_type": [
+      "accounts",
+      "volunteer"
+    ],
     "codename": "change_volunteer"
   }
 },
@@ -418,7 +556,10 @@
   "pk": 47,
   "fields": {
     "name": "Can delete volunteer",
-    "content_type": 12,
+    "content_type": [
+      "accounts",
+      "volunteer"
+    ],
     "codename": "delete_volunteer"
   }
 },
@@ -427,7 +568,10 @@
   "pk": 48,
   "fields": {
     "name": "Can view volunteer",
-    "content_type": 12,
+    "content_type": [
+      "accounts",
+      "volunteer"
+    ],
     "codename": "view_volunteer"
   }
 },
@@ -436,7 +580,10 @@
   "pk": 49,
   "fields": {
     "name": "Can add department",
-    "content_type": 13,
+    "content_type": [
+      "communities",
+      "department"
+    ],
     "codename": "add_department"
   }
 },
@@ -445,7 +592,10 @@
   "pk": 50,
   "fields": {
     "name": "Can change department",
-    "content_type": 13,
+    "content_type": [
+      "communities",
+      "department"
+    ],
     "codename": "change_department"
   }
 },
@@ -454,7 +604,10 @@
   "pk": 51,
   "fields": {
     "name": "Can delete department",
-    "content_type": 13,
+    "content_type": [
+      "communities",
+      "department"
+    ],
     "codename": "delete_department"
   }
 },
@@ -463,7 +616,10 @@
   "pk": 52,
   "fields": {
     "name": "Can view department",
-    "content_type": 13,
+    "content_type": [
+      "communities",
+      "department"
+    ],
     "codename": "view_department"
   }
 },
@@ -472,7 +628,10 @@
   "pk": 53,
   "fields": {
     "name": "Can add region",
-    "content_type": 14,
+    "content_type": [
+      "communities",
+      "region"
+    ],
     "codename": "add_region"
   }
 },
@@ -481,7 +640,10 @@
   "pk": 54,
   "fields": {
     "name": "Can change region",
-    "content_type": 14,
+    "content_type": [
+      "communities",
+      "region"
+    ],
     "codename": "change_region"
   }
 },
@@ -490,7 +652,10 @@
   "pk": 55,
   "fields": {
     "name": "Can delete region",
-    "content_type": 14,
+    "content_type": [
+      "communities",
+      "region"
+    ],
     "codename": "delete_region"
   }
 },
@@ -499,7 +664,10 @@
   "pk": 56,
   "fields": {
     "name": "Can view region",
-    "content_type": 14,
+    "content_type": [
+      "communities",
+      "region"
+    ],
     "codename": "view_region"
   }
 },
@@ -508,7 +676,10 @@
   "pk": 57,
   "fields": {
     "name": "Can add intercom",
-    "content_type": 15,
+    "content_type": [
+      "communities",
+      "intercom"
+    ],
     "codename": "add_intercom"
   }
 },
@@ -517,7 +688,10 @@
   "pk": 58,
   "fields": {
     "name": "Can change intercom",
-    "content_type": 15,
+    "content_type": [
+      "communities",
+      "intercom"
+    ],
     "codename": "change_intercom"
   }
 },
@@ -526,7 +700,10 @@
   "pk": 59,
   "fields": {
     "name": "Can delete intercom",
-    "content_type": 15,
+    "content_type": [
+      "communities",
+      "intercom"
+    ],
     "codename": "delete_intercom"
   }
 },
@@ -535,7 +712,10 @@
   "pk": 60,
   "fields": {
     "name": "Can view intercom",
-    "content_type": 15,
+    "content_type": [
+      "communities",
+      "intercom"
+    ],
     "codename": "view_intercom"
   }
 },
@@ -544,7 +724,10 @@
   "pk": 61,
   "fields": {
     "name": "Can add city",
-    "content_type": 16,
+    "content_type": [
+      "communities",
+      "city"
+    ],
     "codename": "add_city"
   }
 },
@@ -553,7 +736,10 @@
   "pk": 62,
   "fields": {
     "name": "Can change city",
-    "content_type": 16,
+    "content_type": [
+      "communities",
+      "city"
+    ],
     "codename": "change_city"
   }
 },
@@ -562,7 +748,10 @@
   "pk": 63,
   "fields": {
     "name": "Can delete city",
-    "content_type": 16,
+    "content_type": [
+      "communities",
+      "city"
+    ],
     "codename": "delete_city"
   }
 },
@@ -571,7 +760,10 @@
   "pk": 64,
   "fields": {
     "name": "Can view city",
-    "content_type": 16,
+    "content_type": [
+      "communities",
+      "city"
+    ],
     "codename": "view_city"
   }
 },
@@ -580,7 +772,10 @@
   "pk": 65,
   "fields": {
     "name": "Can add mandate inter com",
-    "content_type": 17,
+    "content_type": [
+      "officials",
+      "mandateintercom"
+    ],
     "codename": "add_mandateintercom"
   }
 },
@@ -589,7 +784,10 @@
   "pk": 66,
   "fields": {
     "name": "Can change mandate inter com",
-    "content_type": 17,
+    "content_type": [
+      "officials",
+      "mandateintercom"
+    ],
     "codename": "change_mandateintercom"
   }
 },
@@ -598,7 +796,10 @@
   "pk": 67,
   "fields": {
     "name": "Can delete mandate inter com",
-    "content_type": 17,
+    "content_type": [
+      "officials",
+      "mandateintercom"
+    ],
     "codename": "delete_mandateintercom"
   }
 },
@@ -607,7 +808,10 @@
   "pk": 68,
   "fields": {
     "name": "Can view mandate inter com",
-    "content_type": 17,
+    "content_type": [
+      "officials",
+      "mandateintercom"
+    ],
     "codename": "view_mandateintercom"
   }
 },
@@ -616,7 +820,10 @@
   "pk": 69,
   "fields": {
     "name": "Can add official",
-    "content_type": 18,
+    "content_type": [
+      "officials",
+      "official"
+    ],
     "codename": "add_official"
   }
 },
@@ -625,7 +832,10 @@
   "pk": 70,
   "fields": {
     "name": "Can change official",
-    "content_type": 18,
+    "content_type": [
+      "officials",
+      "official"
+    ],
     "codename": "change_official"
   }
 },
@@ -634,7 +844,10 @@
   "pk": 71,
   "fields": {
     "name": "Can delete official",
-    "content_type": 18,
+    "content_type": [
+      "officials",
+      "official"
+    ],
     "codename": "delete_official"
   }
 },
@@ -643,7 +856,10 @@
   "pk": 72,
   "fields": {
     "name": "Can view official",
-    "content_type": 18,
+    "content_type": [
+      "officials",
+      "official"
+    ],
     "codename": "view_official"
   }
 },
@@ -652,7 +868,10 @@
   "pk": 73,
   "fields": {
     "name": "Can add national mandate",
-    "content_type": 19,
+    "content_type": [
+      "officials",
+      "nationalmandate"
+    ],
     "codename": "add_nationalmandate"
   }
 },
@@ -661,7 +880,10 @@
   "pk": 74,
   "fields": {
     "name": "Can change national mandate",
-    "content_type": 19,
+    "content_type": [
+      "officials",
+      "nationalmandate"
+    ],
     "codename": "change_nationalmandate"
   }
 },
@@ -670,7 +892,10 @@
   "pk": 75,
   "fields": {
     "name": "Can delete national mandate",
-    "content_type": 19,
+    "content_type": [
+      "officials",
+      "nationalmandate"
+    ],
     "codename": "delete_nationalmandate"
   }
 },
@@ -679,7 +904,10 @@
   "pk": 76,
   "fields": {
     "name": "Can view national mandate",
-    "content_type": 19,
+    "content_type": [
+      "officials",
+      "nationalmandate"
+    ],
     "codename": "view_nationalmandate"
   }
 },
@@ -688,7 +916,10 @@
   "pk": 77,
   "fields": {
     "name": "Can add mandate region",
-    "content_type": 20,
+    "content_type": [
+      "officials",
+      "mandateregion"
+    ],
     "codename": "add_mandateregion"
   }
 },
@@ -697,7 +928,10 @@
   "pk": 78,
   "fields": {
     "name": "Can change mandate region",
-    "content_type": 20,
+    "content_type": [
+      "officials",
+      "mandateregion"
+    ],
     "codename": "change_mandateregion"
   }
 },
@@ -706,7 +940,10 @@
   "pk": 79,
   "fields": {
     "name": "Can delete mandate region",
-    "content_type": 20,
+    "content_type": [
+      "officials",
+      "mandateregion"
+    ],
     "codename": "delete_mandateregion"
   }
 },
@@ -715,7 +952,10 @@
   "pk": 80,
   "fields": {
     "name": "Can view mandate region",
-    "content_type": 20,
+    "content_type": [
+      "officials",
+      "mandateregion"
+    ],
     "codename": "view_mandateregion"
   }
 },
@@ -724,7 +964,10 @@
   "pk": 81,
   "fields": {
     "name": "Can add mandate department",
-    "content_type": 21,
+    "content_type": [
+      "officials",
+      "mandatedepartment"
+    ],
     "codename": "add_mandatedepartment"
   }
 },
@@ -733,7 +976,10 @@
   "pk": 82,
   "fields": {
     "name": "Can change mandate department",
-    "content_type": 21,
+    "content_type": [
+      "officials",
+      "mandatedepartment"
+    ],
     "codename": "change_mandatedepartment"
   }
 },
@@ -742,7 +988,10 @@
   "pk": 83,
   "fields": {
     "name": "Can delete mandate department",
-    "content_type": 21,
+    "content_type": [
+      "officials",
+      "mandatedepartment"
+    ],
     "codename": "delete_mandatedepartment"
   }
 },
@@ -751,7 +1000,10 @@
   "pk": 84,
   "fields": {
     "name": "Can view mandate department",
-    "content_type": 21,
+    "content_type": [
+      "officials",
+      "mandatedepartment"
+    ],
     "codename": "view_mandatedepartment"
   }
 },
@@ -760,7 +1012,10 @@
   "pk": 85,
   "fields": {
     "name": "Can add mandate city",
-    "content_type": 22,
+    "content_type": [
+      "officials",
+      "mandatecity"
+    ],
     "codename": "add_mandatecity"
   }
 },
@@ -769,7 +1024,10 @@
   "pk": 86,
   "fields": {
     "name": "Can change mandate city",
-    "content_type": 22,
+    "content_type": [
+      "officials",
+      "mandatecity"
+    ],
     "codename": "change_mandatecity"
   }
 },
@@ -778,7 +1036,10 @@
   "pk": 87,
   "fields": {
     "name": "Can delete mandate city",
-    "content_type": 22,
+    "content_type": [
+      "officials",
+      "mandatecity"
+    ],
     "codename": "delete_mandatecity"
   }
 },
@@ -787,7 +1048,10 @@
   "pk": 88,
   "fields": {
     "name": "Can view mandate city",
-    "content_type": 22,
+    "content_type": [
+      "officials",
+      "mandatecity"
+    ],
     "codename": "view_mandatecity"
   }
 },
@@ -796,7 +1060,10 @@
   "pk": 89,
   "fields": {
     "name": "Can add advocacy topic",
-    "content_type": 23,
+    "content_type": [
+      "interviews",
+      "advocacytopic"
+    ],
     "codename": "add_advocacytopic"
   }
 },
@@ -805,7 +1072,10 @@
   "pk": 90,
   "fields": {
     "name": "Can change advocacy topic",
-    "content_type": 23,
+    "content_type": [
+      "interviews",
+      "advocacytopic"
+    ],
     "codename": "change_advocacytopic"
   }
 },
@@ -814,7 +1084,10 @@
   "pk": 91,
   "fields": {
     "name": "Can delete advocacy topic",
-    "content_type": 23,
+    "content_type": [
+      "interviews",
+      "advocacytopic"
+    ],
     "codename": "delete_advocacytopic"
   }
 },
@@ -823,7 +1096,10 @@
   "pk": 92,
   "fields": {
     "name": "Can view advocacy topic",
-    "content_type": 23,
+    "content_type": [
+      "interviews",
+      "advocacytopic"
+    ],
     "codename": "view_advocacytopic"
   }
 },
@@ -832,7 +1108,10 @@
   "pk": 93,
   "fields": {
     "name": "Can add interview assessment",
-    "content_type": 24,
+    "content_type": [
+      "interviews",
+      "interviewassessment"
+    ],
     "codename": "add_interviewassessment"
   }
 },
@@ -841,7 +1120,10 @@
   "pk": 94,
   "fields": {
     "name": "Can change interview assessment",
-    "content_type": 24,
+    "content_type": [
+      "interviews",
+      "interviewassessment"
+    ],
     "codename": "change_interviewassessment"
   }
 },
@@ -850,7 +1132,10 @@
   "pk": 95,
   "fields": {
     "name": "Can delete interview assessment",
-    "content_type": 24,
+    "content_type": [
+      "interviews",
+      "interviewassessment"
+    ],
     "codename": "delete_interviewassessment"
   }
 },
@@ -859,7 +1144,10 @@
   "pk": 96,
   "fields": {
     "name": "Can view interview assessment",
-    "content_type": 24,
+    "content_type": [
+      "interviews",
+      "interviewassessment"
+    ],
     "codename": "view_interviewassessment"
   }
 },
@@ -868,7 +1156,10 @@
   "pk": 97,
   "fields": {
     "name": "Can add interview status",
-    "content_type": 25,
+    "content_type": [
+      "interviews",
+      "interviewstatus"
+    ],
     "codename": "add_interviewstatus"
   }
 },
@@ -877,7 +1168,10 @@
   "pk": 98,
   "fields": {
     "name": "Can change interview status",
-    "content_type": 25,
+    "content_type": [
+      "interviews",
+      "interviewstatus"
+    ],
     "codename": "change_interviewstatus"
   }
 },
@@ -886,7 +1180,10 @@
   "pk": 99,
   "fields": {
     "name": "Can delete interview status",
-    "content_type": 25,
+    "content_type": [
+      "interviews",
+      "interviewstatus"
+    ],
     "codename": "delete_interviewstatus"
   }
 },
@@ -895,7 +1192,10 @@
   "pk": 100,
   "fields": {
     "name": "Can view interview status",
-    "content_type": 25,
+    "content_type": [
+      "interviews",
+      "interviewstatus"
+    ],
     "codename": "view_interviewstatus"
   }
 },
@@ -904,7 +1204,10 @@
   "pk": 101,
   "fields": {
     "name": "Can add interview",
-    "content_type": 26,
+    "content_type": [
+      "interviews",
+      "interview"
+    ],
     "codename": "add_interview"
   }
 },
@@ -913,7 +1216,10 @@
   "pk": 102,
   "fields": {
     "name": "Can change interview",
-    "content_type": 26,
+    "content_type": [
+      "interviews",
+      "interview"
+    ],
     "codename": "change_interview"
   }
 },
@@ -922,7 +1228,10 @@
   "pk": 103,
   "fields": {
     "name": "Can delete interview",
-    "content_type": 26,
+    "content_type": [
+      "interviews",
+      "interview"
+    ],
     "codename": "delete_interview"
   }
 },
@@ -931,7 +1240,10 @@
   "pk": 104,
   "fields": {
     "name": "Can view interview",
-    "content_type": 26,
+    "content_type": [
+      "interviews",
+      "interview"
+    ],
     "codename": "view_interview"
   }
 },
@@ -940,7 +1252,10 @@
   "pk": 105,
   "fields": {
     "name": "Can add team",
-    "content_type": 27,
+    "content_type": [
+      "teams",
+      "team"
+    ],
     "codename": "add_team"
   }
 },
@@ -949,7 +1264,10 @@
   "pk": 106,
   "fields": {
     "name": "Can change team",
-    "content_type": 27,
+    "content_type": [
+      "teams",
+      "team"
+    ],
     "codename": "change_team"
   }
 },
@@ -958,7 +1276,10 @@
   "pk": 107,
   "fields": {
     "name": "Can delete team",
-    "content_type": 27,
+    "content_type": [
+      "teams",
+      "team"
+    ],
     "codename": "delete_team"
   }
 },
@@ -967,7 +1288,10 @@
   "pk": 108,
   "fields": {
     "name": "Can view team",
-    "content_type": 27,
+    "content_type": [
+      "teams",
+      "team"
+    ],
     "codename": "view_team"
   }
 },
@@ -976,7 +1300,10 @@
   "pk": 109,
   "fields": {
     "name": "Can add position type",
-    "content_type": 28,
+    "content_type": [
+      "accounts",
+      "positiontype"
+    ],
     "codename": "add_positiontype"
   }
 },
@@ -985,7 +1312,10 @@
   "pk": 110,
   "fields": {
     "name": "Can change position type",
-    "content_type": 28,
+    "content_type": [
+      "accounts",
+      "positiontype"
+    ],
     "codename": "change_positiontype"
   }
 },
@@ -994,7 +1324,10 @@
   "pk": 111,
   "fields": {
     "name": "Can delete position type",
-    "content_type": 28,
+    "content_type": [
+      "accounts",
+      "positiontype"
+    ],
     "codename": "delete_positiontype"
   }
 },
@@ -1003,7 +1336,10 @@
   "pk": 112,
   "fields": {
     "name": "Can view position type",
-    "content_type": 28,
+    "content_type": [
+      "accounts",
+      "positiontype"
+    ],
     "codename": "view_positiontype"
   }
 }
