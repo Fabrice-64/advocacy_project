@@ -36,7 +36,7 @@ class AdvocacyTopic(models.Model):
     source = models.URLField(max_length=240,
                             blank=True,
                             verbose_name="Lien vers la source")
-    quote = models.CharField(max_length=480,
+    quote = models.TextField(max_length=600,
                             blank=True, null=True, verbose_name="Citation")
     creation_date = models.DateField(auto_now_add=True, verbose_name="Date de Création")
     updated_date = models.DateField(auto_now=True, verbose_name="Date de Mise à Jour")
