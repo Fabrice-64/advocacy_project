@@ -44,16 +44,28 @@ class CustomUserTest(LiveServerTestCase):
         # S. opens the "support documentation" page
         self.browser.find_element_by_id('link-support-docs').click()
         # Then a label "add a Topic" is displayed
-        #self.browser.find_element_by_
         # S. clicks on this item
+        self.browser.find_element_by_xpath("//button[@type='submit']").click()
         # Then a window with several fields is displayed
-        # The fields are the following ones:
-        # Publication date
-        # Link to the source
-        # A menu offers some topics
+        # S. fills, or selects the following fields:
+        # A topic
+        self.browser.find_element_by_xpath("//option[@value='Emploi']").click()
+        # A key statement
+        user_input = self.browser.find_element_by_id('id_key_statement')
+        user_input.send_keys("Le travail c'est la santé")
+        # The name of the source
+        user_input = self.browser.find_element_by_id('id_source_title')
+        user_input.send_keys("Henri Salvador")
+        # A link to the source
+        user_input = self.browser.find_element_by_id('id_source')
+        user_input.send_keys("https://www.youtube.com/watch?v=B5VyRmrN0-Q")
         # Quote to be used as a support
-        # Drafter ID
-        # S. fills all the fields
+        user_input = self.browser.find_element_by_id('id_quote')
+        user_input.send_keys("Ne rien faire c'est la conserver")
+        # L. decides that the topic is activated
+        self.browser.find_element_by_xpath("//select[@id='id_is_active']/option[@value='true']")
         # Then he validates
-        # A message informs him of the new record.
+        self.browser.find_element_by_xpath("//input[@id='create-topic']").click()
+        # Then L. is back on the topic list, with the new topic listed
+        self.browser.find_element_by_id("topic-list")
 
