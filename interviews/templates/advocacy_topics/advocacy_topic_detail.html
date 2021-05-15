@@ -14,5 +14,8 @@
         <p>Citation : {{ advocacytopic.quote | truncatewords:30 }}</p>
         
     </div>
+    <form action="{% url 'interviews:advocacy_topic_update' advocacytopic.slug %}">
+        <input type="submit" value="Actualiser la Fiche">
+    </form>
 
 {% endblock %}

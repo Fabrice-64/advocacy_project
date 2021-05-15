@@ -11,7 +11,9 @@ from django.test import LiveServerTestCase
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver import Firefox
 import os
-class CustomUserTest(LiveServerTestCase):
+
+
+class AdvocacyTopicTest(LiveServerTestCase):
     fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json' ]
 
     @classmethod
