@@ -41,20 +41,20 @@ class AdvocacyTopicUpdateView(UserAccessMixin, UpdateView):
     
 
 class InterviewListView(UserAccessMixin, ListView):
-    permission_required = "interviews.view_interviews"
+    permission_required = "interviews.view_interview"
     model = Interview
     queryset = Interview.objects.order_by('status', 'date_effective')
     template_name = "interviews/interviews_list.html"
     paginate_by = 10
 
 class InterviewDetailView(UserAccessMixin, DetailView):
-    permission_required = "interviews.view_interviews"
+    permission_required = "interviews.view_interview"
     model = Interview
-    template_name = "interviews/interview_detail.html"
+    template_name = "interviews/interview_details.html"
 
 class InterviewCreateView(UserAccessMixin, CreateView):
-    permission_required = "interviews.add_interviews"
+    permission_required = "interviews.add_interview"
     model = Interview
     form_class = InterviewForm
-    
+    template_name = "interviews/interview_create_form.html"
 

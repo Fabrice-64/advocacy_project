@@ -66,18 +66,25 @@ class AdvocacyTopicUpdateViewTest(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Actualiser un Thème de Plaidoyer")
 
-class AdvocacyTopicListViewTest(TestCase):
+class InterviewListViewTest(TestCase):
     
     def setUp(self):
-        self.url = reverse_lazy('interviews:interview_list')
+        self.url = reverse_lazy('interviews:interviews_list')
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
 
     def test_interview_list_view(self):
         # Only a user with the rights can see the list.
-        perm = Permission.objects.get(codename="view_interviews")
+        perm = Permission.objects.get(codename="view_interview")
         self.user1.user_permissions.add(perm)
         self.client.force_login(self.user1)
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, "interviews/interview_list.html")
+        self.assertTemplateUsed(self.response, "interviews/interviews_list.html")
         self.assertContains(self.response, "Entretiens")
+
+    def test_interview_list_not_authorized(self):
+        perm = Permission.objects.get(codename="view_interview")
+        self.user1.user_permissions.remove(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(self.url)
+        self.assertEqual(self.response.status_code, 302)

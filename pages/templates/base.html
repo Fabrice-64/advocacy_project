@@ -34,7 +34,7 @@
                 <p>Menu Accueil</p>
                 <a href="{% url 'communities:list' %}" id="link-communities">Collectivités</a>
                 <a href="" id="link-officials">Elus</a>
-                <a href="" id="link-interviews">Entretiens</a>
+                <a href="{% url 'interviews:interviews_list' %}" id="link-interviews">Entretiens</a>
                 <a href="{% url 'interviews:advocacy_topic_list' %}" id="link-support-docs">Thèmes de Plaidoyer</a>
             {% endif %}
         </section>
