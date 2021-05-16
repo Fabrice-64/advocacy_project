@@ -71,3 +71,28 @@ class AdvocacyTopicTest(LiveServerTestCase):
         # Then L. is back on the topic list, with the new topic listed
         self.browser.find_element_by_id("topic-list")
 
+class InterviewTest(LiveServerTestCase):
+    fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json' ]
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.browser = Firefox()
+        cls.browser.implicitly_wait(10)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.browser.quit()
+        super().tearDownClass()
+
+    def test_plaid_11_list_interviews(self):
+        """
+           The manager wants to access the interviews
+           for the volunteer to be more consistent during the interview.
+           The persona is named Leila
+           
+        """
+        self.browser.get(os.path.join(self.live_server_url, ''))
+        # Once connected, Leila has access to a menu bar.
+        # L. clicks on interviews.
+        

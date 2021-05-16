@@ -4,8 +4,8 @@ import officials.models as off
 
 @admin.register(off.Official)
 class OfficialAdmin(admin.ModelAdmin):
-    pass
-
+    model = off.Official
+    list_display = ['first_name', 'last_name', 'influence_level', 'propinquity_level']
 
 @admin.register(off.NationalMandate)
 class NationalMandateAdmin(admin.ModelAdmin):
