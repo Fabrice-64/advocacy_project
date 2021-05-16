@@ -35,6 +35,7 @@ class AdvocacyTopicTest(LiveServerTestCase):
            
         """
         self.browser.get(os.path.join(self.live_server_url, ''))
+        self.browser.maximize_window()
         # From the beginning the advocacy coordinator is logged-in
         self.browser.find_element_by_id("header-connection").click()
         user_input = self.browser.find_element_by_id("id_username")
