@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.urls import reverse
 from accounts.models import Volunteer, CustomUser
@@ -50,10 +51,10 @@ class AdvocacyTopic(models.Model):
 
 class Interview(models.Model):
     class InterviewStatus(models.Model):
-        PENDING = 'PDG' 
-        XED = 'XED'
-        DONE = 'DON'
-        COMPLETE = 'COM'
+        PENDING = '1-PDG' 
+        XED = '0-XED'
+        DONE = '2-DON'
+        COMPLETE = '3-COM'
         ITW_STATUS = [
             (PENDING, "Interview Prévue"),
             (XED, "Interview Annulée"),
@@ -76,11 +77,18 @@ class Interview(models.Model):
             (GOAL_0_PC, "Echec de l'Entretien"),
             (TBD, "Non Renseigné"),
         ]
+    
+    def get_absolute_url(self):
+        return reverse('interview_details', args=[str(self.id)])
 
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False)
 
-    date_planned = models.DateField(verbose_name="Date prévue")
-    date_effective = models.DateField(verbose_name="Date de réalisation")
-    status = models.CharField(max_length=3,
+    date_planned = models.DateField(verbose_name="Date prévue", blank=True, null=True)
+    date_effective = models.DateField(verbose_name="Date de réalisation", blank=True, null=True)
+    status = models.CharField(max_length=5,
                             blank=False,
                             null=False,
                             default=InterviewStatus.PENDING,

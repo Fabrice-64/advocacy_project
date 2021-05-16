@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from .models import AdvocacyTopic
-from .forms import AdvocacyTopicForm
+from .models import AdvocacyTopic, Interview
+from .forms import AdvocacyTopicForm, InterviewForm
 from accounts.user_access import UserAccessMixin
 # Create your views here
 
@@ -38,3 +38,23 @@ class AdvocacyTopicUpdateView(UserAccessMixin, UpdateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
+    
+
+class InterviewListView(UserAccessMixin, ListView):
+    permission_required = "interviews.view_interviews"
+    model = Interview
+    queryset = Interview.objects.order_by('status', 'date_effective')
+    template_name = "interviews/interviews_list.html"
+    paginate_by = 10
+
+class InterviewDetailView(UserAccessMixin, DetailView):
+    permission_required = "interviews.view_interviews"
+    model = Interview
+    template_name = "interviews/interview_detail.html"
+
+class InterviewCreateView(UserAccessMixin, CreateView):
+    permission_required = "interviews.add_interviews"
+    model = Interview
+    form_class = InterviewForm
+    
+

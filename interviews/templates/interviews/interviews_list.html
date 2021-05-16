@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% regroup object_list by status as status_list %}
+    <h1 id="topic-list">Liste des Entretiens de Plaidoyer</h1>
+    <ul>
+        {% for status in status_list %}
+        <li><h2>{{ status.grouper }}</h2></li>
+            <ul>
+                {% for interview in status.list %}
+                    <li><a href="{{ interview.get_absolute_url }}">{{ interview.official }} {{ interview.volunteer }} {{ interview.date_effective }} </a></li>
+                {% endfor %}
+            </ul>
+       {% endfor %}
+       {% if user.status_type == "MANAGER" %}
+       <form action="{% url 'interviews:interview_create' %}" id="interview-create">
+           <button type="submit">Créer Un Nouvel Entretien</button>
+       </form>
+       {% endif %}
+   </ul>
+    {% include "pagination_snippet.html" %}
+{% endblock %}
