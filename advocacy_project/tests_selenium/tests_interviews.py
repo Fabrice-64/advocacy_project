@@ -85,14 +85,31 @@ class InterviewTest(LiveServerTestCase):
         cls.browser.quit()
         super().tearDownClass()
 
-    def test_plaid_11_list_interviews(self):
+    def test_plaid_11_access_the_interviews(self):
         """
-           The manager wants to access the interviews
-           for the volunteer to be more consistent during the interview.
-           The persona is named Leila
+            The manager wants to access the interviews
+            and check their status.
+            He will be able to access the details of each interview.
+            The persona is named Leila
            
         """
         self.browser.get(os.path.join(self.live_server_url, ''))
+        self.browser.find_element_by_id("header-connection").click()
+        user_input = self.browser.find_element_by_id("id_username")
+        user_input.send_keys('leila')
+        user_input_pwd = self.browser.find_element_by_id("id_password")
+        user_input_pwd.send_keys('@dmin1234')
+        self.browser.find_element_by_xpath('//input[@type="submit"]').click()
+        # The homepage dedicated to connected people is different
         # Once connected, Leila has access to a menu bar.
+        self.browser.find_element_by_id('link-interviews').click()
         # L. clicks on interviews.
-        
+        # Then L. sees the list of Interviews.
+        # The interviews are ordered by status (pending, etc) and by date
+        # For every interview she can see several fields:
+        # The name of the targeted official
+        # The name of the assigned volunteer
+        # The date of the interview
+        # Then L. clicks on an item
+        # And she gets to a page displaying the details
+

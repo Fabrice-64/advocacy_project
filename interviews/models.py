@@ -53,10 +53,12 @@ class Interview(models.Model):
         PENDING = 'PDG' 
         XED = 'XED'
         DONE = 'DON'
+        COMPLETE = 'COM'
         ITW_STATUS = [
             (PENDING, "Interview Prévue"),
             (XED, "Interview Annulée"),
             (DONE, "Interview Réalisée"),
+            (COMPLETE, "Interview Réalisée et Evaluée")
         ]      
     
     class InterviewAssessment(models.Model):
