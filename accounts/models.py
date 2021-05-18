@@ -31,6 +31,9 @@ class CustomUser(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('staff_details', args=[str(self.id)])
+    
+    def __str__(self):
+        return self.first_name + " " + self.last_name
 
     id = models.UUIDField(
         primary_key=True,

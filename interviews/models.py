@@ -60,7 +60,7 @@ class Interview(models.Model):
             (XED, "Interview Annulée"),
             (DONE, "Interview Réalisée"),
             (COMPLETE, "Interview Réalisée et Evaluée")
-        ]      
+        ]
     
     class InterviewAssessment(models.Model):
         GOAL_100_PC = "100PC"
@@ -79,7 +79,7 @@ class Interview(models.Model):
         ]
     
     def get_absolute_url(self):
-        return reverse('interview_details', args=[str(self.id)])
+        return reverse('interviews:interview_details', args=[str(self.id)])
 
     id = models.UUIDField(
         primary_key=True,
@@ -97,7 +97,7 @@ class Interview(models.Model):
     goal = models.CharField(max_length=420,
                             blank=False,
                             null=False,
-                            verbose_name="Objectifs")
+                            verbose_name="Objectif")
     outcome = models.CharField(max_length=420, 
                             verbose_name="Résultats",
                             default="Résultats de l'interview")
@@ -112,4 +112,4 @@ class Interview(models.Model):
                                 verbose_name="Commentaires")
     volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE)
     official = models.ForeignKey(Official, on_delete=models.CASCADE)
-    topics = models.ManyToManyField(AdvocacyTopic)
+    topics = models.ManyToManyField(AdvocacyTopic, verbose_name="Thèmes")

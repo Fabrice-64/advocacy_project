@@ -56,5 +56,8 @@ class InterviewCreateView(UserAccessMixin, CreateView):
     permission_required = "interviews.add_interview"
     model = Interview
     form_class = InterviewForm
+    #fields = ['date_planned', 'topics']
     template_name = "interviews/interview_create_form.html"
+    success_url = reverse_lazy("interviews:interviews_list")
+    
 

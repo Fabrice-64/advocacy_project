@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 {% regroup object_list by status as status_list %}
     <h1 id="topic-list">Liste des Entretiens de Plaidoyer</h1>
     <ul>

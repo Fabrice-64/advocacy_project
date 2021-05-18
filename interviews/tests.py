@@ -88,3 +88,24 @@ class InterviewListViewTest(TestCase):
         self.client.force_login(self.user1)
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 302)
+
+class InterviewCreateViewTest(TestCase):
+    
+    def setUp(self):
+        self.url = reverse_lazy('interviews:interview_create')
+        self.response = self.client.post(self.url)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.client = Client()
+
+    def test_interview_create_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/interviews/interview/create/')
+
+    def test_interview_create_authorized(self):
+        perm = Permission.objects.get(codename="add_interview")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Entretiens")
