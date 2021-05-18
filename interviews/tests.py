@@ -3,8 +3,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Permission
 from django.urls import reverse, reverse_lazy
 from . import views as views
-from .models import AdvocacyTopic
-from accounts.models import CustomUser
+from .models import AdvocacyTopic, Interview
+from accounts.models import CustomUser, Volunteer
+from officials.models import Official
 
 
 class AdvocacyTopicListViewTest(TestCase):
@@ -30,7 +31,7 @@ class AdvocacyTopicCreateViewTest(TestCase):
         self.url = reverse_lazy('interviews:advocacy_topic_create')
         self.response = self.client.post(self.url)
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
-        self.client = Client()
+        #self.client = Client()
 
     def test_advocacy_topic_create_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
@@ -89,13 +90,14 @@ class InterviewListViewTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 302)
 
+
 class InterviewCreateViewTest(TestCase):
     
     def setUp(self):
         self.url = reverse_lazy('interviews:interview_create')
         self.response = self.client.post(self.url)
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
-        self.client = Client()
+        #self.client = Client()
 
     def test_interview_create_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
@@ -109,3 +111,28 @@ class InterviewCreateViewTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Entretiens")
+
+
+class InterviewDetailViewTest(TestCase):
+
+    def setUp(self):
+        Official.objects.create(last_name="test_official")
+        Volunteer.objects.create(last_name="test_volunteer")
+        self.official = Official.objects.get(last_name="test_official")
+        self.volunteer = Volunteer.objects.get(last_name="test_volunteer")
+        self.interview = Interview.objects.create(official_id=self.official.id, volunteer_id=self.volunteer.id)
+        self.response = self.client.get(reverse('interviews:interview_details', args=[self.interview.id]))
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_interview_detail_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            f'/accounts/login/?next=/interviews/interview/details/{self.interview.id}/')
+
+    def test_interview_details_authorized(self):
+        perm = Permission.objects.get(codename="view_interview")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(reverse('interviews:interview_details', args=[self.interview.id]))
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Fiche d'Interview")

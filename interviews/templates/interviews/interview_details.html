@@ -1,1 +1,27 @@
-Interview Details
+{% extends "base.html" %}
+{% block content %}
+    <h1>Fiche d'Interview</h1>
+
+    <div id='interview-details'>
+        <p>Date Prévue : 
+            {% if not interview.date_planned %}
+                Sans Objet
+            {% else %}
+                {{ interview.date_planned }}
+            {% endif %}</p>
+        <p>Bénévole : {{ interview.volunteer }}</p>
+        <p>Elu : {{ interview.official }}</p>
+        <p>Thèmes à Aborder :
+        {% for topic in object.topics.all %}
+            <div>{{ topic }}<br></div>
+        {% endfor %}
+    
+    </div>
+    {% if user.status_type == "MANAGER" %}
+        <form action="{% url 'interviews:interview_update' interview.id %}">
+            <input type="submit" value="Modifier">
+        </form>
+    {% endif %}
+
+{% endblock %}
+

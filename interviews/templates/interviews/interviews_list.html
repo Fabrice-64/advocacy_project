@@ -6,10 +6,22 @@
     <h1 id="topic-list">Liste des Entretiens de Plaidoyer</h1>
     <ul>
         {% for status in status_list %}
-        <li><h2>{{ status.grouper }}</h2></li>
+        <li><h2>{{ status.list.0.get_status_display }}</h2></li>
             <ul>
                 {% for interview in status.list %}
-                    <li><a href="{{ interview.get_absolute_url }}">{{ interview.official }} {{ interview.volunteer }} {{ interview.date_effective }} </a></li>
+                    <li><a href="{{ interview.get_absolute_url }}">Elu : {{ interview.official }} Bénévole: {{ interview.volunteer }}</a><br>
+                        {% if not interview.date_effective%} 
+                         <p> Interview non Réalisée. 
+                             {% if not interview.date_planned %}
+                                Pas de date Prévue
+                            {% else %}
+                                Date Prévue :  {{ interview.date_planned }} 
+                            {% endif %}</p>
+
+                        {% else %}
+                        <p> Interview réalisée le :  {{ interview.date_effective }}</p>
+                        {% endif %}
+                         </li>
                 {% endfor %}
             </ul>
        {% endfor %}

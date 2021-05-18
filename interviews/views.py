@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import AdvocacyTopic, Interview
 from .forms import AdvocacyTopicForm, InterviewForm
@@ -56,8 +56,14 @@ class InterviewCreateView(UserAccessMixin, CreateView):
     permission_required = "interviews.add_interview"
     model = Interview
     form_class = InterviewForm
-    #fields = ['date_planned', 'topics']
     template_name = "interviews/interview_create_form.html"
     success_url = reverse_lazy("interviews:interviews_list")
+
+class InterviewUpdateView(UserAccessMixin, UpdateView):
+    permission_required = "interviews.change_interview"
+    model = Interview
+    form_class = InterviewForm
+    template_name = "interviews/interview_update_form.html"
+    #success_url = reverse("interviews:interview_detail", args=["uuid"])
     
 

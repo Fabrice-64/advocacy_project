@@ -1,0 +1,44 @@
+[
+{
+  "model": "officials.official",
+  "pk": "0d11b23b-c518-4edd-b9ca-428bd0f04a6b",
+  "fields": {
+    "first_name": "Germain",
+    "last_name": "EluParlement",
+    "influence_level": "3-INF",
+    "propinquity_level": "UNK-PROPINQ",
+    "attached_volunteer": [
+      "alain"
+    ],
+    "mandate_intercom": [],
+    "mandate_city": [],
+    "mandate_department": [],
+    "mandate_region": [],
+    "national_mandate": [
+      1
+    ]
+  }
+},
+{
+  "model": "officials.official",
+  "pk": "79273044-4a9d-43de-8aed-2a21447ab040",
+  "fields": {
+    "first_name": "Pierre",
+    "last_name": "Durand",
+    "influence_level": "2-INF",
+    "propinquity_level": "UNK-PROPINQ",
+    "attached_volunteer": [
+      "pierre"
+    ],
+    "mandate_intercom": [
+      1
+    ],
+    "mandate_city": [
+      1
+    ],
+    "mandate_department": [],
+    "mandate_region": [],
+    "national_mandate": []
+  }
+}
+]

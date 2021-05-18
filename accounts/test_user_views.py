@@ -73,8 +73,12 @@ class StaffListViewTest(TestCase):
 class StaffDetailViewTest(TestCase):
 
     def setUp(self):
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True, status_type="MANAGER")
-        self.employee = CustomUser.objects.create(username="test_user2", password="pwd", is_active=True, status_type="EMPLOYEE")
+        self.user1 = CustomUser.objects.create(username="test_user", 
+                    password="pwd", is_active=True, 
+                    status_type="MANAGER")
+        self.employee = CustomUser.objects.create(username="test_user2", 
+                    password="pwd", is_active=True, 
+                    status_type="EMPLOYEE")
 
     def test_staff_detail_view_not_authorized(self):
         # Only members can get access to volunteer detail
