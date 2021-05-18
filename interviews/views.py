@@ -4,7 +4,6 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import AdvocacyTopic, Interview
 from .forms import AdvocacyTopicForm, InterviewForm
 from accounts.user_access import UserAccessMixin
-# Create your views here
 
 
 class AdvocacyTopicListView(UserAccessMixin, ListView):
@@ -28,6 +27,7 @@ class AdvocacyTopicCreateView(UserAccessMixin, CreateView):
     template_name = "advocacy_topics/advocacy_topic_create_form.html"
     success_url = reverse_lazy("interviews:advocacy_topic_list")
 
+
 class AdvocacyTopicUpdateView(UserAccessMixin, UpdateView):
     permission_required = "interviews.change_advocacytopic"
     model = AdvocacyTopic
@@ -47,10 +47,12 @@ class InterviewListView(UserAccessMixin, ListView):
     template_name = "interviews/interviews_list.html"
     paginate_by = 10
 
+
 class InterviewDetailView(UserAccessMixin, DetailView):
     permission_required = "interviews.view_interview"
     model = Interview
     template_name = "interviews/interview_details.html"
+
 
 class InterviewCreateView(UserAccessMixin, CreateView):
     permission_required = "interviews.add_interview"
@@ -59,11 +61,13 @@ class InterviewCreateView(UserAccessMixin, CreateView):
     template_name = "interviews/interview_create_form.html"
     success_url = reverse_lazy("interviews:interviews_list")
 
+
 class InterviewUpdateView(UserAccessMixin, UpdateView):
     permission_required = "interviews.change_interview"
     model = Interview
     form_class = InterviewForm
     template_name = "interviews/interview_update_form.html"
-    #success_url = reverse("interviews:interview_detail", args=["uuid"])
-    
+"""
+    success_url = reverse("interviews:interview_detail", args=["uuid"])
+"""   
 

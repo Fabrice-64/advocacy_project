@@ -136,3 +136,28 @@ class InterviewDetailViewTest(TestCase):
         self.response = self.client.get(reverse('interviews:interview_details', args=[self.interview.id]))
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Fiche d'Interview")
+
+
+class InterviewUpdateViewTest(TestCase):
+    
+    def setUp(self):
+        Official.objects.create(last_name="test_official")
+        Volunteer.objects.create(last_name="test_volunteer")
+        self.official = Official.objects.get(last_name="test_official")
+        self.volunteer = Volunteer.objects.get(last_name="test_volunteer")
+        self.interview = Interview.objects.create(official_id=self.official.id, volunteer_id=self.volunteer.id)
+        self.response = self.client.get(reverse('interviews:interview_update', args=[self.interview.id]))
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_interview_update_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            f'/accounts/login/?next=/interviews/interview/update/{self.interview.id}/')
+
+    def test_interview_details_authorized(self):
+        perm = Permission.objects.get(codename="change_interview")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(reverse('interviews:interview_update', args=[self.interview.id]))
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Actualisation d'un Entretien")
