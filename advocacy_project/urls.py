@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('communities/', include('communities.urls')),
     path('interviews/', include('interviews.urls')),
-    path('teams/', include('teams.urls'))
+    path('teams/', include('teams.urls')),
+    path('officials/', include('officials.urls'))
 ]

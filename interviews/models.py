@@ -112,3 +112,6 @@ class Interview(models.Model):
     volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE, verbose_name="Bénévole")
     official = models.ForeignKey(Official, on_delete=models.CASCADE, verbose_name="Elu")
     topics = models.ManyToManyField(AdvocacyTopic, verbose_name="Thèmes", blank=True)
+
+    def __str__(self):
+        return f"{self.official} {self.volunteer} {self.status}"

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Aller sur les Pages des Elus</h1>
+
+    <h2>Liste des Mandats</h2>
+    <ul>
+        <li><a href="{% url 'officials:mandate_list' %}" id="mandate-list">Liste des Mandats</a></li>
+    </ul>
+    <h2>Liste des Elus</h2>
+    <ul>
+        <li><a href="{% url 'officials:official_list' %}" id="official-list">Liste des Elus</a></li>
+    </ul>
+
+{% endblock %}
