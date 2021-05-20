@@ -12,5 +12,6 @@ urlpatterns = [
     path("interview/list/", views.InterviewListView.as_view(), name="interviews_list"),
     path("interview/details/<uuid:pk>/", views.InterviewDetailView.as_view(), name="interview_details"),
     path("interview/create/", views.InterviewCreateView.as_view(), name="interview_create"),
-    path("interview/update/<uuid:pk>/", views.InterviewUpdateView.as_view(), name="interview_update")
+    path("interview/update/<uuid:pk>/", views.InterviewUpdateView.as_view(), name="interview_update"),
+    path("interview/assessment/<uuid:pk>/", views.InterviewAssessmentView.as_view(), name="interview_assessment")
 ]

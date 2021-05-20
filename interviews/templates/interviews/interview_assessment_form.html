@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Compte-Rendu d'Entretien</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <p class="readonly-field" id="id_official">Elu : {{ object.official}}</p>
+    <p class="readonly-field" id="id_volunteer">Bénévole : {{ object.volunteer }}</p>
+    <p class="readonly-field" id="id_date_planned">Date prévue : {{ object.date_planned }}</p>
+    <p>Date effective: {{ form.date_effective}}</p>
+    <p>Statut: {{ form.status }}</p>
+    <p class="readonly-field" id="id_goal">Objectif : {{ object.goal }} </p>
+    <p class="readonly-field" id="id_topics">Thèmes :
+    {% for topic in form.instance.topics.all %}
+        {{ topic }}
+    {% endfor %}
+    </p>
+    <p>Résultat : {{ form.outcome }}</p>
+    <p>Evaluation : {{ form.assessment }}</p>
+    {{ form.assessment.help_text }}
+    <p>Commentaires : {{ form.comments }}</p>
+       
+    <input type="submit" value="Valider" id="assessment-topic">
+</form>
+
+{% endblock %}

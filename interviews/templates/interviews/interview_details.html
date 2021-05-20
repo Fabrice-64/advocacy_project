@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Fiche d'Interview</h1>
+    <h1>Fiche d'Entretien</h1>
 
     <div id='interview-details'>
         <p>Date Prévue : 
@@ -11,6 +11,7 @@
             {% endif %}</p>
         <p>Bénévole : {{ interview.volunteer }}</p>
         <p>Elu : {{ interview.official }}</p>
+        <p>Objectif : {{ interview.goal }}</p>
         <p>Thèmes à Aborder :
         {% for topic in object.topics.all %}
             <div>{{ topic }}<br></div>
@@ -23,5 +24,9 @@
         </form>
     {% endif %}
 
-{% endblock %}
+    {% if user == interview.volunteer or user.status_type == "MANAGER" %}
+        <form action="{% url 'interviews:interview_assessment' interview.id %}">
+            <input type="submit" value="Evaluer">
+    {% endif %}
+    {% endblock %}
 

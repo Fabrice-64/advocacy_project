@@ -1,0 +1,56 @@
+[
+{
+  "model": "interviews.advocacytopic",
+  "pk": 1,
+  "fields": {
+    "is_active": true,
+    "keyword": "Pauvreté",
+    "key_statement": "La Pauvreté ne doit pas être une fatalité",
+    "slug": "la-pauvrete-ne-doit-pas-etre-une-fatalite",
+    "source_title": null,
+    "source": "",
+    "quote": null,
+    "creation_date": "2021-05-13",
+    "updated_date": "2021-05-13",
+    "created_by": [
+      "fabricejaouen"
+    ]
+  }
+},
+{
+  "model": "interviews.advocacytopic",
+  "pk": 2,
+  "fields": {
+    "is_active": true,
+    "keyword": "Migrations",
+    "key_statement": "Les Migrants doivent être traités avec dignité",
+    "slug": "les-migrants-doivent-etre-traites-avec-dignite",
+    "source_title": null,
+    "source": "",
+    "quote": null,
+    "creation_date": "2021-05-13",
+    "updated_date": "2021-05-13",
+    "created_by": [
+      "fabricejaouen"
+    ]
+  }
+},
+{
+  "model": "interviews.advocacytopic",
+  "pk": 3,
+  "fields": {
+    "is_active": false,
+    "keyword": "Logement",
+    "key_statement": "Chacun doit pouvoir accéder à un logement digne",
+    "slug": "chacun-doit-pouvoir-acceder-un-logement-digne",
+    "source_title": null,
+    "source": "",
+    "quote": null,
+    "creation_date": "2021-05-13",
+    "updated_date": "2021-05-13",
+    "created_by": [
+      "leila"
+    ]
+  }
+}
+]

@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import AdvocacyTopic, Interview
-from .forms import AdvocacyTopicForm, InterviewForm
+from .forms import AdvocacyTopicForm, InterviewForm, InterviewAssessmentForm
 from accounts.user_access import UserAccessMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 
 class AdvocacyTopicListView(UserAccessMixin, ListView):
@@ -67,7 +68,16 @@ class InterviewUpdateView(UserAccessMixin, UpdateView):
     model = Interview
     form_class = InterviewForm
     template_name = "interviews/interview_update_form.html"
-"""
-    success_url = reverse("interviews:interview_detail", args=["uuid"])
-"""   
+    success_url = reverse_lazy("interviews:interview_details", args=["uuid"])
 
+class InterviewAssessmentView(UserAccessMixin, UserPassesTestMixin, UpdateView):
+    permission_required = "interviews.change_interview"
+    model = Interview
+    form_class = InterviewAssessmentForm
+    template_name = "interviews/interview_assessment_form.html"
+    success_url = reverse_lazy("interviews:interview_details", args=["uuid"])
+
+    def test_func(self):
+        interview = self.get_object()
+        if self.request.user == interview.volunteer or self.request.user.status_type == "MANAGER":
+            return True

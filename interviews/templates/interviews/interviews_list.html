@@ -3,13 +3,13 @@
 {% block content %}
 
 {% regroup object_list by status as status_list %}
-    <h1 id="topic-list">Liste des Entretiens de Plaidoyer</h1>
-    <ul>
+    <h1 id="interview-list-title">Liste des Entretiens de Plaidoyer</h1>
+    <ul id="interview-list">
         {% for status in status_list %}
         <li><h2>{{ status.list.0.get_status_display }}</h2></li>
-            <ul>
+            <ul >
                 {% for interview in status.list %}
-                    <li><a href="{{ interview.get_absolute_url }}">Elu : {{ interview.official }} Bénévole: {{ interview.volunteer }}</a><br>
+                    <li><a name="interview-summary" href="{{ interview.get_absolute_url }}">Elu : {{ interview.official }} Bénévole: {{ interview.volunteer }}</a><br>
                         {% if not interview.date_effective%} 
                          <p> Interview non Réalisée. 
                              {% if not interview.date_planned %}

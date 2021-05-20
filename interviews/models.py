@@ -100,7 +100,7 @@ class Interview(models.Model):
                             verbose_name="Objectif")
     outcome = models.CharField(max_length=420, 
                             verbose_name="Résultats",
-                            default="Résultats de l'interview")
+                            blank=True, null=True)
     assessment = models.CharField(max_length=5,
                             default=InterviewAssessment.TBD,
                             choices=InterviewAssessment.ITW_ASSESS,
@@ -108,8 +108,7 @@ class Interview(models.Model):
     comments = models.CharField(max_length=420,
                                 blank=True,
                                 null=False,
-                                default="Non Renseigné",
                                 verbose_name="Commentaires")
-    volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE)
-    official = models.ForeignKey(Official, on_delete=models.CASCADE)
-    topics = models.ManyToManyField(AdvocacyTopic, verbose_name="Thèmes")
+    volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE, verbose_name="Bénévole")
+    official = models.ForeignKey(Official, on_delete=models.CASCADE, verbose_name="Elu")
+    topics = models.ManyToManyField(AdvocacyTopic, verbose_name="Thèmes", blank=True)

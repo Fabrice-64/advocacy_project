@@ -72,8 +72,9 @@ class AdvocacyTopicTest(LiveServerTestCase):
         # Then L. is back on the topic list, with the new topic listed
         self.browser.find_element_by_id("topic-list")
 
+
 class InterviewTest(LiveServerTestCase):
-    fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json' ]
+    fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json', 'advocacy_topics.json', 'officials.json']
 
     @classmethod
     def setUpClass(cls):
@@ -89,8 +90,7 @@ class InterviewTest(LiveServerTestCase):
     def test_plaid_11_access_the_interviews(self):
         """
             The manager wants to access the interviews
-            and check their status.
-            He will be able to access the details of each interview.
+            and create one.
             The persona is named Leila
            
         """
@@ -103,14 +103,37 @@ class InterviewTest(LiveServerTestCase):
         self.browser.find_element_by_xpath('//input[@type="submit"]').click()
         # The homepage dedicated to connected people is different
         # Once connected, Leila has access to a menu bar.
-        self.browser.find_element_by_id('link-interviews').click()
         # L. clicks on interviews.
-        # Then L. sees the list of Interviews.
-        # The interviews are ordered by status (pending, etc) and by date
-        # For every interview she can see several fields:
-        # The name of the targeted official
-        # The name of the assigned volunteer
-        # The date of the interview
-        # Then L. clicks on an item
-        # And she gets to a page displaying the details
+        self.browser.find_element_by_id('link-interviews').click()
+        # And she has access to the list of interviews
+        self.browser.find_element_by_id("interview-list-title")
+        # Then L. creates a new interview
+        self.browser.find_element_by_xpath('//button[@type="submit"]').click()
+        # And the interview creation page opens up
+        self.browser.find_element_by_id("interview-creation-form")
+        # Then the fields needed to create an interview are displayed
+        # L. can plan a date
+        self.browser.find_element_by_id("id_date_planned")
+        # Then she selects an official from a list
+        self.browser.find_element_by_xpath('//option[@value="0d11b23b-c518-4edd-b9ca-428bd0f04a6b"]').click()
+        # Then L. attaches a volunteer to this interview
+        self.browser.find_element_by_xpath('//select[@name="volunteer"]')
+        self.browser.find_element_by_xpath('//option[@value="2c49b9ff-b56a-47a0-8ab1-e2a60881c560"]').click()
+        # Then L. can select a topic among several
+        self.browser.find_element_by_id("id_topics")
+        # And L. selects a topic
+        self.browser.find_element_by_xpath("//input[@id='id_topics_2']").click()
+        # Then L. sets the goal of the interview
+        user_input = self.browser.find_element_by_id("id_goal")
+        user_input.send_keys("Goal of the Interview")
+        # Last, L. selects the appropriate status for this interview
+        self.browser.find_element_by_xpath("//option[@value='1-PDG']").click()
+        # Finally L. validates the form
+        footer = self.browser.find_element_by_xpath('//footer')
+        self.browser.execute_script("arguments[0].setAttribute('style','display:none')", footer)
+        self.browser.find_element_by_xpath("//input[@type='submit']").click()
+        # And L. lands on the page containing the list of interviews
+        interviews = self.browser.find_elements_by_xpath("//li[a/@name='interview-summary']")
+        self.assertEquals(len(interviews), 1)
+
 
