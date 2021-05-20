@@ -44,7 +44,8 @@ class Official(models.Model):
     mandate_city = models.ManyToManyField('MandateCity', blank=True)
     mandate_department = models.ManyToManyField('MandateDepartment', blank=True)
     mandate_region = models.ManyToManyField('MandateRegion', blank=True)
-    national_mandate = models.ManyToManyField('NationalMandate', blank=True)
+    mp_mandate = models.ManyToManyField('MPMandate', blank=True)
+    senator_mandate = models.ManyToManyField('SenatorMandate', blank=True)
 
     def __str__(self):
             return self.first_name + " " + self.last_name
@@ -132,19 +133,18 @@ class MandateRegion(models.Model):
     def __str__(self):
             return self.function + " " + self.region.name + " " + str(self.start_date.year)
 
-class NationalMandate(models.Model):
-    class MandateType(models.TextChoices):
-            MP = "MP", "Député"
-            SEN = "SEN", "Sénateur"
-            UNK = "UNK", "Non Renseigné"
+class MPMandate(models.Model):
     department = models.ForeignKey(comms.Department, 
             on_delete=models.CASCADE)
     start_date = models.DateField(verbose_name="Date de Début de Mandat")
-    function = models.CharField(max_length=6,
-                            blank=False,
-                            null=False,
-                            default=MandateType.UNK,
-                            choices=MandateType.choices,
-                            verbose_name="Mandat National")
+
     def __str__(self):
-            return self.function + " " + self.department.name + " " + str(self.start_date.year)
+            return self.department.name + " " + str(self.start_date.year)
+
+class SenatorMandate(models.Model):
+    department = models.ForeignKey(comms.Department, 
+            on_delete=models.CASCADE)
+    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+
+    def __str__(self):
+            return self.department.name + " " + str(self.start_date.year)

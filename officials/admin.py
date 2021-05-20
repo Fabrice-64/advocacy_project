@@ -7,8 +7,12 @@ class OfficialAdmin(admin.ModelAdmin):
     model = off.Official
     list_display = ['first_name', 'last_name', 'influence_level', 'propinquity_level']
 
-@admin.register(off.NationalMandate)
-class NationalMandateAdmin(admin.ModelAdmin):
+@admin.register(off.MPMandate)
+class MPMandateAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(off.SenatorMandate)
+class SenatorMandateAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(off.MandateCity)
