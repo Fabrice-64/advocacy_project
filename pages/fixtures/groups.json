@@ -346,6 +346,26 @@
         "interviewstatus"
       ],
       [
+        "add_topics",
+        "interviews",
+        "topics"
+      ],
+      [
+        "change_topics",
+        "interviews",
+        "topics"
+      ],
+      [
+        "delete_topics",
+        "interviews",
+        "topics"
+      ],
+      [
+        "view_topics",
+        "interviews",
+        "topics"
+      ],
+      [
         "add_mandatecity",
         "officials",
         "mandatecity"
@@ -426,24 +446,24 @@
         "mandateregion"
       ],
       [
-        "add_nationalmandate",
+        "add_mpmandate",
         "officials",
-        "nationalmandate"
+        "mpmandate"
       ],
       [
-        "change_nationalmandate",
+        "change_mpmandate",
         "officials",
-        "nationalmandate"
+        "mpmandate"
       ],
       [
-        "delete_nationalmandate",
+        "delete_mpmandate",
         "officials",
-        "nationalmandate"
+        "mpmandate"
       ],
       [
-        "view_nationalmandate",
+        "view_mpmandate",
         "officials",
-        "nationalmandate"
+        "mpmandate"
       ],
       [
         "add_official",
@@ -464,6 +484,26 @@
         "view_official",
         "officials",
         "official"
+      ],
+      [
+        "add_senatormandate",
+        "officials",
+        "senatormandate"
+      ],
+      [
+        "change_senatormandate",
+        "officials",
+        "senatormandate"
+      ],
+      [
+        "delete_senatormandate",
+        "officials",
+        "senatormandate"
+      ],
+      [
+        "view_senatormandate",
+        "officials",
+        "senatormandate"
       ],
       [
         "add_registrationprofile",
@@ -635,14 +675,19 @@
         "mandateregion"
       ],
       [
-        "view_nationalmandate",
+        "view_mpmandate",
         "officials",
-        "nationalmandate"
+        "mpmandate"
       ],
       [
         "view_official",
         "officials",
         "official"
+      ],
+      [
+        "view_senatormandate",
+        "officials",
+        "senatormandate"
       ],
       [
         "view_team",
