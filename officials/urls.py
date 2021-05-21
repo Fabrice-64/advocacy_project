@@ -6,6 +6,6 @@ app_name = "officials"
 
 urlpatterns = [
     path('pages/', views.official_pages, name="official_pages"),
-    path('mandate/list/', views.MandateList.as_view(), name="mandate_list"),
-    path('official/list/', views.OfficialList.as_view(), name="official_list")
+    path('mandate/change/', views.mandate_change, name="mandate_change"),
+    path('official/list/', views.official_pages, name="official_list")
 ]
