@@ -46,24 +46,29 @@
         "employee"
       ],
       [
-        "add_manager",
-        "accounts",
-        "manager"
-      ],
-      [
-        "change_manager",
-        "accounts",
-        "manager"
-      ],
-      [
-        "delete_manager",
-        "accounts",
-        "manager"
-      ],
-      [
         "view_manager",
         "accounts",
         "manager"
+      ],
+      [
+        "add_positiontype",
+        "accounts",
+        "positiontype"
+      ],
+      [
+        "change_positiontype",
+        "accounts",
+        "positiontype"
+      ],
+      [
+        "delete_positiontype",
+        "accounts",
+        "positiontype"
+      ],
+      [
+        "view_positiontype",
+        "accounts",
+        "positiontype"
       ],
       [
         "add_statustype",
@@ -104,66 +109,6 @@
         "view_volunteer",
         "accounts",
         "volunteer"
-      ],
-      [
-        "add_logentry",
-        "admin",
-        "logentry"
-      ],
-      [
-        "change_logentry",
-        "admin",
-        "logentry"
-      ],
-      [
-        "delete_logentry",
-        "admin",
-        "logentry"
-      ],
-      [
-        "view_logentry",
-        "admin",
-        "logentry"
-      ],
-      [
-        "add_group",
-        "auth",
-        "group"
-      ],
-      [
-        "change_group",
-        "auth",
-        "group"
-      ],
-      [
-        "delete_group",
-        "auth",
-        "group"
-      ],
-      [
-        "view_group",
-        "auth",
-        "group"
-      ],
-      [
-        "add_permission",
-        "auth",
-        "permission"
-      ],
-      [
-        "change_permission",
-        "auth",
-        "permission"
-      ],
-      [
-        "delete_permission",
-        "auth",
-        "permission"
-      ],
-      [
-        "view_permission",
-        "auth",
-        "permission"
       ],
       [
         "add_city",
@@ -244,26 +189,6 @@
         "view_region",
         "communities",
         "region"
-      ],
-      [
-        "add_contenttype",
-        "contenttypes",
-        "contenttype"
-      ],
-      [
-        "change_contenttype",
-        "contenttypes",
-        "contenttype"
-      ],
-      [
-        "delete_contenttype",
-        "contenttypes",
-        "contenttype"
-      ],
-      [
-        "view_contenttype",
-        "contenttypes",
-        "contenttype"
       ],
       [
         "add_advocacytopic",
@@ -526,46 +451,6 @@
         "registrationprofile"
       ],
       [
-        "add_supervisedregistrationprofile",
-        "registration",
-        "supervisedregistrationprofile"
-      ],
-      [
-        "change_supervisedregistrationprofile",
-        "registration",
-        "supervisedregistrationprofile"
-      ],
-      [
-        "delete_supervisedregistrationprofile",
-        "registration",
-        "supervisedregistrationprofile"
-      ],
-      [
-        "view_supervisedregistrationprofile",
-        "registration",
-        "supervisedregistrationprofile"
-      ],
-      [
-        "add_session",
-        "sessions",
-        "session"
-      ],
-      [
-        "change_session",
-        "sessions",
-        "session"
-      ],
-      [
-        "delete_session",
-        "sessions",
-        "session"
-      ],
-      [
-        "view_session",
-        "sessions",
-        "session"
-      ],
-      [
         "add_team",
         "teams",
         "team"
@@ -594,6 +479,16 @@
   "fields": {
     "name": "VOLUNTEER",
     "permissions": [
+      [
+        "view_customuser",
+        "accounts",
+        "customuser"
+      ],
+      [
+        "view_statustype",
+        "accounts",
+        "statustype"
+      ],
       [
         "view_volunteer",
         "accounts",
@@ -625,11 +520,6 @@
         "advocacytopic"
       ],
       [
-        "add_interview",
-        "interviews",
-        "interview"
-      ],
-      [
         "change_interview",
         "interviews",
         "interview"
@@ -640,9 +530,14 @@
         "interview"
       ],
       [
-        "add_interviewstatus",
+        "change_interviewassessment",
         "interviews",
-        "interviewstatus"
+        "interviewassessment"
+      ],
+      [
+        "view_interviewassessment",
+        "interviews",
+        "interviewassessment"
       ],
       [
         "change_interviewstatus",
@@ -650,14 +545,19 @@
         "interviewstatus"
       ],
       [
-        "delete_interviewstatus",
+        "view_interviewstatus",
         "interviews",
         "interviewstatus"
       ],
       [
-        "view_interviewstatus",
+        "change_topics",
         "interviews",
-        "interviewstatus"
+        "topics"
+      ],
+      [
+        "view_topics",
+        "interviews",
+        "topics"
       ],
       [
         "view_mandatecity",
@@ -668,6 +568,11 @@
         "view_mandatedepartment",
         "officials",
         "mandatedepartment"
+      ],
+      [
+        "view_mandateintercom",
+        "officials",
+        "mandateintercom"
       ],
       [
         "view_mandateregion",

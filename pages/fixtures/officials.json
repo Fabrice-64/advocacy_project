@@ -44,7 +44,7 @@
   "pk": 1,
   "fields": {
     "intercom": 1,
-    "start_date": "2020-03-20",
+    "start_year": "2020",
     "function": "COUNS"
   }
 },
@@ -53,7 +53,7 @@
   "pk": 1,
   "fields": {
     "city": 1,
-    "start_date": "2020-03-10",
+    "start_year": "2020",
     "function": "ADJOINT"
   }
 },
@@ -62,7 +62,7 @@
   "pk": 1,
   "fields": {
     "department": 3,
-    "start_date": "1997-01-01"
+    "start_year": "1997"
   }
 }
 ]

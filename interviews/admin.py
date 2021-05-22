@@ -10,5 +10,5 @@ class AdvocacyTopicAdmin(admin.ModelAdmin):
 
 @admin.register(itw.Interview)
 class InterviewAdmin(admin.ModelAdmin):
-    pass
+    fields = ['date_planned', 'date_effective', 'official', 'volunteer', 'topics', 'status', 'goal']
 

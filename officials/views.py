@@ -13,13 +13,13 @@ def official_pages(request):
 
 @login_required
 @permission_required("officials.view_official", login_url='login/')
-def mandate_change(request):
-    return render(request, "mandates/mandate_change.html")
+def mandate_add(request):
+    return render(request, "mandates/mandate_add.html")
 
-class OfficialList(ListView):
-    model = models.Official
-    queryset = models.Official.objects.order_by("last_name")
-    template_name = "officials/official_list.html"
-    paginate_by = 10
-
+class SenatorMandateCreateView(UserAccessMixin, CreateView):
+    permission_required = "interviews.add_senatormandate"
+    model = models.SenatorMandate
+    fields = ['department', 'start_year']
+    template_name = "mandates/senator_mandate_form.html"
+    success_url = reverse_lazy("officials:mandate_add")
 

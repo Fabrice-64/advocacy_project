@@ -6,6 +6,7 @@ app_name = "officials"
 
 urlpatterns = [
     path('pages/', views.official_pages, name="official_pages"),
-    path('mandate/change/', views.mandate_change, name="mandate_change"),
-    path('official/list/', views.official_pages, name="official_list")
+    path('mandate/add/', views.mandate_add, name="mandate_add"),
+    path('official/list/', views.official_pages, name="official_list"),
+    path('mandates/add/senator/', views.SenatorMandateCreateView.as_view(), name="add_senator_mandate")
 ]

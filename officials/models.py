@@ -3,6 +3,10 @@ from django.db import models
 from accounts.models import Volunteer
 import communities.models as comms
 # Create your models here.
+
+YEAR_CHOICE = [(f"{year}", f"{year}") for year in range(1975, 2030)]
+
+
 class Official(models.Model):
     class InfluenceLevel(models.TextChoices):
             INFLUENCE_0 = "0-INF", "Aucune influence"
@@ -60,7 +64,9 @@ class MandateInterCom(models.Model):
     verbose_name="Mandat Intercommunal"
     intercom = models.ForeignKey(comms.Intercom, 
             on_delete=models.CASCADE)
-    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    start_year = models.CharField(verbose_name="Année de Début de Mandat",
+        max_length=4,
+        choices=YEAR_CHOICE)
     function = models.CharField(max_length=6,
                             blank=False,
                             null=False,
@@ -69,7 +75,7 @@ class MandateInterCom(models.Model):
                             verbose_name="Fonction Occupée")
     
     def __str__(self):
-            return self.function + " " + self.intercom.name + " " + str(self.start_date.year)
+            return self.function + " " + self.intercom.name + " " + str(self.start_year)
 
 
 class MandateCity(models.Model):
@@ -81,7 +87,9 @@ class MandateCity(models.Model):
     verbose_name="Mandat Municipal"
     city = models.ForeignKey(comms.City, 
             on_delete=models.CASCADE)
-    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    start_year = models.CharField(verbose_name="Année de Début de Mandat",
+        max_length=4,
+        choices=YEAR_CHOICE)
     function = models.CharField(max_length=7,
                             blank=False,
                             null=False,
@@ -90,7 +98,7 @@ class MandateCity(models.Model):
                             verbose_name="Fonction Occupée")
     
     def __str__(self):
-            return self.function + " " + self.city.name + " " + str(self.start_date.year)
+            return self.function + " " + self.city.name + " " + str(self.start_year)
 
 
 class MandateDepartment(models.Model):
@@ -102,7 +110,9 @@ class MandateDepartment(models.Model):
     verbose_name="Mandat Conseil Départemental"
     department = models.ForeignKey(comms.Department, 
             on_delete=models.CASCADE)
-    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    start_year = models.CharField(verbose_name="Année de Début de Mandat",
+        max_length=4,
+        choices=YEAR_CHOICE)
     function = models.CharField(max_length=14,
                             blank=False,
                             null=False,
@@ -110,7 +120,7 @@ class MandateDepartment(models.Model):
                             choices=MandateLevel.choices,
                             verbose_name="Fonction Occupée")
     def __str__(self):
-            return self.function + " " + self.department.name + " " + str(self.start_date.year)
+            return self.function + " " + self.department.name + " " + str(self.start_year)
 
 
 class MandateRegion(models.Model):
@@ -122,7 +132,9 @@ class MandateRegion(models.Model):
     verbose_name="Mandat Conseil Régional"
     region = models.ForeignKey(comms.Region, 
             on_delete=models.CASCADE)
-    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    start_year = models.CharField(verbose_name="Année de Début de Mandat",
+        max_length=4,
+        choices=YEAR_CHOICE)
     function = models.CharField(max_length=6,
                             blank=False,
                             null=False,
@@ -131,20 +143,28 @@ class MandateRegion(models.Model):
                             verbose_name="Fonction Occupée")
 
     def __str__(self):
-            return self.function + " " + self.region.name + " " + str(self.start_date.year)
+            return self.function + " " + self.region.name + " " + str(self.start_year)
 
 class MPMandate(models.Model):
     department = models.ForeignKey(comms.Department, 
             on_delete=models.CASCADE)
-    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+    start_year = models.CharField(verbose_name="Année de Début de Mandat",
+        max_length=4,
+        choices=YEAR_CHOICE)
 
     def __str__(self):
-            return self.department.name + " " + str(self.start_date.year)
+            return self.department.name + " " + str(self.start_year)
 
 class SenatorMandate(models.Model):
     department = models.ForeignKey(comms.Department, 
-            on_delete=models.CASCADE)
-    start_date = models.DateField(verbose_name="Date de Début de Mandat")
+            verbose_name="Département",
+            on_delete=models.CASCADE,
+            related_name="senator_mandate")
+    start_year = models.CharField(verbose_name="Année de Début de Mandat",
+        max_length=4,
+        choices=YEAR_CHOICE)
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['department', 'start_year'], name='unique_mandate_department')]
 
     def __str__(self):
-            return self.department.name + " " + str(self.start_date.year)
+            return self.department.name + " " + str(self.start_year)
