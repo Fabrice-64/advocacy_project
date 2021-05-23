@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Créer un Mandat Communal</h1>
+    <form method="post" id="city_mandate" data-cities-url="{% url 'communities:ajax_load_cities' %}" data-intercoms-url="{% url 'communities:ajax_load_intercoms' %}" novalidate>
+        {% csrf_token %}
+        <table>
+        {{ form.as_table}}
+        </table>
+        <button type="submit">Créer</button>
+    </form>
+
+    <h4>La Commune que vous recherchez n'existe pas ? </h4>
+        <form action="{% url 'communities:city_create' %}" target="_blank">
+            <button type="submit">Créer une Commune</button>
+        </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_department").change(function () {
+      var url = $("#city_mandate").attr("data-cities-url"); 
+      var departmentId = $(this).val();
+      $.ajax({                       // initialize an AJAX request
+        url: url,  
+        data: {
+          'department': departmentId
+        },
+        success: function (data) { 
+          $("#id_city").html(data);
+        }
+      });
+    });
+  </script>
+
+{% endblock %}

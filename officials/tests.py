@@ -125,3 +125,44 @@ class DepartmentMandateTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Départemental")
+
+
+class IntercomMandateTest(TestCase):
+    
+    def setUp(self):
+        self.url = reverse_lazy('officials:add_intercom_mandate')
+        self.response = self.client.get(self.url)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_add_intercom_mandate_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/officials/mandates/add/intercom/')
+
+    def test_add_department_mandate_authorized(self):
+        perm = Permission.objects.get(codename="add_mandateintercom")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Intercommunal")
+
+class CityMandateTest(TestCase):
+    
+    def setUp(self):
+        self.url = reverse_lazy('officials:add_city_mandate')
+        self.response = self.client.get(self.url)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_add_intercom_mandate_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/officials/mandates/add/city/')
+
+    def test_add_department_mandate_authorized(self):
+        perm = Permission.objects.get(codename="add_mandatecity")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Communal")

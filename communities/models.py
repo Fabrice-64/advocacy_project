@@ -43,13 +43,17 @@ class Intercom(models.Model):
 class City(models.Model):
     name = models.CharField(max_length=240,
                             verbose_name="Ville")
-    region = models.ForeignKey(Region, on_delete=models.CASCADE)
+    region = models.ForeignKey(
+            Region, on_delete=models.CASCADE,
+            verbose_name="Région")
     department = models.ForeignKey(Department,
                                 on_delete=models.CASCADE,
-                                verbose_name="Département")
+                                verbose_name="Département",
+                                related_name="department_city")
     intercom = models.ForeignKey(Intercom,
                         on_delete=models.CASCADE,
-                        verbose_name="Intercommunalité")
+                        verbose_name="Intercommunalité",
+                        related_name="intercom_city")
     class Meta:
         ordering = ["name"]
 

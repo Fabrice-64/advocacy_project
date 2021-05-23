@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Créer un Mandat Intercommunal</h1>
+    <form method="post" id="intercom_mandate" data-intercoms-url="{% url 'communities:ajax_load_intercoms' %}" data-intercoms-url="{% url 'communities:ajax_load_intercoms' %}" novalidate>
+        {% csrf_token %}
+        <table>
+        {{ form.as_table}}
+        </table>
+        <button type="submit">Créer</button>
+    </form>
+
+    <h4>L'Intercommunalité que vous recherchez n'existe pas ? </h4>
+        <form action="{% url 'communities:intercom_create' %}" target="_blank">
+            <button type="submit">Créer une Intercommunalité</button>
+        </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_department").change(function () {
+      var url = $("#intercom_mandate").attr("data-intercoms-url"); 
+      var departmentId = $(this).val();
+      $.ajax({                       // initialize an AJAX request
+        url: url,  
+        data: {
+          'department': departmentId
+        },
+        success: function (data) { 
+          $("#id_intercom").html(data);
+        }
+      });
+    });
+  </script>
+
+{% endblock %}
+

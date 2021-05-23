@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 import officials.models as models
+import officials.forms as forms
 from accounts.user_access import UserAccessMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import login_required, permission_required
@@ -42,4 +43,19 @@ class DepartmentMandateCreateView(UserAccessMixin, CreateView):
     model = models.MandateDepartment
     fields = ['department', 'start_year', 'function']
     template_name = "mandates/department_mandate_form.html"
+    success_url = reverse_lazy("officials:mandate_add")
+
+
+class IntercomMandateCreateView(UserAccessMixin, CreateView):
+    permission_required = "officials.add_mandateintercom"
+    model = models.MandateInterCom
+    form_class = forms.MandateInterComForm
+    template_name="mandates/intercom_mandate_form.html"
+    success_url = reverse_lazy("officials:mandate_add")
+
+class CityMandateCreateView(UserAccessMixin, CreateView):
+    permission_required = "officials.add_mandatecity"
+    model = models.MandateCity
+    form_class = forms.MandateCityForm
+    template_name="mandates/city_mandate_form.html"
     success_url = reverse_lazy("officials:mandate_add")

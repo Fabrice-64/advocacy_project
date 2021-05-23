@@ -5,7 +5,7 @@ from django.urls import reverse, reverse_lazy
 from . import views as views
 from accounts.models import CustomUser
 from teams.models import Team
-from .ajax_functions import retrieve_departments_by_region, retrieve_intercoms_by_department
+from .ajax_functions import retrieve_departments_by_region, retrieve_intercoms_by_department, retrieve_city_by_department
 
 
 class CommunityTypesTest(TestCase):
@@ -46,6 +46,20 @@ class LoadIntercomViewTest(TestCase):
     def test_load_intercom_view(self):
         self.assertEqual(self.response.status_code, 200),
         self.assertTemplateUsed(self.response, "communities/intercom_dropdown_list.html")
+
+class LoadCityViewTest(TestCase):
+    """
+        Test AJAX Intercom view
+    """
+    fixtures = ['communities.json']
+
+    def setUp(self):
+        url = reverse_lazy('communities:ajax_load_cities')
+        self.response = self.client.get(url)
+    
+    def test_load_intercom_view(self):
+        self.assertEqual(self.response.status_code, 200),
+        self.assertTemplateUsed(self.response, "communities/city_dropdown_list.html")
 
 
 class RegionListViewTest(TestCase):
@@ -223,9 +237,14 @@ class AjaxFunctionTest:
         self.assertContains(result, "Bas-Rhin")
 
     def test_retrieve_intercoms_by_department(self):
-        data = {'deparment' : "3"}
+        data = {'department' : "3"}
         result = retrieve_intercoms_by_department(data)
         self.assertIsNotNone(result)
         self.assertContains(result, "Eurométropole")
 
+    def test_retrieve_city_by_department(self):
+        data = {'department' : "3"}
+        result = retrieve_city_by_department(data)
+        self.assertIsNotNone(result)
+        self.assertContains(result, "Bischwiller")
 

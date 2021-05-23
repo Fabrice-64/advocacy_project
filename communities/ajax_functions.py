@@ -1,4 +1,4 @@
-from communities.models import Department, Intercom
+from communities.models import Department, Intercom, City
 
 def retrieve_departments_by_region(data):
     region_id = int(data.get('region'))
@@ -7,3 +7,7 @@ def retrieve_departments_by_region(data):
 def retrieve_intercoms_by_department(data):
     department_id = int(data.get('department'))
     return Intercom.objects.filter(department_id=department_id).order_by('name')
+
+def retrieve_city_by_department(data):
+    department_id = int(data.get('department'))
+    return City.objects.filter(department_id=department_id).order_by('name')

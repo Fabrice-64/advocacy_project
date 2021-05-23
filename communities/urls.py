@@ -16,4 +16,5 @@ urlpatterns = [
     path("city/create/", views.CityCreateView.as_view(), name="city_create"),
     path('ajax/load_departments/', views.load_department, name="ajax_load_departments"),
     path("ajax/load_intercoms/", views.load_intercom, name="ajax_load_intercoms"),
+    path("ajax/load_cities/", views.load_city, name="ajax_load_cities"),
 ]

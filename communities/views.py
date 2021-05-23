@@ -19,6 +19,12 @@ def load_intercom(request):
     return render(request, 'communities/intercom_dropdown_list.html',
                     {'intercoms' : intercoms})
 
+def load_city(request):
+    department_id = request.GET.get('department')
+    cities = City.objects.filter(department_id=department_id).order_by('name')
+    return render(request, 'communities/city_dropdown_list.html',
+                    {'cities' : cities})
+
 def community_types(request):
     return render(request, "communities/communities.html")
 

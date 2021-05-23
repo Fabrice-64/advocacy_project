@@ -63,7 +63,13 @@ class MandateInterCom(models.Model):
             UNK = "UNK", "Non Renseigné"
     verbose_name="Mandat Intercommunal"
     intercom = models.ForeignKey(comms.Intercom, 
-            on_delete=models.CASCADE)
+            on_delete=models.CASCADE,
+            verbose_name="Intercommunalité",
+            null=True, blank=True)
+    department = models.ForeignKey(comms.Department,
+            on_delete=models.CASCADE,
+            verbose_name="Département",
+            null=True, blank=True)
     start_year = models.CharField(verbose_name="Année de Début de Mandat",
         max_length=4,
         choices=YEAR_CHOICE)
@@ -86,7 +92,17 @@ class MandateCity(models.Model):
             UNK = "UNK", "Non Renseigné"
     verbose_name="Mandat Municipal"
     city = models.ForeignKey(comms.City, 
-            on_delete=models.CASCADE)
+            on_delete=models.CASCADE,
+            verbose_name="Commune",
+            null=True, blank=True)
+    intercom = models.ForeignKey(comms.Intercom, 
+            on_delete=models.CASCADE,
+            verbose_name="Intercommunalité",
+            null=True, blank=True)
+    department = models.ForeignKey(comms.Department,
+            on_delete=models.CASCADE,
+            verbose_name="Département",
+            null=True, blank=True)
     start_year = models.CharField(verbose_name="Année de Début de Mandat",
         max_length=4,
         choices=YEAR_CHOICE)
@@ -110,7 +126,8 @@ class MandateDepartment(models.Model):
     verbose_name="Mandat Conseil Départemental"
     department = models.ForeignKey(comms.Department, 
             on_delete=models.CASCADE,
-            verbose_name="Département")
+            verbose_name="Département",
+            null=True, blank=True)
     start_year = models.CharField(verbose_name="Année de Début de Mandat",
         max_length=4,
         choices=YEAR_CHOICE)
@@ -132,7 +149,8 @@ class MandateRegion(models.Model):
             UNK = "UNK", "Non Renseigné"
     verbose_name="Mandat Conseil Régional"
     region = models.ForeignKey(comms.Region, 
-            on_delete=models.CASCADE)
+            on_delete=models.CASCADE,
+            null=True, blank=True)
     start_year = models.CharField(verbose_name="Année de Début de Mandat",
         max_length=4,
         choices=YEAR_CHOICE)
@@ -148,7 +166,8 @@ class MandateRegion(models.Model):
 
 class MPMandate(models.Model):
     department = models.ForeignKey(comms.Department, 
-            on_delete=models.CASCADE)
+            on_delete=models.CASCADE,
+            null=True, blank=True)
     start_year = models.CharField(verbose_name="Année de Début de Mandat",
         max_length=4,
         choices=YEAR_CHOICE)
@@ -160,7 +179,8 @@ class SenatorMandate(models.Model):
     department = models.ForeignKey(comms.Department, 
             verbose_name="Département",
             on_delete=models.CASCADE,
-            related_name="senator_mandate")
+            related_name="senator_mandate",
+            null=True, blank=True)
     start_year = models.CharField(verbose_name="Année de Début de Mandat",
         max_length=4,
         choices=YEAR_CHOICE)
