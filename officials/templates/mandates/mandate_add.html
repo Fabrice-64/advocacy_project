@@ -6,9 +6,9 @@
     <ul>
         <li><a href="" id="city-mandate">Mandat Municipal</a></li>
         <li><a href="" id="intercom-mandate">Mandat Intercommunal</a></li>
-        <li><a href="" id="department-mandate">Mandat Départemental</a></li>
-        <li><a href="" id="region-mandate">Mandat Régional</a></li>
-        <li><a href="" id="mp-mandate">Mandat Parlementaire</a></li>
+        <li><a href="{% url 'officials:add_department_mandate' %}" id="department-mandate">Mandat Départemental</a></li>
+        <li><a href="{% url 'officials:add_region_mandate' %}" id="region-mandate">Mandat Régional</a></li>
+        <li><a href="{% url 'officials:add_mp_mandate' %}" id="mp-mandate">Mandat de Député</a></li>
         <li><a href="{% url 'officials:add_senator_mandate' %}" id="senator-mandate">Mandat Sénatorial</a></li>
     </ul>
 

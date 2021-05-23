@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Ajout de Mandat de Conseiller Départemental</h1></p>
+
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Créer">
+</form>
+
+<h4>Le Département que vous recherchez n'existe pas ? </h4>
+<form action="{% url 'communities:department_create' %}" target="_blank">
+    <button type="submit">Créer un Département</button>
+</form>
+
+{% endblock %}

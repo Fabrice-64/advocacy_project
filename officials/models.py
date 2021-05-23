@@ -109,7 +109,8 @@ class MandateDepartment(models.Model):
             UNK = "UNK", "Non Renseigné"
     verbose_name="Mandat Conseil Départemental"
     department = models.ForeignKey(comms.Department, 
-            on_delete=models.CASCADE)
+            on_delete=models.CASCADE,
+            verbose_name="Département")
     start_year = models.CharField(verbose_name="Année de Début de Mandat",
         max_length=4,
         choices=YEAR_CHOICE)

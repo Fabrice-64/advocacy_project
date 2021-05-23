@@ -17,9 +17,29 @@ def mandate_add(request):
     return render(request, "mandates/mandate_add.html")
 
 class SenatorMandateCreateView(UserAccessMixin, CreateView):
-    permission_required = "interviews.add_senatormandate"
+    permission_required = "officials.add_senatormandate"
     model = models.SenatorMandate
     fields = ['department', 'start_year']
     template_name = "mandates/senator_mandate_form.html"
     success_url = reverse_lazy("officials:mandate_add")
 
+class MPMandateCreateView(UserAccessMixin, CreateView):
+    permission_required = "officials.add_mpmandate"
+    model = models.MPMandate
+    fields = ['department', 'start_year']
+    template_name = "mandates/mp_mandate_form.html"
+    success_url = reverse_lazy("officials:mandate_add")
+
+class RegionMandateCreateView(UserAccessMixin, CreateView):
+    permission_required = "officials.add_mandateregion"
+    model = models.MandateRegion
+    fields = ['region', 'start_year', 'function']
+    template_name = "mandates/region_mandate_form.html"
+    success_url = reverse_lazy("officials:mandate_add")
+
+class DepartmentMandateCreateView(UserAccessMixin, CreateView):
+    permission_required = "officials.add_mandatedepartment"
+    model = models.MandateDepartment
+    fields = ['department', 'start_year', 'function']
+    template_name = "mandates/department_mandate_form.html"
+    success_url = reverse_lazy("officials:mandate_add")
