@@ -1,7 +1,8 @@
 from django.test import TestCase
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.models import Permission
 from accounts.models import CustomUser
+from officials.models import Official
 
 
 class MandatesChangeTest(TestCase):
@@ -24,17 +25,17 @@ class MandatesChangeTest(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Mandats")
 
-class OfficialPagesTest(TestCase):
+class OfficialDispatchTest(TestCase):
     
     def setUp(self):
-        self.url = reverse_lazy('officials:official_list')
+        self.url = reverse_lazy('officials:official_dispatch')
         self.response = self.client.get(self.url)
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
     
     def test_display_official_list_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
         self.assertRedirects(self.response, 
-            '/accounts/login/?next=/officials/official/list/')
+            '/accounts/login/?next=/officials/dispatch/')
 
     def test_display_official_list_authorized(self):
         perm = Permission.objects.get(codename="view_official")
@@ -166,3 +167,66 @@ class CityMandateTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Communal")
+
+
+class OfficialListTest(TestCase):
+    
+    def setUp(self):
+        self.url = reverse_lazy('officials:official_list')
+        self.response = self.client.get(self.url)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_add_intercom_mandate_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/officials/list/')
+
+    def test_add_department_mandate_authorized(self):
+        perm = Permission.objects.get(codename="view_official")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Liste des Elus")
+
+class OfficialDetailTest(TestCase):
+    
+    def setUp(self):
+        self.official = Official.objects.create(first_name="PrénomElu", last_name="NomElu")
+        self.response = self.client.get(reverse('officials:official_details', args=[self.official.id]))
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_view_official_details_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            f'/accounts/login/?next=/officials/official/details/{self.official.id}/')
+
+    def test_view_official_details_authorized(self):
+        perm = Permission.objects.get(codename="view_official")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(
+            reverse('officials:official_details', args=[self.official.id]))
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Fiche détaillée")
+
+
+class OfficialCreateTest(TestCase):
+    
+    def setUp(self):
+        self.url = reverse_lazy('officials:official_create')
+        self.response = self.client.post(self.url)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_interview_create_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/officials/official/create/')
+
+    def test_interview_create_authorized(self):
+        perm = Permission.objects.get(codename="add_official")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Création d'un nouvel Elu")

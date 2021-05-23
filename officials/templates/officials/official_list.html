@@ -1,1 +1,18 @@
-Liste des Elus
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 id="official-list">Liste des Elus</h1>
+    <ul>
+    {% for official in object_list %}
+        <li>
+        <a href="{{ official.get_absolute_url }}">
+            {{ official.first_name }} {{ official.last_name }}</a></li>
+    {% endfor %}
+    {% if user.status_type == "MANAGER" %}
+       <form action="{% url 'officials:official_create' %}" id="official-create">
+           <button type="submit">Créer un Elu</button>
+       </form>
+       {% endif %}
+    </ul>
+    {% include "pagination_snippet.html" %}
+{% endblock %}

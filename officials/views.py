@@ -9,8 +9,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required
 @permission_required("officials.view_official", login_url='login/')
-def official_pages(request):
-    return render(request, "officials/officials_pages.html")
+def official_dispatch(request):
+    return render(request, "officials/officials_dispatch.html")
 
 @login_required
 @permission_required("officials.view_official", login_url='login/')
@@ -59,3 +59,39 @@ class CityMandateCreateView(UserAccessMixin, CreateView):
     form_class = forms.MandateCityForm
     template_name="mandates/city_mandate_form.html"
     success_url = reverse_lazy("officials:mandate_add")
+
+
+class OfficialListView(UserAccessMixin, ListView):
+    permission_required = "officials.view_official"
+    model = models.Official
+    queryset = models.Official.objects.order_by('last_name', 'first_name')
+    template_name = "officials/official_list.html"
+    paginate_by =10
+
+
+class OfficialDetailView(UserAccessMixin, DetailView):
+    permission_required = "officials.view_official"
+    model = models.Official
+    template_name = "officials/official_details.html"
+
+
+class OfficialCreateView(UserAccessMixin, CreateView):
+    permission_required = "officials.add_official"
+    model = models.Official
+    form_class = forms.OfficialCreationForm
+    template_name = "officials/official_create_form.html"
+    success_url = reverse_lazy("officials:official_dispatch")
+
+"""
+class AdvocacyTopicUpdateView(UserAccessMixin, UpdateView):
+    permission_required = "interviews.change_advocacytopic"
+    model = AdvocacyTopic
+    form_class = AdvocacyTopicForm
+    template_name = "advocacy_topics/advocacy_topic_update_form.html"
+    success_url = reverse_lazy("interviews:advocacy_topic_list")
+
+    def test_func(self):
+        advocacy_topic = self.get_object()
+        if self.request.user == advocacy_topic.created_by or self.request.user.status_type == "MANAGER":
+            return True
+"""

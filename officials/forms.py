@@ -34,3 +34,8 @@ class MandateCityForm(ModelForm):
                 self.fields['city'].queryset = retrieve_city_by_department(self.data)
             except (ValueError, TypeError):
                 pass
+
+class OfficialCreationForm(ModelForm):
+    class Meta:
+        model = models.Official
+        fields = ['first_name', 'last_name']

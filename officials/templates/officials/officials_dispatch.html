@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Gestion des Mandats et des Elus</h1>
+
+    <h2>Créer des Mandats</h2>
+    <ul>
+        <li><a href="{% url 'officials:mandate_add' %}" id="mandate-add">Liste des Mandats</a></li>
+    </ul>
+    <h2>Gestion des Elus</h2>
+    <ul>
+        <li><a href="{% url 'officials:official_list' %}" id="official_list">Liste des Elus</a></li>
+        <li><a href="" id="official_creation">Création d'un Elu</a></li>
+        <li><a href="" id="official_ranking">Positionnement des Elus</a></li>
+
+    </ul>
+
+{% endblock %}

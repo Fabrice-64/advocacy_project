@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.urls import reverse
 from accounts.models import Volunteer
 import communities.models as comms
 # Create your models here.
@@ -52,8 +53,11 @@ class Official(models.Model):
     senator_mandate = models.ManyToManyField('SenatorMandate', blank=True)
 
     def __str__(self):
-            return self.first_name + " " + self.last_name
-
+        return self.first_name + " " + self.last_name
+    
+    def get_absolute_url(self):
+        return reverse('officials:official_details', args=[str(self.id)])
+    
 
 class MandateInterCom(models.Model):
     class MandateLevel(models.TextChoices):
@@ -173,7 +177,7 @@ class MPMandate(models.Model):
         choices=YEAR_CHOICE)
 
     def __str__(self):
-            return self.department.name + " " + str(self.start_year)
+        return self.department.name + " " + str(self.start_year)
 
 class SenatorMandate(models.Model):
     department = models.ForeignKey(comms.Department, 
@@ -188,4 +192,4 @@ class SenatorMandate(models.Model):
         constraints = [models.UniqueConstraint(fields=['department', 'start_year'], name='unique_mandate_department')]
 
     def __str__(self):
-            return self.department.name + " " + str(self.start_year)
+        return self.department.name + " " + str(self.start_year)

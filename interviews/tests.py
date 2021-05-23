@@ -97,7 +97,6 @@ class InterviewCreateViewTest(TestCase):
         self.url = reverse_lazy('interviews:interview_create')
         self.response = self.client.post(self.url)
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
-        #self.client = Client()
 
     def test_interview_create_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
