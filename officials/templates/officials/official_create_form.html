@@ -15,7 +15,7 @@
     <p class="dropdown-list">Département : {{ form.departments }}</p>
     <p class="comment"> Si le mandat n'apparaît pas dans la liste vous pouvez en ajouter un :
     <a href="{% url 'officials:mandate_add' %}" id="mandate_add" target="_blank">Mandats</a></p>
-    <p class="multiple-choice">Mandat Municipal: {{ form.mandate_city }}</p>
+    <p class="multiple-choice" id="mandate-city" data-url="{% url 'officials:ajax_load_mandate_city' %}">Mandat Municipal: {{ form.mandate_city }}</p>
     <p class="multiple-choice">Mandat Intercommunal : {{ form.mandate_intercom }}</p>
     <p class="multiple-choice">Mandat Départemental : {{ form.mandate_department }}</p>
     <p class="multiple-choice">Mandat Régional: {{ form.mandate_region }}</p>
@@ -26,5 +26,38 @@
     <input type="submit" value="Créer">
 </form>
 
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_departments").change(function (){
+        var url = $("#mandate-city").attr("data-url");
+        var departmentId = $(this).val();
+        $.ajax({
+            url: url,
+            data: {
+                'department': departmentId
+            },
+        success: function (data){
+            $("#id_mandate_city").html(data);
+            console.log(data);
+        }
+        });
+    });
+</script>
 {% endblock%}
+
+<script>
+    $("#id_region").change(function () {
+      var url = $("#intercomForm").attr("data-departments-url"); 
+      var regionId = $(this).val();
+      $.ajax({                       // initialize an AJAX request
+        url: url,  
+        data: {
+          'region': regionId
+        },
+        success: function (data) { 
+          
+         
+        }
+      });
+    });
+  </script>

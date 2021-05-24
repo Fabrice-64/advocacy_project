@@ -1,1 +1,67 @@
-Fiche détaillée
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Fiche Détaillée d'un Elu</h1>
+ <div id='official-details'>
+
+    <p>Prénom : {{ official.first_name }}</p>
+    <p>Nom de Famille: {{ official.last_name }}</p>
+    <p>Influence : {{ official.get_influence_level_display }}</p>
+    <p>Proximité des Idées : {{ official.get_propinquity_level_display }}</p>
+    <hr>
+    <h2>Mandats:</h2>
+    <p>Communes: <br>
+        {% for mandate in object.mandate_city.all %}
+            <div>{{ mandate }}<br></div>
+        {% empty %}
+            <div>Sans Objet<br></div>
+        {% endfor %}
+        </div>
+    <p>Intercommunalités: <br>
+        {% for mandate in object.mandate_intercom.all %}
+            <div>{{ mandate }}<br></div>
+        {% empty %}
+             <div>Sans Objet<br></div>
+        {% endfor %}
+    <p>Conseil Départemental: <br>
+        {% for mandate in object.mandate_department.all %}
+            <div>{{ mandate }}<br></div>
+        {% empty %}
+             <div>Sans Objet<br></div>
+        {% endfor %}
+    <p>Conseil Régional: <br>
+        {% for mandate in object.mandate_region.all %}
+            <div>{{ mandate }}<br></div>
+        {% empty %}
+             <div>Sans Objet<br></div>
+        {% endfor %}
+        </div>
+    <p>Député: <br>
+        {% for mandate in object.mp_mandate.all %}
+            <div>{{ mandate }}<br></div>
+        {% empty %}
+             <div>Sans Objet<br></div>
+        {% endfor %}
+        </div>
+    <p>Sénateur: <br>
+        {% for mandate in object.senator_mandate.all %}
+            <div>{{ mandate }}<br></div>
+        {% empty %}
+             <div>Sans Objet<br></div>
+        {% endfor %}
+        </div>
+
+    </div>
+    
+    </div>
+    {% if user.status_type == "MANAGER" %}
+        <form action="">
+            <input type="submit" value="Modifier">
+        </form>
+    {% endif %}
+
+{% endblock %}
+
+ {% for topic in object.topics.all %}
+            <div>{{ topic }}<br></div>
+        {% endfor %}

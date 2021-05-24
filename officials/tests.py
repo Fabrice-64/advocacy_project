@@ -208,7 +208,7 @@ class OfficialDetailTest(TestCase):
         self.response = self.client.get(
             reverse('officials:official_details', args=[self.official.id]))
         self.assertEqual(self.response.status_code, 200)
-        self.assertContains(self.response, "Fiche détaillée")
+        self.assertContains(self.response, "Fiche")
 
 
 class OfficialCreateTest(TestCase):
@@ -218,15 +218,16 @@ class OfficialCreateTest(TestCase):
         self.response = self.client.post(self.url)
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
 
-    def test_interview_create_not_authorized(self):
+    def test_official_create_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
         self.assertRedirects(self.response, 
             '/accounts/login/?next=/officials/official/create/')
 
-    def test_interview_create_authorized(self):
+    def test_official_create_authorized(self):
         perm = Permission.objects.get(codename="add_official")
         self.user1.user_permissions.add(perm)
         self.client.force_login(self.user1)
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
-        self.assertContains(self.response, "Création d'un nouvel Elu")
+        print(self.response.content)
+        self.assertContains(self.response, "Nouvel Elu")

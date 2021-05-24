@@ -9,6 +9,13 @@
             {% else %}
                 {{ interview.date_planned }}
             {% endif %}</p>
+        <p>Date Effective: 
+         {% if not interview.date_effective %}
+                Sans Objet
+            {% else %}
+                {{ interview.date_effective}}
+            {% endif %}</p>
+
         <p>Bénévole : {{ interview.volunteer }}</p>
         <p>Elu : {{ interview.official }}</p>
         <p>Objectif : {{ interview.goal }}</p>

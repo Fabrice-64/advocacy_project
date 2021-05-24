@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 import officials.models as models
 from django.forms import ModelForm
-from communities.models import Department, Intercom
+from communities.models import Department, Intercom, City
 from communities.ajax_functions import retrieve_intercoms_by_department, retrieve_city_by_department
 
 class MandateInterComForm(ModelForm):
@@ -11,7 +11,7 @@ class MandateInterComForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['intercom'].queryset = Department.objects.none()
+        self.fields['intercom'].queryset = Intercom.objects.none()
 
         if 'department' in self.data:
             try:
@@ -27,7 +27,7 @@ class MandateCityForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['city'].queryset = Department.objects.none()
+        self.fields['city'].queryset = City.objects.none()
 
         if 'department' in self.data:
             try:
@@ -37,6 +37,7 @@ class MandateCityForm(ModelForm):
 
 import django.forms as forms
 from communities.models import Department
+from .models import MandateCity
 class OfficialCreationForm(ModelForm):
     departments = forms.ModelChoiceField(queryset=Department.objects.all(), empty_label="--------",
     blank=True, required=False)
@@ -48,4 +49,4 @@ class OfficialCreationForm(ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        #self.fields['departments'].widget.attrs.update({'value': 'Depts'})
+        self.fields['mandate_city'].queryset = MandateCity.objects.none()
