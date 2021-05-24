@@ -29,10 +29,6 @@ class IntercomForm(ModelForm):
                 self.fields['department'].queryset = retrieve_departments_by_region(self.data)
             except (ValueError, TypeError):
                 pass
-        """
-        elif self.instance.pk:
-            self.fields['department'].queryset = self.instance.region.department_set.order_by('name')
-        """   
 
 
 class CityForm(ModelForm):
@@ -50,17 +46,9 @@ class CityForm(ModelForm):
                 self.fields['department'].queryset = retrieve_departments_by_region(self.data)
             except (ValueError, TypeError):
                 pass
-        """
-        elif self.instance.pk:
-            self.fields['department'].queryset = self.instance.region.department_set.order_by('name')
-        """
 
         if 'department' in self.data:
             try:
                 self.fields['intercom'].queryset = retrieve_intercoms_by_department(self.data)
             except (ValueError, TypeError):
                 pass
-        """
-        elif self.instance.pk:
-            self.fields['intercom'].queryset = self.instance.region.department.intercom_set.order_by('name')
-        """

@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 import officials.models as models
-from django.forms import ModelForm, inlineformset_factory
+from django.forms import ModelForm
 from communities.models import Department, Intercom
 from communities.ajax_functions import retrieve_intercoms_by_department, retrieve_city_by_department
 
@@ -35,7 +35,17 @@ class MandateCityForm(ModelForm):
             except (ValueError, TypeError):
                 pass
 
+import django.forms as forms
+from communities.models import Department
 class OfficialCreationForm(ModelForm):
+    departments = forms.ModelChoiceField(queryset=Department.objects.all(), empty_label="--------",
+    blank=True, required=False)
     class Meta:
         model = models.Official
-        fields = ['first_name', 'last_name']
+        fields = ['departments', 'first_name', 'last_name', 'mandate_city', 
+                'mandate_intercom', 'mandate_department', 'mandate_region', 
+                'mp_mandate', 'senator_mandate']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        #self.fields['departments'].widget.attrs.update({'value': 'Depts'})

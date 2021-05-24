@@ -40,17 +40,24 @@ class Official(models.Model):
     propinquity_level = models.CharField(max_length=11,
                             choices=PropinquityLevel.choices,
                             default=PropinquityLevel.PROPINQ_UNK,
-                            verbose_name="proximité")
+                            verbose_name="Proximité")
     attached_volunteer = models.ForeignKey(Volunteer,
                     on_delete=models.DO_NOTHING,
                     verbose_name="Bénévole dédié",
                     blank=True, null=True)
-    mandate_intercom = models.ManyToManyField('MandateIntercom', blank=True)
-    mandate_city = models.ManyToManyField('MandateCity', blank=True)
-    mandate_department = models.ManyToManyField('MandateDepartment', blank=True)
-    mandate_region = models.ManyToManyField('MandateRegion', blank=True)
-    mp_mandate = models.ManyToManyField('MPMandate', blank=True)
-    senator_mandate = models.ManyToManyField('SenatorMandate', blank=True)
+    mandate_intercom = models.ManyToManyField('MandateIntercom', blank=True,
+            verbose_name="Mandats Intercommunaux")
+    mandate_city = models.ManyToManyField('MandateCity', blank=True,
+            verbose_name="Mandats Municipaux")
+    mandate_department = models.ManyToManyField('MandateDepartment', blank=True,
+        verbose_name="Mandat de Conseiller Départemental")
+    mandate_region = models.ManyToManyField('MandateRegion', blank=True,
+        verbose_name="Mandat de Conseiller Régional")
+    mp_mandate = models.ManyToManyField('MPMandate', blank=True,
+        verbose_name="Mandat de Député")
+    senator_mandate = models.ManyToManyField('SenatorMandate', blank=True,
+        verbose_name="Mandat de Sénateur")
+
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -85,7 +92,7 @@ class MandateInterCom(models.Model):
                             verbose_name="Fonction Occupée")
     
     def __str__(self):
-            return self.function + " " + self.intercom.name + " " + str(self.start_year)
+            return self.get_function_display() + " " + self.intercom.name + " " + str(self.start_year)
 
 
 class MandateCity(models.Model):
@@ -118,7 +125,7 @@ class MandateCity(models.Model):
                             verbose_name="Fonction Occupée")
     
     def __str__(self):
-            return self.function + " " + self.city.name + " " + str(self.start_year)
+            return self.get_function_display() + " " + self.city.name + " " + str(self.start_year)
 
 
 class MandateDepartment(models.Model):
@@ -142,7 +149,7 @@ class MandateDepartment(models.Model):
                             choices=MandateLevel.choices,
                             verbose_name="Fonction Occupée")
     def __str__(self):
-            return self.function + " " + self.department.name + " " + str(self.start_year)
+            return self.get_function_display() + " " + self.department.name + " " + str(self.start_year)
 
 
 class MandateRegion(models.Model):
@@ -166,7 +173,7 @@ class MandateRegion(models.Model):
                             verbose_name="Fonction Occupée")
 
     def __str__(self):
-            return self.function + " " + self.region.name + " " + str(self.start_year)
+            return self.get_function_display() + " " + self.region.name + " " + str(self.start_year)
 
 class MPMandate(models.Model):
     department = models.ForeignKey(comms.Department, 
