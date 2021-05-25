@@ -81,23 +81,3 @@ class OfficialCreateView(UserAccessMixin, CreateView):
     form_class = forms.OfficialCreationForm
     template_name = "officials/official_create_form.html"
     success_url = reverse_lazy("officials:official_dispatch")
-
-from .models import MandateCity
-def load_mandate_city(request):
-    department_id = request.GET.get('department')
-    mandate_city = MandateCity.objects.filter(department_id=department_id).order_by("department")
-    return render(request, "officials/mandate_city_list.html", {mandate_city: mandate_city})
-
-"""
-class AdvocacyTopicUpdateView(UserAccessMixin, UpdateView):
-    permission_required = "interviews.change_advocacytopic"
-    model = AdvocacyTopic
-    form_class = AdvocacyTopicForm
-    template_name = "advocacy_topics/advocacy_topic_update_form.html"
-    success_url = reverse_lazy("interviews:advocacy_topic_list")
-
-    def test_func(self):
-        advocacy_topic = self.get_object()
-        if self.request.user == advocacy_topic.created_by or self.request.user.status_type == "MANAGER":
-            return True
-"""

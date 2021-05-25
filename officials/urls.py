@@ -16,5 +16,4 @@ urlpatterns = [
     path('list/', views.OfficialListView.as_view(), name="official_list"),
     path('official/details/<uuid:pk>/', views.OfficialDetailView.as_view(), name="official_details"),
     path('official/create/', views.OfficialCreateView.as_view(), name="official_create"),
-    path('ajax/load_mandate_city/', views.load_mandate_city, name="ajax_load_mandate_city"),
 ]

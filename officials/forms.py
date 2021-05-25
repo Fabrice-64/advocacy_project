@@ -35,18 +35,10 @@ class MandateCityForm(ModelForm):
             except (ValueError, TypeError):
                 pass
 
-import django.forms as forms
-from communities.models import Department
-from .models import MandateCity
 class OfficialCreationForm(ModelForm):
-    departments = forms.ModelChoiceField(queryset=Department.objects.all(), empty_label="--------",
-    blank=True, required=False)
     class Meta:
         model = models.Official
-        fields = ['departments', 'first_name', 'last_name', 'mandate_city', 
+        fields = ['first_name', 'last_name', 'mandate_city', 
                 'mandate_intercom', 'mandate_department', 'mandate_region', 
                 'mp_mandate', 'senator_mandate']
     
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['mandate_city'].queryset = MandateCity.objects.none()
