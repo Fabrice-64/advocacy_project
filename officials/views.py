@@ -68,11 +68,19 @@ class OfficialListView(UserAccessMixin, ListView):
     template_name = "officials/official_list.html"
     paginate_by =10
 
-
+from interviews.models import Interview
+from officials.models import Official
 class OfficialDetailView(UserAccessMixin, DetailView):
     permission_required = "officials.view_official"
     model = models.Official
     template_name = "officials/official_details.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        self.official = self.get_object()
+        context["interviews"] = Interview.objects.filter(official=self.official.id).order_by("date_planned")
+        return context
+    
 
 
 class OfficialCreateView(UserAccessMixin, CreateView):

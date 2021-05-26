@@ -59,9 +59,16 @@
             <input type="submit" value="Modifier">
         </form>
     {% endif %}
+    <hr>
+{% for interview in interviews %}
+    <div class="item-details">
+    <h5>Statut : {{ interview.get_status_display}} </h5>Prévue: {{ interview.date_planned| default_if_none:"Non Renseigné"}} | Réelle: {{interview.date_effective | default_if_none:"Non Renseigné"}}</p>
+    <p>Résultat: {{ interview.outcome|default_if_none:"Non Renseigné" }}</p>
+    <hr>
+{% empty %}
+    <p> Pas d'entretien disponible</p>
+    </div>
+{% endfor %}
+
 
 {% endblock %}
-
- {% for topic in object.topics.all %}
-            <div>{{ topic }}<br></div>
-        {% endfor %}
