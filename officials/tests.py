@@ -229,5 +229,4 @@ class OfficialCreateTest(TestCase):
         self.client.force_login(self.user1)
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
-        print(self.response.content)
         self.assertContains(self.response, "Nouvel Elu")
