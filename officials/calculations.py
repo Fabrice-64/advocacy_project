@@ -9,6 +9,7 @@ INFLUENCE_INDEX = {
     "senator_idx": 5
 }
 
+
 def city_influence_calculation(official_id):
     nb_mandates = model.MandateCity.objects.filter(official__id=official_id).count()
     return nb_mandates * INFLUENCE_INDEX.get("city_idx")
@@ -44,29 +45,38 @@ def influence_calculation(official_id):
     region_influence = region_influence_calculation(official_id)
     mp_influence = mp_influence_calculation(official_id)
     senator_influence = senator_influence_calculation(official_id)
-
+    # Influence is the sum of all recorded electoral mandates.
     total_influence = city_influence + intercom_influence + department_influence \
         + department_influence + region_influence + mp_influence + senator_influence
     return total_influence
 
-def propinquity_calculation(id):
+def interview_propinquity(id): 
     interviews = Interview.objects.filter(official__id=id)
-    propinquity = 0
+    itw_propinquity = 0
     for interview in interviews:
         if len(interviews) > 0:
             if interview.assessment == "TBD":
-                propinquity += 0
+                itw_propinquity += 0
             elif interview.assessment == "GOAL_0_PC":
-                propinquity -= 5
+                itw_propinquity -= -5
             elif interview.assessment == "GOAL_25_PC":
-                propinquity += 2
+                itw_propinquity += 2
             elif interview.assessment == "GOAL_50_PC":
-                propinquity += 5
+                itw_propinquity += 5
+            elif interview.assessment == "GOAL_75_PC":
+                itw_propinquity += 7
             else:
-                propinquity += 10
+                itw_propinquity += 10
     if len(interviews) > 0:
-        propinquity = propinquity/ len(interviews)
-    return propinquity
+        itw_propinquity = itw_propinquity / len(interviews)
+    return itw_propinquity
+
+def propinquity_calculation(id):
+    """
+        In V1 only interviews are taken into account
+    """
+    itw_propinquity = interview_propinquity(id)
+    return itw_propinquity
 
 def importance_summary(id, first_name, last_name):
     influence = influence_calculation(id)
