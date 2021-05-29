@@ -109,7 +109,8 @@ class Interview(models.Model):
                                 blank=True,
                                 null=False,
                                 verbose_name="Commentaires")
-    volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE, verbose_name="Bénévole")
+    volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE, verbose_name="Bénévole",
+        null=True, blank=True)
     official = models.ForeignKey(Official, on_delete=models.CASCADE, verbose_name="Elu")
     topics = models.ManyToManyField(AdvocacyTopic, verbose_name="Thèmes", blank=True)
 

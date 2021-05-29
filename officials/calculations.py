@@ -57,13 +57,13 @@ def interview_propinquity(id):
         if len(interviews) > 0:
             if interview.assessment == "TBD":
                 itw_propinquity += 0
-            elif interview.assessment == "GOAL_0_PC":
+            elif interview.assessment == "0PC":
                 itw_propinquity -= -5
-            elif interview.assessment == "GOAL_25_PC":
+            elif interview.assessment == "25PC":
                 itw_propinquity += 2
-            elif interview.assessment == "GOAL_50_PC":
+            elif interview.assessment == "50PC":
                 itw_propinquity += 5
-            elif interview.assessment == "GOAL_75_PC":
+            elif interview.assessment == "75PC":
                 itw_propinquity += 7
             else:
                 itw_propinquity += 10
