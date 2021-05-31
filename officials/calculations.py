@@ -36,7 +36,7 @@ def senator_influence_calculation(official_id):
 
 from collections import namedtuple
 from interviews.models import Interview
-OfficialRanking = namedtuple("OfficialRanking", "first_name last_name id propinquity influence")
+OfficialRanking = namedtuple("OfficialRanking", "first_name last_name id propinquity  qty_interviews influence")
 
 def influence_calculation(official_id):
     city_influence = city_influence_calculation(official_id)
@@ -69,21 +69,21 @@ def interview_propinquity(id):
                 itw_propinquity += 10
     if len(interviews) > 0:
         itw_propinquity = itw_propinquity / len(interviews)
-    return itw_propinquity
+    return itw_propinquity, len(interviews)
 
 def propinquity_calculation(id):
     """
         In V1 only interviews are taken into account
     """
-    itw_propinquity = interview_propinquity(id)
-    return itw_propinquity
+    itw_propinquity, qty_interviews = interview_propinquity(id)
+    return itw_propinquity, qty_interviews
 
 def importance_summary(id, first_name, last_name):
     influence = influence_calculation(id)
-    propinquity= propinquity_calculation(id)
+    propinquity, qty_interviews = propinquity_calculation(id)
 
     return OfficialRanking(first_name, last_name, 
-        id, propinquity, influence)
+        id, propinquity, qty_interviews, influence)
 
 def calculate_ranking():
     officials_list = list()

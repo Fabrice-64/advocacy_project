@@ -50,12 +50,14 @@ class ElectoralMandatesTest(TestCase):
         self.assertEqual(influence_calc, 12)
 
     def test_interview_propinquity(self):
-        propinquity1 = oc.interview_propinquity(self.official1.id)
+        propinquity1, qty_interviews = oc.interview_propinquity(self.official1.id)
         self.assertEqual(propinquity1, 6)
+        self.assertEqual(qty_interviews, 2)
 
     def test_no_interview_propinquity(self):
-        propinquity = oc.interview_propinquity(self.official2.id)
+        propinquity, qty_interviews = oc.interview_propinquity(self.official2.id)
         self.assertEqual(propinquity, 0)
+        self.assertEqual(qty_interviews, 0)
 
     def test_importance_summary(self):
         result = oc.importance_summary(self.official1.id, self.official1.first_name, self.official1.last_name)
