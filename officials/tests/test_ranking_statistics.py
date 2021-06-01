@@ -31,3 +31,7 @@ class RankingStatisticsTest(TestCase):
     def test_get_officials_above_P50_above_I50(self):
         officials_sample = self.officials_statistics.get_officials_above_P50_above_I50()
         self.assertEqual(len(officials_sample), 4)
+
+    def test_get_influence_targets(self):
+        officials_sample = self.officials_statistics.get_influence_targets()
+        self.assertIsNotNone(officials_sample)
