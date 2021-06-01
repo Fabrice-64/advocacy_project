@@ -13,28 +13,28 @@ class GetStatsFromOfficials:
         return officials_quantiles.to_dict('dict')
 
     def get_officials_below_P50_I50(self):
-        return self.officials.loc[(
+        return [value for key, value in self.officials.loc[(
                 self.officials['propinquity'] < self.officials['propinquity'].quantile(0.50)) & (
-                self.officials['influence'] <self.officials['influence'].quantile(0.50))].to_dict('index')
-    
+                self.officials['influence'] <self.officials['influence'].quantile(0.50))].to_dict('index').items()]
+        
     def get_officials_below_P50_above_I50(self):
-        return self.officials.loc[(
+        return [value for key, value in self.officials.loc[(
                 self.officials['propinquity'] < self.officials['propinquity'].quantile(0.50)) & (
-                self.officials['influence'] >= self.officials['influence'].quantile(0.50))].to_dict('index')
+                self.officials['influence'] >= self.officials['influence'].quantile(0.50))].to_dict('index').items()]
     
     def get_officials_above_P50_below_I50(self):
-        return self.officials.loc[(
+        return [value for key, value in self.officials.loc[(
                 self.officials['propinquity'] >= self.officials['propinquity'].quantile(0.50)) & (
-                self.officials['influence'] < self.officials['influence'].quantile(0.50))].to_dict('index')
+                self.officials['influence'] < self.officials['influence'].quantile(0.50))].to_dict('index').items()]
 
     def get_officials_above_P50_above_I50(self):
-        return self.officials.loc[(
+        return [value for key, value in self.officials.loc[(
                 self.officials['propinquity'] >= self.officials['propinquity'].quantile(0.50)) & (
-                self.officials['influence'] >= self.officials['influence'].quantile(0.50))].to_dict('index')
+                self.officials['influence'] >= self.officials['influence'].quantile(0.50))].to_dict('index').items()]
 
     def get_influence_targets(self):
-        return self.officials.loc[(
+        return [value for key, value in self.officials.loc[(
                 self.officials['propinquity'] >= self.officials['propinquity'].quantile(0.40)) & (
                     self.officials['propinquity'] < self.officials['propinquity'].quantile(0.80)) & (
                     self.officials['influence'] >= self.officials['influence'].quantile(0.40))
-                    ].to_dict('index')
+                    ].to_dict('index').items()]
