@@ -82,10 +82,16 @@ class OfficialDetailView(UserAccessMixin, DetailView):
         return context
     
 
-
 class OfficialCreateView(UserAccessMixin, CreateView):
     permission_required = "officials.add_official"
     model = models.Official
     form_class = forms.OfficialCreationForm
     template_name = "officials/official_create_form.html"
     success_url = reverse_lazy("officials:official_dispatch")
+
+
+@login_required
+@permission_required("officials.view_official", login_url='login/')
+def official_ranking(request):
+    context = None
+    return render(request, "officials/officials_ranking.html", context)

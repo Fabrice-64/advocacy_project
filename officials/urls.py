@@ -16,4 +16,5 @@ urlpatterns = [
     path('list/', views.OfficialListView.as_view(), name="official_list"),
     path('official/details/<uuid:pk>/', views.OfficialDetailView.as_view(), name="official_details"),
     path('official/create/', views.OfficialCreateView.as_view(), name="official_create"),
+    path('officials_ranking/', views.official_ranking, name="officials_ranking"),
 ]

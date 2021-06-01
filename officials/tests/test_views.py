@@ -230,3 +230,24 @@ class OfficialCreateTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Nouvel Elu")
+
+
+class OfficialRankingTest(TestCase):
+    
+    def setUp(self):
+        self.url = reverse_lazy('officials:officials_ranking')
+        self.response = self.client.post(self.url)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_official_create_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/officials/officials_ranking/')
+
+    def test_official_create_authorized(self):
+        perm = Permission.objects.get(codename="view_official")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Catégories d'Elus")
