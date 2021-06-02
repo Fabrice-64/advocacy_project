@@ -5,10 +5,10 @@
   "fields": {
     "first_name": "Germain",
     "last_name": "EluParlement",
-    "influence_level": "3-INF",
-    "propinquity_level": "UNK-PROPINQ",
     "attached_volunteer": "6810108d-a865-4d46-95fe-43d6136d5b08",
-    "mandate_intercom": [],
+    "mandate_intercom": [
+        1
+    ],
     "mandate_city": [],
     "mandate_department": [],
     "mandate_region": [],
@@ -24,8 +24,6 @@
   "fields": {
     "first_name": "Pierre",
     "last_name": "Durand",
-    "influence_level": "2-INF",
-    "propinquity_level": "UNK-PROPINQ",
     "attached_volunteer": "6810108d-a865-4d46-95fe-43d6136d5b08",
     "mandate_intercom": [
       1

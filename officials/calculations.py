@@ -1,4 +1,6 @@
 from officials import models as model
+from collections import namedtuple
+from interviews.models import Interview
 
 INFLUENCE_INDEX = {
     "city_idx" : 1,
@@ -9,6 +11,7 @@ INFLUENCE_INDEX = {
     "senator_idx": 5
 }
 
+OfficialRanking = namedtuple("OfficialRanking", "first_name last_name id propinquity  qty_interviews influence")
 
 def city_influence_calculation(official_id):
     nb_mandates = model.MandateCity.objects.filter(official__id=official_id).count()
@@ -33,10 +36,6 @@ def mp_influence_calculation(official_id):
 def senator_influence_calculation(official_id):
     nb_mandates = model.SenatorMandate.objects.filter(official__id=official_id).count()
     return nb_mandates * INFLUENCE_INDEX.get("senator_idx")
-
-from collections import namedtuple
-from interviews.models import Interview
-OfficialRanking = namedtuple("OfficialRanking", "first_name last_name id propinquity  qty_interviews influence")
 
 def influence_calculation(official_id):
     city_influence = city_influence_calculation(official_id)
@@ -85,11 +84,12 @@ def importance_summary(id, first_name, last_name):
     return OfficialRanking(first_name, last_name, 
         id, propinquity, qty_interviews, influence)
 
-def calculate_ranking():
+def calculate_ranking(officials):
     officials_list = list()
-    officials = model.Official.objects.all()
     for official in officials:
-        official_ranking = importance_summary(official.id,
-        official.first_name, official.last_name)
+        official_ranking = importance_summary(
+                            official.id,
+                            official.first_name, 
+                            official.last_name)
         officials_list.append(official_ranking)
     return officials_list

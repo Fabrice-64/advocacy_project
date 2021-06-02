@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-import officials.models as models
-import officials.forms as forms
-from accounts.user_access import UserAccessMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import login_required, permission_required
+import officials.models as models
+import officials.forms as forms
+from officials.calculations import calculate_ranking
+from officials.ranking_statistics import GetStatsFromOfficials
+from accounts.user_access import UserAccessMixin
+from interviews.models import Interview
+
 
 @login_required
 @permission_required("officials.view_official", login_url='login/')
@@ -68,8 +72,7 @@ class OfficialListView(UserAccessMixin, ListView):
     template_name = "officials/official_list.html"
     paginate_by =10
 
-from interviews.models import Interview
-from officials.models import Official
+
 class OfficialDetailView(UserAccessMixin, DetailView):
     permission_required = "officials.view_official"
     model = models.Official
@@ -93,5 +96,12 @@ class OfficialCreateView(UserAccessMixin, CreateView):
 @login_required
 @permission_required("officials.view_official", login_url='login/')
 def official_ranking(request):
-    context = None
+    officials = models.Official.objects.all()
+    officials_ranking = calculate_ranking(officials)
+    officials_categories = GetStatsFromOfficials(officials_ranking)
+    context = dict()
+    context["little_proximity_high_influence"] = officials_categories.get_officials_below_P50_above_I50()
+    context["high_proximity_high_influence"] = officials_categories.get_officials_above_P50_above_I50()
+    context["high_proximity_little_influence"] = officials_categories.get_officials_above_P50_below_I50()
+    context["little_proximity_little_influence"] = officials_categories.get_officials_below_P50_I50()
     return render(request, "officials/officials_ranking.html", context)

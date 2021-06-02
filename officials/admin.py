@@ -5,7 +5,7 @@ import officials.models as off
 @admin.register(off.Official)
 class OfficialAdmin(admin.ModelAdmin):
     model = off.Official
-    list_display = ['first_name', 'last_name', 'influence_level', 'propinquity_level']
+    list_display = ['first_name', 'last_name']
 
 @admin.register(off.MPMandate)
 class MPMandateAdmin(admin.ModelAdmin):

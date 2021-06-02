@@ -16,6 +16,7 @@ class ElectoralMandatesTest(TestCase):
         in order to provide material for the influence calculations.
         """
         setup_sample_database()
+        self.officials = model.Official.objects.all()
         self.official1 = model.Official.objects.get(first_name="official1")
         self.official2 = model.Official.objects.get(first_name="official2")
 
@@ -64,5 +65,5 @@ class ElectoralMandatesTest(TestCase):
         self.assertIn("official1", result)
     
     def test_calculate_ranking(self):
-        result = oc.calculate_ranking()
+        result = oc.calculate_ranking(self.officials)
         self.assertEqual(len(result), 2)

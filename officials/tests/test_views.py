@@ -233,7 +233,7 @@ class OfficialCreateTest(TestCase):
 
 
 class OfficialRankingTest(TestCase):
-    
+    fixtures = ['communities.json', 'users.json', 'teams.json', 'permission.json','groups.json', 'officials.json', 'interviews.json']
     def setUp(self):
         self.url = reverse_lazy('officials:officials_ranking')
         self.response = self.client.post(self.url)
@@ -251,3 +251,9 @@ class OfficialRankingTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Catégories d'Elus")
+"""
+        self.assertEqual(len(self.response.context["influent_and_close_officials"]), 1)
+        self.assertEqual(len(self.response.context["influent_and_far_officials"]), 0)
+        self.assertEqual(len(self.response.context["little_influence_and_close_officials"]), 1)
+        self.assertEqual(len(self.response.context["little_influence_and_far_officials"]), 0)
+"""
