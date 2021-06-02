@@ -239,21 +239,42 @@ class OfficialRankingTest(TestCase):
         self.response = self.client.post(self.url)
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
 
-    def test_official_create_not_authorized(self):
+    def test_official_ranking_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
         self.assertRedirects(self.response, 
             '/accounts/login/?next=/officials/officials_ranking/')
 
-    def test_official_create_authorized(self):
+    def test_official_ranking_authorized(self):
         perm = Permission.objects.get(codename="view_official")
         self.user1.user_permissions.add(perm)
         self.client.force_login(self.user1)
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Catégories d'Elus")
-"""
-        self.assertEqual(len(self.response.context["influent_and_close_officials"]), 1)
-        self.assertEqual(len(self.response.context["influent_and_far_officials"]), 0)
-        self.assertEqual(len(self.response.context["little_influence_and_close_officials"]), 1)
-        self.assertEqual(len(self.response.context["little_influence_and_far_officials"]), 0)
-"""
+        self.assertEqual(len(self.response.context["little_proximity_high_influence"]), 0)
+        self.assertEqual(len(self.response.context["high_proximity_high_influence"]), 1)
+        self.assertEqual(len(self.response.context["high_proximity_little_influence"]), 1)
+        self.assertEqual(len(self.response.context["little_proximity_little_influence"]), 0)
+
+
+class OfficialEngagementTest(TestCase):
+    fixtures = ['communities.json', 'users.json', 'teams.json', 'permission.json','groups.json', 'officials.json', 'interviews.json']
+    def setUp(self):
+        self.url = reverse_lazy('officials:officials_to_engage')
+        self.response = self.client.post(self.url)
+        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+
+    def test_official_target_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(self.response, 
+            '/accounts/login/?next=/officials/officials/engagement/')
+
+    def test_official_target_authorized(self):
+        perm = Permission.objects.get(codename="view_official")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(self.url)
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Elus à Engager")
+        self.assertEqual(len(self.response.context["officials_to_engage"]), 0)
+

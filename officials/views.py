@@ -95,7 +95,7 @@ class OfficialCreateView(UserAccessMixin, CreateView):
 
 @login_required
 @permission_required("officials.view_official", login_url='login/')
-def official_ranking(request):
+def officials_ranking(request):
     officials = models.Official.objects.all()
     officials_ranking = calculate_ranking(officials)
     officials_categories = GetStatsFromOfficials(officials_ranking)
@@ -105,3 +105,14 @@ def official_ranking(request):
     context["high_proximity_little_influence"] = officials_categories.get_officials_above_P50_below_I50()
     context["little_proximity_little_influence"] = officials_categories.get_officials_below_P50_I50()
     return render(request, "officials/officials_ranking.html", context)
+
+
+@login_required
+@permission_required("officials.view_official", login_url='login/')
+def officials_to_engage(request):
+    officials = models.Official.objects.all()
+    officials_ranking = calculate_ranking(officials)
+    officials_categories = GetStatsFromOfficials(officials_ranking)
+    context = dict()
+    context["officials_to_engage"] = officials_categories.get_influence_targets()
+    return render(request, "officials/officials_to_engage.html", context)
