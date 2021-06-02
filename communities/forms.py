@@ -1,3 +1,9 @@
+"""
+    The customized __init__ methods are used for the 
+    implementation of dependant dropdown lists using Ajax.
+    The complex french territorial organization requires filters
+    to access the right administrative level.
+"""
 from django.forms import ModelForm
 from django.shortcuts import render
 import communities.models as comms

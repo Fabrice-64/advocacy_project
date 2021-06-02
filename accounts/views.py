@@ -1,3 +1,14 @@
+"""
+    The accounts module mainly makes use of Django generic views.
+    However, user registration is managed by django-registration-redux.
+    Link to the doc: https://django-registration-redux.readthedocs.io/en/latest/
+
+    Function:
+    change_password: used for the first login of a new user.
+
+    These views are closely linked to the custom settings (cf end of the settings after
+    REGISTRATION_FORM)
+"""
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import Group
@@ -8,7 +19,7 @@ from django.shortcuts import redirect, render
 from django.db.models import Q
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView
-
+# Partial use of django-registration-redux functionalities.
 from registration.backends.default.views import RegistrationView
 from accounts.user_access import UserAccessMixin
 from accounts.models import CustomUser, Volunteer

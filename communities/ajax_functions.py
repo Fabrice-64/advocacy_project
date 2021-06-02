@@ -1,3 +1,8 @@
+"""
+    Those ajax functions are related to communities.forms
+    in order to perform the selection of communities with 
+    dependant dropdown lists.
+"""
 from communities.models import Department, Intercom, City
 
 def retrieve_departments_by_region(data):

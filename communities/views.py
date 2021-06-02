@@ -26,10 +26,15 @@ def load_city(request):
                     {'cities' : cities})
 
 def community_types(request):
+    """ 
+        Solely used for displaying the types of communities
+        the user has access to.
+    """
     return render(request, "communities/communities.html")
 
 
 class RegionsListView(ListView):
+    # pagination snippet is written in base.html.
     paginate_by = 10
     model = Region
 
@@ -43,6 +48,7 @@ class RegionCreateView(UserAccessMixin, CreateView):
 
 
 class DepartmentListView(ListView):
+    # pagination snippet is written in base.html.
     paginate_by = 20
     model = Department
 
@@ -56,6 +62,7 @@ class DepartmentCreateView(UserAccessMixin, CreateView):
 
     
 class IntercomListView(ListView):
+    # pagination snippet is written in base.html.
     paginate_by = 20
     model = Intercom
 
@@ -69,6 +76,7 @@ class IntercomCreateView(UserAccessMixin, CreateView):
 
 
 class CityListView(ListView):
+    # pagination snippet is written in base.html.
     paginate_by = 20
     model = City
 

@@ -138,6 +138,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# Needed to implement the account creation workflow.
 REGISTRATION_FORM = 'accounts.forms.CustomUserCreationForm'
 ACCOUNT_ACTIVATION_DAYS = 1
 ACCOUNT_AUTHENTICATED_REGISTRATION_REDIRECTS = False

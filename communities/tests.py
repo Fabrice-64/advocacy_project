@@ -35,7 +35,7 @@ class LoadDepartmentViewTest(TestCase):
 
 class LoadIntercomViewTest(TestCase):
     """
-        Test AJAX Intercom view
+        Test AJAX Intercom view displaying a dropdown list
     """
     fixtures = ['communities.json']
 
@@ -49,7 +49,7 @@ class LoadIntercomViewTest(TestCase):
 
 class LoadCityViewTest(TestCase):
     """
-        Test AJAX Intercom view
+        Test AJAX City view displaying a dropdown list
     """
     fixtures = ['communities.json']
 
@@ -169,7 +169,6 @@ class IntercomCreateViewTest(TestCase):
         self.client.force_login(self.user1)
         self.response = self.client.post(self.url, {'region': "1"})
         self.assertEqual(self.response.status_code, 200)
-        #self.assertContains(self.response, "Intercommunalité")
 
     def test_ajax_load_department(self):
         self.url = reverse_lazy('communities:ajax_load_departments')

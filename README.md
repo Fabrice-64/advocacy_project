@@ -9,6 +9,11 @@ Along with their support to the people, Charities aim at advocating their cause 
 This project, conceived in the framework of an OpenClassrooms education programm as software developer, intends to provide
 those charities with a convenient tool which helps them to engage officials with the support of Volunteers.
 
+## Security
+Due to the sensitivity of the information handled by this project:
+- No names are displayed in the urls. They are replaced by UUID
+- A non-logged user should have exclusively access to the login page.
+
 ## Limitations
 The current limitations of this project are:
 - A community organization exclusively bound to France continental territory
@@ -43,6 +48,17 @@ assessed.
 V1.1 : beta, with developed graphic interface. To be published.
 V1.0 : beta, fully functionnal. Published on 2. June 2021
 
+## Apps
+The apps implemented in this project are:
+- accounts
+- communities
+- interviews
+- officials
+- pages
+- teams
+`pages` is exclusively used to accomodate the general purpose html files, like `base.html` and `home.html`.  
+It also accomodates the fixtures used for testing the other apps.
+
 ## Tests:
 ### Test Coverage
 This project has been largely develop in TDD mode. 
@@ -64,7 +80,7 @@ code:
 
 ## Database
 ### DB Used
-PostgreSQL is the DB used in this project.
+PostgreSQL is the DB used in this project (cf settings)
 
 ### Initialize the Database
 As Usual, first comes first with the creation of a superuser.
@@ -77,6 +93,7 @@ After Migration, the DB initialization DB should follow this order:
 - Create interviews on case by case basis.
 This project includes a folder with the standard permissions and groups.  
 It is named: `permissions_and_groups`. It can be found at the root of this project.
+
 ## Third party packages
 Beyond Django, following third party packages are used:
 - django-registration-redux, used to manage the account creation and authentication process;
@@ -84,6 +101,14 @@ Beyond Django, following third party packages are used:
 - selenium, to test the User Stories;
 - psycopg2-binary, for Postgresql;  
 Those packages are all referred to in `requirements.txt`.
+
+## Main Sources of Knowledge
+- Django Project official website
+- "Django for Professionals by William S. Vincent" (use of UUID, rapid testing of views)
+- https://simpleisbetterthancomplex.com/ by Vitor Freitas (dependent dropdown lists)
+- "Test Driven Development with Django" by Kevin Harvey
+- "Django 3 by example" by Antonio Melé
+- Very Academy Channel on YouTube :https://www.youtube.com/channel/UC1mxuk7tuQT2D0qTMgKji3w
 
 
 

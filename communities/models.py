@@ -1,6 +1,15 @@
+"""
+    These models are a simplified replica of the French territorial 
+    organization. Communities with specific status are not considered.
+    However the user can tweak the system and consider one or the other
+    as a department or a region.
+    The French territorial hierarchy is organized as such:
+    Country -> Region -> Department -> Intercommunality -> City.
+"""
+
 from django.db import models
 
-# Create your models here.
+
 class Region(models.Model):
     name = models.CharField(verbose_name="Région",
                             max_length=240,

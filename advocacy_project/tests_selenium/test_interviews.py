@@ -1,9 +1,15 @@
 """
-    This is where the Speaking Points are tested.
+    This is where the Interviews are tested.
+    The following User Stories are implemented:
+    Record of support documentation:
+        def test_plaid_7_record_some_support_docs
 
-    To be noticed:
-        By removing the carret at last line, the current html code
-            will be printed on the screen: very convenient for debugging.
+    Ability to access the interviews:
+        def test_plaid_11_access_the_interviews
+
+     To be noticed:
+       For debugging insert print(self.browser.page_source) wherever you want to
+       in order to check where your code stops.
 """
 
 

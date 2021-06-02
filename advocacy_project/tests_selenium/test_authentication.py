@@ -1,10 +1,17 @@
 """
-    This is where the User Stories are tested.
+    The User Stories related to the accounts management are tested here.
+
     Are tested:
+    authentication: 
+        def test_plaid_10_authenticate_on_the_website
+    create user: 
+        def test_plaid_2_create_new_user
+    check permissions implementation:
+        def test_plaid_2_check_permissions
 
     To be noticed:
-        By removing the carret at last line, the current html code
-            will be displayed: very convenient for debugging.
+       For debugging insert print(self.browser.page_source) wherever you want to
+       in order to check where your code stops.
 """
 
 
@@ -80,7 +87,7 @@ class CustomUserTest(LiveServerTestCase):
         password2_input.send_keys('test@1234')
         self.browser.find_element_by_xpath('//input[@type="submit"]')
 
-    def test_plaid_2_check_rights(self):
+    def test_plaid_2_check_permissions(self):
         self.browser.get(os.path.join(self.live_server_url, ''))
         # Sébastien logs in to get access to the admin interface
         self.browser.find_element_by_id("header-connection").click()
