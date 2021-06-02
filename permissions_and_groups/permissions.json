@@ -1,0 +1,1442 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add registration profile",
+    "content_type": [
+      "registration",
+      "registrationprofile"
+    ],
+    "codename": "add_registrationprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change registration profile",
+    "content_type": [
+      "registration",
+      "registrationprofile"
+    ],
+    "codename": "change_registrationprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete registration profile",
+    "content_type": [
+      "registration",
+      "registrationprofile"
+    ],
+    "codename": "delete_registrationprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view registration profile",
+    "content_type": [
+      "registration",
+      "registrationprofile"
+    ],
+    "codename": "view_registrationprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add supervised registration profile",
+    "content_type": [
+      "registration",
+      "supervisedregistrationprofile"
+    ],
+    "codename": "add_supervisedregistrationprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change supervised registration profile",
+    "content_type": [
+      "registration",
+      "supervisedregistrationprofile"
+    ],
+    "codename": "change_supervisedregistrationprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete supervised registration profile",
+    "content_type": [
+      "registration",
+      "supervisedregistrationprofile"
+    ],
+    "codename": "delete_supervisedregistrationprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view supervised registration profile",
+    "content_type": [
+      "registration",
+      "supervisedregistrationprofile"
+    ],
+    "codename": "view_supervisedregistrationprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add department",
+    "content_type": [
+      "communities",
+      "department"
+    ],
+    "codename": "add_department"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change department",
+    "content_type": [
+      "communities",
+      "department"
+    ],
+    "codename": "change_department"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete department",
+    "content_type": [
+      "communities",
+      "department"
+    ],
+    "codename": "delete_department"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view department",
+    "content_type": [
+      "communities",
+      "department"
+    ],
+    "codename": "view_department"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add region",
+    "content_type": [
+      "communities",
+      "region"
+    ],
+    "codename": "add_region"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change region",
+    "content_type": [
+      "communities",
+      "region"
+    ],
+    "codename": "change_region"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete region",
+    "content_type": [
+      "communities",
+      "region"
+    ],
+    "codename": "delete_region"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view region",
+    "content_type": [
+      "communities",
+      "region"
+    ],
+    "codename": "view_region"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add intercom",
+    "content_type": [
+      "communities",
+      "intercom"
+    ],
+    "codename": "add_intercom"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change intercom",
+    "content_type": [
+      "communities",
+      "intercom"
+    ],
+    "codename": "change_intercom"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete intercom",
+    "content_type": [
+      "communities",
+      "intercom"
+    ],
+    "codename": "delete_intercom"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view intercom",
+    "content_type": [
+      "communities",
+      "intercom"
+    ],
+    "codename": "view_intercom"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add city",
+    "content_type": [
+      "communities",
+      "city"
+    ],
+    "codename": "add_city"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change city",
+    "content_type": [
+      "communities",
+      "city"
+    ],
+    "codename": "change_city"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete city",
+    "content_type": [
+      "communities",
+      "city"
+    ],
+    "codename": "delete_city"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view city",
+    "content_type": [
+      "communities",
+      "city"
+    ],
+    "codename": "view_city"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add team",
+    "content_type": [
+      "teams",
+      "team"
+    ],
+    "codename": "add_team"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change team",
+    "content_type": [
+      "teams",
+      "team"
+    ],
+    "codename": "change_team"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete team",
+    "content_type": [
+      "teams",
+      "team"
+    ],
+    "codename": "delete_team"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view team",
+    "content_type": [
+      "teams",
+      "team"
+    ],
+    "codename": "view_team"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add position type",
+    "content_type": [
+      "accounts",
+      "positiontype"
+    ],
+    "codename": "add_positiontype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change position type",
+    "content_type": [
+      "accounts",
+      "positiontype"
+    ],
+    "codename": "change_positiontype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete position type",
+    "content_type": [
+      "accounts",
+      "positiontype"
+    ],
+    "codename": "delete_positiontype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view position type",
+    "content_type": [
+      "accounts",
+      "positiontype"
+    ],
+    "codename": "view_positiontype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add status type",
+    "content_type": [
+      "accounts",
+      "statustype"
+    ],
+    "codename": "add_statustype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change status type",
+    "content_type": [
+      "accounts",
+      "statustype"
+    ],
+    "codename": "change_statustype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete status type",
+    "content_type": [
+      "accounts",
+      "statustype"
+    ],
+    "codename": "delete_statustype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view status type",
+    "content_type": [
+      "accounts",
+      "statustype"
+    ],
+    "codename": "view_statustype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "accounts",
+      "customuser"
+    ],
+    "codename": "add_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "accounts",
+      "customuser"
+    ],
+    "codename": "change_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "accounts",
+      "customuser"
+    ],
+    "codename": "delete_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "accounts",
+      "customuser"
+    ],
+    "codename": "view_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add employee",
+    "content_type": [
+      "accounts",
+      "employee"
+    ],
+    "codename": "add_employee"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change employee",
+    "content_type": [
+      "accounts",
+      "employee"
+    ],
+    "codename": "change_employee"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete employee",
+    "content_type": [
+      "accounts",
+      "employee"
+    ],
+    "codename": "delete_employee"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view employee",
+    "content_type": [
+      "accounts",
+      "employee"
+    ],
+    "codename": "view_employee"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 65,
+  "fields": {
+    "name": "Can add manager",
+    "content_type": [
+      "accounts",
+      "manager"
+    ],
+    "codename": "add_manager"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 66,
+  "fields": {
+    "name": "Can change manager",
+    "content_type": [
+      "accounts",
+      "manager"
+    ],
+    "codename": "change_manager"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 67,
+  "fields": {
+    "name": "Can delete manager",
+    "content_type": [
+      "accounts",
+      "manager"
+    ],
+    "codename": "delete_manager"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 68,
+  "fields": {
+    "name": "Can view manager",
+    "content_type": [
+      "accounts",
+      "manager"
+    ],
+    "codename": "view_manager"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 69,
+  "fields": {
+    "name": "Can add volunteer",
+    "content_type": [
+      "accounts",
+      "volunteer"
+    ],
+    "codename": "add_volunteer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 70,
+  "fields": {
+    "name": "Can change volunteer",
+    "content_type": [
+      "accounts",
+      "volunteer"
+    ],
+    "codename": "change_volunteer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 71,
+  "fields": {
+    "name": "Can delete volunteer",
+    "content_type": [
+      "accounts",
+      "volunteer"
+    ],
+    "codename": "delete_volunteer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 72,
+  "fields": {
+    "name": "Can view volunteer",
+    "content_type": [
+      "accounts",
+      "volunteer"
+    ],
+    "codename": "view_volunteer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 73,
+  "fields": {
+    "name": "Can add mandate city",
+    "content_type": [
+      "officials",
+      "mandatecity"
+    ],
+    "codename": "add_mandatecity"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 74,
+  "fields": {
+    "name": "Can change mandate city",
+    "content_type": [
+      "officials",
+      "mandatecity"
+    ],
+    "codename": "change_mandatecity"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 75,
+  "fields": {
+    "name": "Can delete mandate city",
+    "content_type": [
+      "officials",
+      "mandatecity"
+    ],
+    "codename": "delete_mandatecity"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 76,
+  "fields": {
+    "name": "Can view mandate city",
+    "content_type": [
+      "officials",
+      "mandatecity"
+    ],
+    "codename": "view_mandatecity"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 77,
+  "fields": {
+    "name": "Can add mandate department",
+    "content_type": [
+      "officials",
+      "mandatedepartment"
+    ],
+    "codename": "add_mandatedepartment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 78,
+  "fields": {
+    "name": "Can change mandate department",
+    "content_type": [
+      "officials",
+      "mandatedepartment"
+    ],
+    "codename": "change_mandatedepartment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 79,
+  "fields": {
+    "name": "Can delete mandate department",
+    "content_type": [
+      "officials",
+      "mandatedepartment"
+    ],
+    "codename": "delete_mandatedepartment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 80,
+  "fields": {
+    "name": "Can view mandate department",
+    "content_type": [
+      "officials",
+      "mandatedepartment"
+    ],
+    "codename": "view_mandatedepartment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 81,
+  "fields": {
+    "name": "Can add mandate inter com",
+    "content_type": [
+      "officials",
+      "mandateintercom"
+    ],
+    "codename": "add_mandateintercom"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 82,
+  "fields": {
+    "name": "Can change mandate inter com",
+    "content_type": [
+      "officials",
+      "mandateintercom"
+    ],
+    "codename": "change_mandateintercom"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 83,
+  "fields": {
+    "name": "Can delete mandate inter com",
+    "content_type": [
+      "officials",
+      "mandateintercom"
+    ],
+    "codename": "delete_mandateintercom"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 84,
+  "fields": {
+    "name": "Can view mandate inter com",
+    "content_type": [
+      "officials",
+      "mandateintercom"
+    ],
+    "codename": "view_mandateintercom"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 85,
+  "fields": {
+    "name": "Can add mandate region",
+    "content_type": [
+      "officials",
+      "mandateregion"
+    ],
+    "codename": "add_mandateregion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 86,
+  "fields": {
+    "name": "Can change mandate region",
+    "content_type": [
+      "officials",
+      "mandateregion"
+    ],
+    "codename": "change_mandateregion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 87,
+  "fields": {
+    "name": "Can delete mandate region",
+    "content_type": [
+      "officials",
+      "mandateregion"
+    ],
+    "codename": "delete_mandateregion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 88,
+  "fields": {
+    "name": "Can view mandate region",
+    "content_type": [
+      "officials",
+      "mandateregion"
+    ],
+    "codename": "view_mandateregion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 89,
+  "fields": {
+    "name": "Can add mp mandate",
+    "content_type": [
+      "officials",
+      "mpmandate"
+    ],
+    "codename": "add_mpmandate"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 90,
+  "fields": {
+    "name": "Can change mp mandate",
+    "content_type": [
+      "officials",
+      "mpmandate"
+    ],
+    "codename": "change_mpmandate"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 91,
+  "fields": {
+    "name": "Can delete mp mandate",
+    "content_type": [
+      "officials",
+      "mpmandate"
+    ],
+    "codename": "delete_mpmandate"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 92,
+  "fields": {
+    "name": "Can view mp mandate",
+    "content_type": [
+      "officials",
+      "mpmandate"
+    ],
+    "codename": "view_mpmandate"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 93,
+  "fields": {
+    "name": "Can add senator mandate",
+    "content_type": [
+      "officials",
+      "senatormandate"
+    ],
+    "codename": "add_senatormandate"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 94,
+  "fields": {
+    "name": "Can change senator mandate",
+    "content_type": [
+      "officials",
+      "senatormandate"
+    ],
+    "codename": "change_senatormandate"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 95,
+  "fields": {
+    "name": "Can delete senator mandate",
+    "content_type": [
+      "officials",
+      "senatormandate"
+    ],
+    "codename": "delete_senatormandate"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 96,
+  "fields": {
+    "name": "Can view senator mandate",
+    "content_type": [
+      "officials",
+      "senatormandate"
+    ],
+    "codename": "view_senatormandate"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 97,
+  "fields": {
+    "name": "Can add official",
+    "content_type": [
+      "officials",
+      "official"
+    ],
+    "codename": "add_official"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 98,
+  "fields": {
+    "name": "Can change official",
+    "content_type": [
+      "officials",
+      "official"
+    ],
+    "codename": "change_official"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 99,
+  "fields": {
+    "name": "Can delete official",
+    "content_type": [
+      "officials",
+      "official"
+    ],
+    "codename": "delete_official"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 100,
+  "fields": {
+    "name": "Can view official",
+    "content_type": [
+      "officials",
+      "official"
+    ],
+    "codename": "view_official"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 101,
+  "fields": {
+    "name": "Can add advocacy topic",
+    "content_type": [
+      "interviews",
+      "advocacytopic"
+    ],
+    "codename": "add_advocacytopic"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 102,
+  "fields": {
+    "name": "Can change advocacy topic",
+    "content_type": [
+      "interviews",
+      "advocacytopic"
+    ],
+    "codename": "change_advocacytopic"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 103,
+  "fields": {
+    "name": "Can delete advocacy topic",
+    "content_type": [
+      "interviews",
+      "advocacytopic"
+    ],
+    "codename": "delete_advocacytopic"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 104,
+  "fields": {
+    "name": "Can view advocacy topic",
+    "content_type": [
+      "interviews",
+      "advocacytopic"
+    ],
+    "codename": "view_advocacytopic"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 105,
+  "fields": {
+    "name": "Can add interview assessment",
+    "content_type": [
+      "interviews",
+      "interviewassessment"
+    ],
+    "codename": "add_interviewassessment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 106,
+  "fields": {
+    "name": "Can change interview assessment",
+    "content_type": [
+      "interviews",
+      "interviewassessment"
+    ],
+    "codename": "change_interviewassessment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 107,
+  "fields": {
+    "name": "Can delete interview assessment",
+    "content_type": [
+      "interviews",
+      "interviewassessment"
+    ],
+    "codename": "delete_interviewassessment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 108,
+  "fields": {
+    "name": "Can view interview assessment",
+    "content_type": [
+      "interviews",
+      "interviewassessment"
+    ],
+    "codename": "view_interviewassessment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 109,
+  "fields": {
+    "name": "Can add interview status",
+    "content_type": [
+      "interviews",
+      "interviewstatus"
+    ],
+    "codename": "add_interviewstatus"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 110,
+  "fields": {
+    "name": "Can change interview status",
+    "content_type": [
+      "interviews",
+      "interviewstatus"
+    ],
+    "codename": "change_interviewstatus"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 111,
+  "fields": {
+    "name": "Can delete interview status",
+    "content_type": [
+      "interviews",
+      "interviewstatus"
+    ],
+    "codename": "delete_interviewstatus"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 112,
+  "fields": {
+    "name": "Can view interview status",
+    "content_type": [
+      "interviews",
+      "interviewstatus"
+    ],
+    "codename": "view_interviewstatus"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 113,
+  "fields": {
+    "name": "Can add topics",
+    "content_type": [
+      "interviews",
+      "topics"
+    ],
+    "codename": "add_topics"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 114,
+  "fields": {
+    "name": "Can change topics",
+    "content_type": [
+      "interviews",
+      "topics"
+    ],
+    "codename": "change_topics"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 115,
+  "fields": {
+    "name": "Can delete topics",
+    "content_type": [
+      "interviews",
+      "topics"
+    ],
+    "codename": "delete_topics"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 116,
+  "fields": {
+    "name": "Can view topics",
+    "content_type": [
+      "interviews",
+      "topics"
+    ],
+    "codename": "view_topics"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 117,
+  "fields": {
+    "name": "Can add interview",
+    "content_type": [
+      "interviews",
+      "interview"
+    ],
+    "codename": "add_interview"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 118,
+  "fields": {
+    "name": "Can change interview",
+    "content_type": [
+      "interviews",
+      "interview"
+    ],
+    "codename": "change_interview"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 119,
+  "fields": {
+    "name": "Can delete interview",
+    "content_type": [
+      "interviews",
+      "interview"
+    ],
+    "codename": "delete_interview"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 120,
+  "fields": {
+    "name": "Can view interview",
+    "content_type": [
+      "interviews",
+      "interview"
+    ],
+    "codename": "view_interview"
+  }
+}
+]

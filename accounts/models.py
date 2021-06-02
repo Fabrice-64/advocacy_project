@@ -1,11 +1,22 @@
+"""
+    The User model is organized around 3 sorts of Users:
+    
+    - The Manager, 
+    - The Employee,  
+    - The Volunteer  
+    In the V1 the Employee has no specific role. The Manager 
+    and the Volunteer are given specifc permissions.
+
+    The id fields uses the UUID in order to limit the vulnerability of this website.
+"""
 import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group
 from django.core.validators import RegexValidator
-from teams.models import Team
 from django.urls import reverse
+from teams.models import Team
 
-# Create your models here.
+
 class CustomUser(AbstractUser):
 
     class StatusType(models.Model):
@@ -52,6 +63,7 @@ class CustomUser(AbstractUser):
         default=PositionType.NON_EMPLOYED,
         verbose_name="Position")
 
+    # this Regex fits with the French phone numbers.
     phone_regex = RegexValidator(
         regex=r"^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$",
         message="Veuillez entrer un numéro valide"

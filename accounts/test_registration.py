@@ -1,14 +1,15 @@
 from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from django.urls import reverse
 from django.core import mail
+
 from accounts.models import CustomUser
-from django.contrib.auth.models import Group
 from accounts.views import change_password
 
-# Create your tests here.
 
 class CustomUserTest(TestCase):
+
     def test_create_user(self):
         User = get_user_model()
         user = User.objects.create_user(
@@ -33,6 +34,7 @@ class CustomUserTest(TestCase):
         self.assertTrue(admin_user.is_staff)
         self.assertTrue(admin_user.is_superuser)
 
+
 class LoginTest(TestCase):
 
     def setUp(self):
@@ -55,6 +57,7 @@ class LogoutTest(TestCase):
         self.assertEqual(self.response.status_code, 302)
         self.assertRedirects(self.response, '/')
 
+
 class RegistrationTest(TestCase):
     def setUp(self):
         url = reverse('registration_register')
@@ -66,6 +69,9 @@ class RegistrationTest(TestCase):
         self.assertContains(self.response, "Saisie d\'un Nouvel Utilisateur")
         
     def test_sendmail(self):
+        """ 
+            On the development configuration, emails are sent to the CLI.
+        """
         mail.send_mail(
             'Création de Compte', 'Corps du Message',
             'from@example.com', ['to@example.com'],
