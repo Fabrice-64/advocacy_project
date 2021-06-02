@@ -1,8 +1,22 @@
-from django.urls import path, include
-from . import views as views
-from django.contrib.auth import views as auth_views
+"""
+    The authentication workflow uses the third party package "django-registration-redux".
+    However its implementation has been customized to implement a workflow where the account
+    is created by a manager and the future user receives a single usage link in order to activate
+    his account.
 
-#app_name="accounts"
+    As a consequence: 
+    app_name is not to be used as it creates a bug in this very workflow.
+    The following path order prevents the registration.backend to take over the customized views.
+    The implemented backend deviates from django-registration-redux normal use. It should remain as
+    such in order to avoid those additional bugs.
+"""
+
+from django.urls import path, include
+from django.contrib.auth import views as auth_views
+from . import views as views
+
+#In opposition to Dango recommendations
+# app_name="accounts" should not be used
 
 urlpatterns = [
     # User administration views
@@ -12,6 +26,7 @@ urlpatterns = [
         template_name="accounts/logout.html"), name='logout'),
     path('login/', auth_views.LoginView.as_view(
         template_name="accounts/login.html"), name='login'),
+    # django-registration-redux should be located here in order to allow the workflow to run.
     path('register/', include('registration.backends.default.urls'), name="registration_register"),
     # User management views
     path('user_types/', views.user_types, name="user_types"),

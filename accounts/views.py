@@ -1,16 +1,17 @@
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
-from django.shortcuts import redirect, render
 from django.contrib.auth.models import Group
-from accounts.models import CustomUser, Volunteer
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
+from django.db.models import Q
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView
+
 from registration.backends.default.views import RegistrationView
 from accounts.user_access import UserAccessMixin
-from django.db.models import Q
+from accounts.models import CustomUser, Volunteer
 
 
 @login_required
@@ -36,7 +37,12 @@ def change_password(request):
 
 
 def user_types(request):
+    """
+        This view only display a choice list for the user
+        to select the category of people he wants to access to.
+    """
     return render(request, "accounts/user_types.html")
+
 
 class UserRegistrationView(PermissionRequiredMixin, RegistrationView): 
     # Keeps the user registration for managers
@@ -45,8 +51,10 @@ class UserRegistrationView(PermissionRequiredMixin, RegistrationView):
 
 class VolunteerListView(UserAccessMixin, ListView):
     permission_required = "accounts.view_volunteer"
+    # pagination html is displayed in the template base.html
     paginate_by = 20
     model = Volunteer
+    # Ordering by teams is used for the grouping in the template
     queryset = Volunteer.objects.order_by("team")
 
 
@@ -63,6 +71,7 @@ class StaffListView(UserAccessMixin, ListView):
     model = CustomUser
     queryset = CustomUser.objects.filter(Q(status_type="MANAGER") | Q(status_type="EMPLOYEE")).order_by("position")
     template_name = "accounts/staff_list.html"
+
 
 class StaffDetailView(UserAccessMixin, DetailView):
     permission_required = "accounts.view_employee"

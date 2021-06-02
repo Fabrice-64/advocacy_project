@@ -54,7 +54,6 @@ class StaffListViewTest(TestCase):
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
         self.response = self.client.get(self.url)
 
-      
     def test_staff_list_view_not_authorized(self):
         # Only members can get access to volunteer list
         self.assertEqual(self.response.status_code, 302)

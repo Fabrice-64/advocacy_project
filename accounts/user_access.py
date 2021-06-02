@@ -1,3 +1,9 @@
+"""
+    This User Access Mixin is used to check the permissions when
+    a user wants to access a view.
+    It is used in all applications.
+"""
+
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.contrib.auth.views import redirect_to_login
