@@ -50,18 +50,12 @@ class AdvocacyTopicCreateView(UserAccessMixin, CreateView):
     success_url = reverse_lazy("interviews:advocacy_topic_list")
 
 
-class AdvocacyTopicUpdateView(UserAccessMixin, UserPassesTestMixin, UpdateView):
+class AdvocacyTopicUpdateView(UserAccessMixin, UpdateView):
     permission_required = "interviews.change_advocacytopic"
     model = AdvocacyTopic
     form_class = AdvocacyTopicForm
     template_name = "advocacy_topics/advocacy_topic_update_form.html"
     success_url = reverse_lazy("interviews:advocacy_topic_list")
-
-    def test_func(self):
-        # Purpose is to grant access exclusively to to the creator and managers.
-        advocacy_topic = self.get_object()
-        if self.request.user == advocacy_topic.created_by or self.request.user.status_type == "MANAGER":
-            return True
     
 
 class InterviewListView(UserAccessMixin, ListView):
