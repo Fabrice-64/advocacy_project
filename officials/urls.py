@@ -5,6 +5,7 @@ import officials.views as views
 app_name = "officials"
 
 urlpatterns = [
+    # this url lists all possible operations with the officials.
     path('dispatch/', views.official_dispatch, name="official_dispatch"),
     path('mandate/add/', views.mandate_add, name="mandate_add"),
     path('mandates/add/senator/', views.SenatorMandateCreateView.as_view(), name="add_senator_mandate"),

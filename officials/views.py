@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import login_required, permission_required
+
 import officials.models as models
 import officials.forms as forms
 from officials.calculations import calculate_ranking
@@ -14,11 +15,17 @@ from interviews.models import Interview
 @login_required
 @permission_required("officials.view_official", login_url='login/')
 def official_dispatch(request):
+    """ 
+        Displays a list of all views accessible related to an official
+    """
     return render(request, "officials/officials_dispatch.html")
 
 @login_required
 @permission_required("officials.view_official", login_url='login/')
 def mandate_add(request):
+    """
+        Used when a user wants to create a new electoral mandate.
+    """
     return render(request, "mandates/mandate_add.html")
 
 class SenatorMandateCreateView(UserAccessMixin, CreateView):
@@ -79,6 +86,7 @@ class OfficialDetailView(UserAccessMixin, DetailView):
     template_name = "officials/official_details.html"
 
     def get_context_data(self, **kwargs):
+        # adds the interviews realized with an official
         context = super().get_context_data(**kwargs)
         self.official = self.get_object()
         context["interviews"] = Interview.objects.filter(official=self.official.id).order_by("date_planned")

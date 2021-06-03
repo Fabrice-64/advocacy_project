@@ -1,3 +1,11 @@
+"""
+    The model Official and the various Mandate models are developped in this module.
+    The French territorial organization is closely linked to the departments. Therefore, 
+    almost every mandate is attached to a department: even a senator is elected as a department
+    representative.
+
+    
+"""
 import uuid
 from django.db import models
 from django.urls import reverse

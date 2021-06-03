@@ -1,6 +1,15 @@
+"""
+    These forms deal with the officials and their mandates.
+    The only mandates using a customized form are:
+    MandateIntercom
+    MandateCity
+    as AJAX functions are implemented to help the user sort out
+    the relevant communities.
+    These ajax functions are stored in the communities app and are related 
+    to views and specific templates.
+"""
 from django.forms import ModelForm
 import officials.models as models
-from django.forms import ModelForm
 from communities.models import Department, Intercom, City
 from communities.ajax_functions import retrieve_intercoms_by_department, retrieve_city_by_department
 

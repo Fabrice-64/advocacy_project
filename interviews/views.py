@@ -10,8 +10,7 @@
         InterviewAssessmentView
     
     Advocacy Topics are the political guidelines that drive the charity.
-    Therefore, their creation is as well strictly controlled: only its creator
-    and a manager can update it.
+    Therefore, their creation is as well strictly controlled: only a manager can update it.
 
     class: 
        AdvocacyTopicUpdateView

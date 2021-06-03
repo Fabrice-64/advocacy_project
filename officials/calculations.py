@@ -1,5 +1,32 @@
-from officials import models as model
+"""
+    This modules calculates the influence and propinquity of an official.
+
+    The influence calculation relies on a simple equation:
+    number of mandates x level of the mandate.
+    the sum of all mandates gives the level of influence.
+
+    INFLUENCE_INDEX:
+    Each level of electoral mandate is rated.
+    Future versions may include the size of the community, its GDP and the function of the official.
+
+    The propinquity is the proximity of ideas.
+    In the current version the proximity of ideas is expressed in the assessment of interviews.
+    Further versions may include political statements, press interviews and exploit NLP Possibilities.
+
+    Functions : 
+    def interview_propinquity:
+        calculate this propinquity
+
+    def calculate_ranking:
+        attribute: 
+            list of officials, issued from a query in the view officials_ranking
+        returns:
+            list of named tuples containing first_name, last_name, id, propinquity, number of interviews and influence
+            of every official.
+
+"""
 from collections import namedtuple
+from officials import models as model
 from interviews.models import Interview
 
 INFLUENCE_INDEX = {
@@ -78,6 +105,13 @@ def propinquity_calculation(id):
     return itw_propinquity, qty_interviews
 
 def importance_summary(id, first_name, last_name):
+    """
+        Collects the influence and propinquity of an official
+        
+        Returns:
+            a named tuple of the official with his first_name, last_name, id, 
+            propinquity, number of interviews and influence.
+    """
     influence = influence_calculation(id)
     propinquity, qty_interviews = propinquity_calculation(id)
 
@@ -85,6 +119,15 @@ def importance_summary(id, first_name, last_name):
         id, propinquity, qty_interviews, influence)
 
 def calculate_ranking(officials):
+    """
+        Allows the views:
+        officials_ranking
+        officials_to_engage
+        to display the assessed importance of offcials.
+
+        Returns:
+            a list of named tuples.
+    """
     officials_list = list()
     for official in officials:
         official_ranking = importance_summary(

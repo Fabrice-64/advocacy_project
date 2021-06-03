@@ -103,6 +103,7 @@ Beyond Django, following third party packages are used:
 Those packages are all referred to in `requirements.txt`.
 
 ## Main Sources of Knowledge
+- "Understanding Social Networks" by Charles Kadushin
 - Django Project official website
 - "Django for Professionals by William S. Vincent" (use of UUID, rapid testing of views)
 - https://simpleisbetterthancomplex.com/ by Vitor Freitas (dependent dropdown lists)
