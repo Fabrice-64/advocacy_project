@@ -20,7 +20,6 @@ class InterviewForm(ModelForm):
         self.fields['official'].widget.attrs.update({'required': 'true'})
         self.fields['volunteer'].widget.attrs.update({'required': 'true'})
 
-
     class Meta:
         model = Interview
         fields = ['date_planned', 'official', 'volunteer', 'topics', 'goal', 'status', 'comments']
@@ -29,14 +28,14 @@ class InterviewForm(ModelForm):
             'goal': forms.Textarea(attrs={'rows': 2, 'cols': 40}),
             'topics': forms.CheckboxSelectMultiple(),
             'comments': forms.Textarea(attrs={'rows': 2, 'cols': 40})
-            }
+        }
         help_texts = {'topics': '<p>Cliquez sur les cases qui vous semblent pertinentes</p>'}
 
 
 class InterviewAssessmentForm(ModelForm):
     def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.fields['topics'].widget.attrs.update({'readonly': 'readonly'})
+        super().__init__(*args, **kwargs)
+        self.fields['topics'].widget.attrs.update({'readonly': 'readonly'})
 
     class Meta:
         model = Interview
@@ -44,12 +43,12 @@ class InterviewAssessmentForm(ModelForm):
         widgets = {
             'topics': forms.CheckboxSelectMultiple(),
             'date_effective': forms.DateInput(attrs={'type': 'date'}),
-            'outcome': forms.Textarea(
-                attrs={
-                    'rows': 2, 'cols': 40,
-                    'placeholder': "Ajoutez ici les résultats de l'entretien"}),
-                    'comments': forms.Textarea(attrs={'rows': 2, 'cols': 40,
-                    'placeholder': "Ajoutez ici votre évaluation de l'entretien"}),
+            'outcome': forms.Textarea(attrs={
+                'rows': 2, 'cols': 40,
+                'placeholder': "Ajoutez ici les résultats de l'entretien"}),
+            'comments': forms.Textarea(attrs={
+                'rows': 2, 'cols': 40,
+                'placeholder': "Ajoutez ici votre évaluation de l'entretien"}),
         }
         help_text = {
             'outcome': "<br>Un résultat positif est un engagement clair de l'Elu.",

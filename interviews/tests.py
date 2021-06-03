@@ -137,7 +137,7 @@ class InterviewDetailViewTest(TestCase):
             volunteer_id=self.volunteer.id)
         self.response = self.client.get(
             reverse('interviews:interview_details',
-            args=[self.interview.id]))
+                    args=[self.interview.id]))
         self.user1 = CustomUser.objects.create(
             username="test_user", password="pwd", is_active=True)
 
@@ -153,7 +153,7 @@ class InterviewDetailViewTest(TestCase):
         self.client.force_login(self.user1)
         self.response = self.client.get(
             reverse('interviews:interview_details',
-            args=[self.interview.id]))
+                    args=[self.interview.id]))
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Fiche d'Entretien")
 
@@ -170,7 +170,7 @@ class InterviewUpdateViewTest(TestCase):
             volunteer_id=self.volunteer.id)
         self.response = self.client.get(
             reverse('interviews:interview_update',
-            args=[self.interview.id]))
+                    args=[self.interview.id]))
         self.user1 = CustomUser.objects.create(
             username="test_user", password="pwd", is_active=True)
 
@@ -187,7 +187,7 @@ class InterviewUpdateViewTest(TestCase):
         self.client.force_login(self.user1)
         self.response = self.client.get(
             reverse('interviews:interview_update',
-            args=[self.interview.id]))
+                    args=[self.interview.id]))
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Modifier un Entretien")
 
@@ -204,7 +204,7 @@ class InterviewAssessmentViewTest(TestCase):
             volunteer_id=self.volunteer.id)
         self.response = self.client.get(
             reverse('interviews:interview_assessment',
-            args=[self.interview.id]))
+                    args=[self.interview.id]))
         self.user1 = CustomUser.objects.create(
             username="test_user", password="pwd", is_active=True)
 
@@ -220,7 +220,7 @@ class InterviewAssessmentViewTest(TestCase):
         self.client.force_login(self.user1)
         self.response = self.client.get(
             reverse('interviews:interview_assessment',
-            args=[self.interview.id]))
+                    args=[self.interview.id]))
         self.assertEqual(self.response.status_code, 403)
 
     def test_interview_assessment_authorized(self):
@@ -230,5 +230,5 @@ class InterviewAssessmentViewTest(TestCase):
         self.client.force_login(self.user1)
         self.response = self.client.get(
             reverse('interviews:interview_assessment',
-            args=[self.interview.id]))
+                    args=[self.interview.id]))
         self.assertEqual(self.response.status_code, 302)

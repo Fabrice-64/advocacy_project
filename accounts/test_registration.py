@@ -99,12 +99,10 @@ class ChangePasswordTest(TestCase):
         logged_in = self.client.login(username="paul", password="pwd")
         self.assertTrue(logged_in)
         self.response = self.client.post(
-            self.url, 
-            {
-            "username": "paul", "old_password": "pwd",
-            "new_password1": "pwd1", "new_password2": "pwd1",
-            "status_type": "VOLUNTEER"},
-            follow=True)
+            self.url, {
+                "username": "paul", "old_password": "pwd",
+                "new_password1": "pwd1", "new_password2": "pwd1",
+                "status_type": "VOLUNTEER"}, follow=True)
         self.assertEqual(self.response.status_code, 200)
         self.assertIsNotNone(self.response.context['form'])
 
@@ -112,27 +110,26 @@ class ChangePasswordTest(TestCase):
         logged_in = self.client.login(username="paul", password="pwd")
         self.assertTrue(logged_in)
         self.response = self.client.post(
-            self.url,
-            {
-            "username": "paul", "old_password": "pwd",
-            "new_password1": "pwd1", "new_password2": "pwd1",
-            "status_type": "VOLUNTEER"},
-            follow=True)
+            self.url, {
+                "username": "paul", "old_password": "pwd",
+                "new_password1": "pwd1", "new_password2": "pwd1",
+                "status_type": "VOLUNTEER"}, follow=True)
         self.assertEqual(self.response.status_code, 200)
         self.assertIsNotNone(self.response.context['messages'])
         self.assertTemplateUsed('accounts/change_password.html')
-        self.assertFormError(self.response,
-            "form", "new_password2", 
+        self.assertFormError(
+            self.response,
+            "form", "new_password2",
             ['Ce mot de passe est trop court. Il doit contenir au minimum 8 caractères.'])
-        
+
     def test_password_change_compliant_password(self):
         logged_in = self.client.login(username="paul", password="pwd")
         self.assertTrue(logged_in)
-        self.response = self.client.post(self.url, 
-            {
-            "username": "paul", "old_password": "pwd",
-            "new_password1": "@password1", "new_password2": "@password1",
-            "status_type": "VOLUNTEER"},
+        self.response = self.client.post(
+            self.url, {
+                "username": "paul", "old_password": "pwd",
+                "new_password1": "@password1", "new_password2": "@password1",
+                "status_type": "VOLUNTEER"},
             follow=True)
         self.assertEqual(self.response.status_code, 200)
         self.assertIsNotNone(self.response.context['messages'])

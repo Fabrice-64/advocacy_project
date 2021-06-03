@@ -75,9 +75,7 @@ class GetStatsFromOfficials:
             self.officials['influence'] >= self.officials['influence'].quantile(0.50))].to_dict('index').items()]
 
     def get_influence_targets(self):
-        return [
-            value for key, value in self.officials.loc[(
-                self.officials['propinquity'] >= self.officials['propinquity'].quantile(0.40)) & (
-                self.officials['propinquity'] < self.officials['propinquity'].quantile(0.80)) & (
-                self.officials['influence'] >= self.officials['influence'].quantile(0.40))].to_dict('index').items()
-                ]
+        return [value for key, value in self.officials.loc[(
+            self.officials['propinquity'] >= self.officials['propinquity'].quantile(0.40)) & (
+            self.officials['propinquity'] < self.officials['propinquity'].quantile(0.80)) & (
+            self.officials['influence'] >= self.officials['influence'].quantile(0.40))].to_dict('index').items()]

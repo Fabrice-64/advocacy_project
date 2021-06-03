@@ -34,4 +34,4 @@ urlpatterns = [
     path('volunteer/detail/<uuid:pk>/', views.VolunteerDetailView.as_view(), name='volunteer_details'),
     path('staff/list/', views.StaffListView.as_view(), name="staff_list"),
     path('staff/detail/<uuid:pk>/', views.StaffDetailView.as_view(), name='staff_details'),
-    ]
+]

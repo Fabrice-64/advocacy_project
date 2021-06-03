@@ -18,10 +18,13 @@ from officials.calculations import OfficialRanking
 
 
 def setup_sample_database():
-    model.Official.objects.bulk_create(
-        [
-        model.Official(first_name="official1", last_name="name_official1"),
-        model.Official(first_name="official2", last_name="name_official2")])
+    model.Official.objects.bulk_create([
+        model.Official(
+            first_name="official1",
+            last_name="name_official1"),
+        model.Official(
+            first_name="official2",
+            last_name="name_official2")])
     model.MPMandate.objects.create(start_year=2020)
     model.SenatorMandate.objects.create(start_year=2020)
     model.MandateRegion.objects.create(start_year=2020)
@@ -134,4 +137,4 @@ ranking_sample = [
         first_name='Alexandre', last_name='Robert',
         id=UUID('fa8f5c49-49ca-4afc-ac00-d141055d86b8'),
         propinquity=8.75, qty_interviews=7, influence=6)
-        ]
+]
