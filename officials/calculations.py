@@ -13,12 +13,12 @@
     In the current version the proximity of ideas is expressed in the assessment of interviews.
     Further versions may include political statements, press interviews and exploit NLP Possibilities.
 
-    Functions : 
+    Functions:
     def interview_propinquity:
         calculate this propinquity
 
     def calculate_ranking:
-        attribute: 
+        attribute:
             list of officials, issued from a query in the view officials_ranking
         returns:
             list of named tuples containing first_name, last_name, id, propinquity, number of interviews and influence
@@ -30,7 +30,7 @@ from officials import models as model
 from interviews.models import Interview
 
 INFLUENCE_INDEX = {
-    "city_idx" : 1,
+    "city_idx": 1,
     "intercom_idx": 2,
     "department_idx": 3,
     "region_idx": 4,
@@ -40,29 +40,36 @@ INFLUENCE_INDEX = {
 
 OfficialRanking = namedtuple("OfficialRanking", "first_name last_name id propinquity  qty_interviews influence")
 
+
 def city_influence_calculation(official_id):
     nb_mandates = model.MandateCity.objects.filter(official__id=official_id).count()
     return nb_mandates * INFLUENCE_INDEX.get("city_idx")
 
+
 def intercom_influence_calculation(official_id):
     nb_mandates = model.MandateInterCom.objects.filter(official__id=official_id).count()
     return nb_mandates * INFLUENCE_INDEX.get("intercom_idx")
-    
+
+
 def department_influence_calculation(official_id):
     nb_mandates = model.MandateDepartment.objects.filter(official__id=official_id).count()
     return nb_mandates * INFLUENCE_INDEX.get("department_idx")
+
 
 def region_influence_calculation(official_id):
     nb_mandates = model.MandateRegion.objects.filter(official__id=official_id).count()
     return nb_mandates * INFLUENCE_INDEX.get("region_idx")
 
+
 def mp_influence_calculation(official_id):
     nb_mandates = model.MPMandate.objects.filter(official__id=official_id).count()
     return nb_mandates * INFLUENCE_INDEX.get("mp_idx")
 
+
 def senator_influence_calculation(official_id):
     nb_mandates = model.SenatorMandate.objects.filter(official__id=official_id).count()
     return nb_mandates * INFLUENCE_INDEX.get("senator_idx")
+
 
 def influence_calculation(official_id):
     city_influence = city_influence_calculation(official_id)
@@ -76,7 +83,8 @@ def influence_calculation(official_id):
         + department_influence + region_influence + mp_influence + senator_influence
     return total_influence
 
-def interview_propinquity(id): 
+
+def interview_propinquity(id):
     interviews = Interview.objects.filter(official__id=id)
     itw_propinquity = 0
     for interview in interviews:
@@ -97,6 +105,7 @@ def interview_propinquity(id):
         itw_propinquity = itw_propinquity / len(interviews)
     return itw_propinquity, len(interviews)
 
+
 def propinquity_calculation(id):
     """
         In V1 only interviews are taken into account
@@ -104,19 +113,22 @@ def propinquity_calculation(id):
     itw_propinquity, qty_interviews = interview_propinquity(id)
     return itw_propinquity, qty_interviews
 
+
 def importance_summary(id, first_name, last_name):
     """
         Collects the influence and propinquity of an official
-        
+
         Returns:
-            a named tuple of the official with his first_name, last_name, id, 
+            a named tuple of the official with his first_name, last_name, id,
             propinquity, number of interviews and influence.
     """
     influence = influence_calculation(id)
     propinquity, qty_interviews = propinquity_calculation(id)
 
-    return OfficialRanking(first_name, last_name, 
+    return OfficialRanking(
+        first_name, last_name,
         id, propinquity, qty_interviews, influence)
+
 
 def calculate_ranking(officials):
     """
@@ -131,8 +143,8 @@ def calculate_ranking(officials):
     officials_list = list()
     for official in officials:
         official_ranking = importance_summary(
-                            official.id,
-                            official.first_name, 
-                            official.last_name)
+            official.id,
+            official.first_name,
+            official.last_name)
         officials_list.append(official_ranking)
     return officials_list

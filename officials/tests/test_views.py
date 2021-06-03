@@ -6,15 +6,16 @@ from officials.models import Official
 
 
 class MandatesChangeTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:mandate_add')
         self.response = self.client.get(self.url)
         self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
-    
+
     def test_display_mandate_add_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/mandate/add/')
 
     def test_display_mandate_add_authorized(self):
@@ -25,16 +26,19 @@ class MandatesChangeTest(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Mandats")
 
+
 class OfficialDispatchTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:official_dispatch')
         self.response = self.client.get(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
-    
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
+
     def test_display_official_list_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/dispatch/')
 
     def test_display_official_list_authorized(self):
@@ -44,10 +48,10 @@ class OfficialDispatchTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Elus")
-       
+
 
 class SenatorMandateTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:add_senator_mandate')
         self.response = self.client.get(self.url)
@@ -55,7 +59,8 @@ class SenatorMandateTest(TestCase):
 
     def test_add_senator_mandate_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/mandates/add/senator/')
 
     def test_add_senator_mandate_authorized(self):
@@ -65,17 +70,21 @@ class SenatorMandateTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Sénatorial")
-    
+
+
 class MPMandateTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:add_mp_mandate')
         self.response = self.client.get(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user",
+            password="pwd", is_active=True)
 
     def test_add_senator_mandate_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/mandates/add/mp/')
 
     def test_add_senator_mandate_authorized(self):
@@ -88,15 +97,17 @@ class MPMandateTest(TestCase):
 
 
 class RegionMandateTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:add_region_mandate')
         self.response = self.client.get(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_add_region_mandate_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/mandates/add/region/')
 
     def test_add_region_mandate_authorized(self):
@@ -107,16 +118,19 @@ class RegionMandateTest(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Régional")
 
+
 class DepartmentMandateTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:add_department_mandate')
         self.response = self.client.get(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_add_department_mandate_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/mandates/add/department/')
 
     def test_add_department_mandate_authorized(self):
@@ -129,15 +143,17 @@ class DepartmentMandateTest(TestCase):
 
 
 class IntercomMandateTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:add_intercom_mandate')
         self.response = self.client.get(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_add_intercom_mandate_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/mandates/add/intercom/')
 
     def test_add_department_mandate_authorized(self):
@@ -148,16 +164,19 @@ class IntercomMandateTest(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Intercommunal")
 
+
 class CityMandateTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:add_city_mandate')
         self.response = self.client.get(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_add_intercom_mandate_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/mandates/add/city/')
 
     def test_add_department_mandate_authorized(self):
@@ -170,15 +189,17 @@ class CityMandateTest(TestCase):
 
 
 class OfficialListTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:official_list')
         self.response = self.client.get(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_add_intercom_mandate_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/list/')
 
     def test_add_department_mandate_authorized(self):
@@ -189,16 +210,21 @@ class OfficialListTest(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Liste des Elus")
 
+
 class OfficialDetailTest(TestCase):
-    
+
     def setUp(self):
-        self.official = Official.objects.create(first_name="PrénomElu", last_name="NomElu")
-        self.response = self.client.get(reverse('officials:official_details', args=[self.official.id]))
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.official = Official.objects.create(
+            first_name="PrénomElu", last_name="NomElu")
+        self.response = self.client.get(reverse(
+            'officials:official_details', args=[self.official.id]))
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_view_official_details_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             f'/accounts/login/?next=/officials/official/details/{self.official.id}/')
 
     def test_view_official_details_authorized(self):
@@ -212,15 +238,17 @@ class OfficialDetailTest(TestCase):
 
 
 class OfficialCreateTest(TestCase):
-    
+
     def setUp(self):
         self.url = reverse_lazy('officials:official_create')
         self.response = self.client.post(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_official_create_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/official/create/')
 
     def test_official_create_authorized(self):
@@ -233,15 +261,21 @@ class OfficialCreateTest(TestCase):
 
 
 class OfficialRankingTest(TestCase):
-    fixtures = ['communities.json', 'users.json', 'teams.json', 'permission.json','groups.json', 'officials.json', 'interviews.json']
+    fixtures = [
+        'communities.json', 'users.json', 'teams.json',
+        'permission.json', 'groups.json', 'officials.json',
+        'interviews.json']
+
     def setUp(self):
         self.url = reverse_lazy('officials:officials_ranking')
         self.response = self.client.post(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_official_ranking_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/officials_ranking/')
 
     def test_official_ranking_authorized(self):
@@ -251,22 +285,32 @@ class OfficialRankingTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Catégories d'Elus")
-        self.assertEqual(len(self.response.context["little_proximity_high_influence"]), 0)
-        self.assertEqual(len(self.response.context["high_proximity_high_influence"]), 1)
-        self.assertEqual(len(self.response.context["high_proximity_little_influence"]), 1)
-        self.assertEqual(len(self.response.context["little_proximity_little_influence"]), 0)
+        self.assertEqual(
+            len(self.response.context["little_proximity_high_influence"]), 0)
+        self.assertEqual(
+            len(self.response.context["high_proximity_high_influence"]), 1)
+        self.assertEqual(
+            len(self.response.context["high_proximity_little_influence"]), 1)
+        self.assertEqual(
+            len(self.response.context["little_proximity_little_influence"]), 0)
 
 
 class OfficialEngagementTest(TestCase):
-    fixtures = ['communities.json', 'users.json', 'teams.json', 'permission.json','groups.json', 'officials.json', 'interviews.json']
+    fixtures = [
+        'communities.json', 'users.json', 'teams.json',
+        'permission.json', 'groups.json',
+        'officials.json', 'interviews.json']
+
     def setUp(self):
         self.url = reverse_lazy('officials:officials_to_engage')
         self.response = self.client.post(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_official_target_not_authorized(self):
         self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertRedirects(
+            self.response,
             '/accounts/login/?next=/officials/officials/engagement/')
 
     def test_official_target_authorized(self):
@@ -277,4 +321,3 @@ class OfficialEngagementTest(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Elus à Engager")
         self.assertEqual(len(self.response.context["officials_to_engage"]), 0)
-
