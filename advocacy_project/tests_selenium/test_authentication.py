@@ -2,9 +2,9 @@
     The User Stories related to the accounts management are tested here.
 
     Are tested:
-    authentication: 
+    authentication:
         def test_plaid_10_authenticate_on_the_website
-    create user: 
+    create user:
         def test_plaid_2_create_new_user
     check permissions implementation:
         def test_plaid_2_check_permissions
@@ -19,8 +19,10 @@ from django.test import LiveServerTestCase
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver import Firefox
 import os
+
+
 class CustomUserTest(LiveServerTestCase):
-    fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json' ]
+    fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json']
 
     @classmethod
     def setUpClass(cls):
@@ -38,7 +40,7 @@ class CustomUserTest(LiveServerTestCase):
             The user wants to authenticate in order to have access to
             the functionalities of the website
         """
-        
+
         self.browser.get(os.path.join(self.live_server_url, ''))
         # Leila gets access to the website
         # L. is logged out and is offered to log in
@@ -54,7 +56,7 @@ class CustomUserTest(LiveServerTestCase):
         self.browser.find_element_by_xpath('//input[@type="submit"]').click()
         # Finally the logged in page is displayed
         self.browser.find_element_by_id("header-deconnection")
-        #print(self.browser.page_source)
+        # print(self.browser.page_source)
 
     def test_plaid_2_create_new_user(self):
         """

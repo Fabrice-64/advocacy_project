@@ -4,7 +4,7 @@
     is created by a manager and the future user receives a single usage link in order to activate
     his account.
 
-    As a consequence: 
+    As a consequence:
     app_name is not to be used as it creates a bug in this very workflow.
     The following path order prevents the registration.backend to take over the customized views.
     The implemented backend deviates from django-registration-redux normal use. It should remain as
@@ -15,7 +15,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views as views
 
-#In opposition to Dango recommendations
+# In opposition to Dango recommendations
 # app_name="accounts" should not be used
 
 urlpatterns = [
@@ -34,4 +34,4 @@ urlpatterns = [
     path('volunteer/detail/<uuid:pk>/', views.VolunteerDetailView.as_view(), name='volunteer_details'),
     path('staff/list/', views.StaffListView.as_view(), name="staff_list"),
     path('staff/detail/<uuid:pk>/', views.StaffDetailView.as_view(), name='staff_details'),
-]
+    ]

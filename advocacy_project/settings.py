@@ -16,7 +16,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-#BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -67,8 +66,10 @@ ROOT_URLCONF = 'advocacy_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'accounts/templates',
-        ],
+        'DIRS': 
+            [
+            BASE_DIR / 'accounts/templates',
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,7 +87,7 @@ WSGI_APPLICATION = 'advocacy_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-#DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+# DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

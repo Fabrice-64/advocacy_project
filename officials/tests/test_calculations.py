@@ -8,8 +8,9 @@ from interviews.models import Interview
 from .database_sample import setup_sample_database
 import officials.calculations as oc
 
+
 class ElectoralMandatesTest(TestCase):
-    
+
     def setUp(self):
         """
         This is the setup of a bunch of officials and their mandates,
@@ -33,11 +34,11 @@ class ElectoralMandatesTest(TestCase):
         self.assertEqual(dept_influence, 0)
         dept_influence2 = oc.department_influence_calculation(self.official2.id)
         self.assertEqual(dept_influence2, 3)
-    
+
     def test_region_influence_calculation(self):
         region_influence = oc.region_influence_calculation(self.official1.id)
         self.assertEqual(region_influence, 4)
-    
+
     def test_mp_influence_calculation(self):
         mp_influence = oc.mp_influence_calculation(self.official1.id)
         self.assertEqual(mp_influence, 5)
@@ -63,7 +64,7 @@ class ElectoralMandatesTest(TestCase):
     def test_importance_summary(self):
         result = oc.importance_summary(self.official1.id, self.official1.first_name, self.official1.last_name)
         self.assertIn("official1", result)
-    
+
     def test_calculate_ranking(self):
         result = oc.calculate_ranking(self.officials)
         self.assertEqual(len(result), 2)

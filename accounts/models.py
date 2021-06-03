@@ -1,10 +1,10 @@
 """
     The User model is organized around 3 sorts of Users:
-    
-    - The Manager, 
-    - The Employee,  
-    - The Volunteer  
-    In the V1 the Employee has no specific role. The Manager 
+
+    - The Manager,
+    - The Employee,
+    - The Volunteer
+    In the V1 the Employee has no specific role. The Manager
     and the Volunteer are given specifc permissions.
 
     The id fields uses the UUID in order to limit the vulnerability of this website.
@@ -39,10 +39,9 @@ class CustomUser(AbstractUser):
             (EMPLOYEE, "Coordonnateur"),
         ]
 
-
     def get_absolute_url(self):
         return reverse('staff_details', args=[str(self.id)])
-    
+
     def __str__(self):
         return self.first_name + " " + self.last_name
 
@@ -53,7 +52,7 @@ class CustomUser(AbstractUser):
 
     status_type = models.CharField(
         max_length=50,
-        choices=StatusType.STATUS, 
+        choices=StatusType.STATUS,
         default=StatusType.VOLUNTEER,
         verbose_name="Statut")
 
@@ -70,27 +69,35 @@ class CustomUser(AbstractUser):
     )
     phone_number = models.CharField(
         validators=[phone_regex],
-        max_length = 14,
-        blank = True,
+        max_length=14,
+        blank=True,
         help_text="Veuillez entrer un numéro Français",
         verbose_name="Téléphone"
     )
 
-    team = models.ForeignKey(Team, verbose_name="Equipe", on_delete=models.DO_NOTHING, null=True, blank=True)
-
+    team = models.ForeignKey(
+        Team,
+        verbose_name="Equipe",
+        on_delete=models.DO_NOTHING,
+        null=True, blank=True)
 
 
 class VolunteerManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(status_type=CustomUser.StatusType.VOLUNTEER)
+        return super().get_queryset(*args, **kwargs).filter(
+            status_type=CustomUser.StatusType.VOLUNTEER)
+
 
 class ManagerManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(status_type=CustomUser.StatusType.MANAGER)
+        return super().get_queryset(*args, **kwargs).filter(
+            status_type=CustomUser.StatusType.MANAGER)
+
 
 class EmployeeManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(status_type=CustomUser.StatusType.EMPLOYEE)
+        return super().get_queryset(*args, **kwargs).filter(
+            status_type=CustomUser.StatusType.EMPLOYEE)
 
 
 class Volunteer(CustomUser):
@@ -99,10 +106,10 @@ class Volunteer(CustomUser):
     class Meta:
         proxy = True
         ordering = ["team", "last_name"]
-    
+
     def get_absolute_url(self):
         return reverse('volunteer_details', args=[str(self.id)])
-        
+
 
 class Employee(CustomUser):
     objects = EmployeeManager()
@@ -113,6 +120,6 @@ class Employee(CustomUser):
 
 class Manager(CustomUser):
     objects = ManagerManager()
-    
+
     class Meta:
         proxy = True

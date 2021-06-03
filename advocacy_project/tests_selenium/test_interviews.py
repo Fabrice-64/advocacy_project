@@ -20,7 +20,7 @@ import os
 
 
 class AdvocacyTopicTest(LiveServerTestCase):
-    fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json' ]
+    fixtures = ['communities.json', 'teams.json', 'groups.json', 'users.json']
 
     @classmethod
     def setUpClass(cls):
@@ -35,10 +35,9 @@ class AdvocacyTopicTest(LiveServerTestCase):
 
     def test_plaid_7_record_some_support_docs(self):
         """
-           The coordinator prepare support documentation 
+           The coordinator prepare support documentation
            for the volunteer to be more consistent during the interview.
            The persona is named Sebastien
-           
         """
         self.browser.get(os.path.join(self.live_server_url, ''))
         self.browser.maximize_window()
@@ -98,7 +97,6 @@ class InterviewTest(LiveServerTestCase):
             The manager wants to access the interviews
             and create one.
             The persona is named Leila
-           
         """
         self.browser.get(os.path.join(self.live_server_url, ''))
         self.browser.find_element_by_id("header-connection").click()
@@ -141,5 +139,3 @@ class InterviewTest(LiveServerTestCase):
         # And L. lands on the page containing the list of interviews
         interviews = self.browser.find_elements_by_xpath("//li[a/@name='interview-summary']")
         self.assertEquals(len(interviews), 1)
-
-

@@ -55,7 +55,7 @@ def user_types(request):
     return render(request, "accounts/user_types.html")
 
 
-class UserRegistrationView(PermissionRequiredMixin, RegistrationView): 
+class UserRegistrationView(PermissionRequiredMixin, RegistrationView):
     # Keeps the user registration for managers
     permission_required = "accounts.add_customuser"
 
@@ -89,4 +89,3 @@ class StaffDetailView(UserAccessMixin, DetailView):
     model = CustomUser
     template_name = "accounts/staff_detail.html"
     success_url = reverse_lazy('staff_details')
-

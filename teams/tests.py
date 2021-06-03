@@ -3,19 +3,20 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import Permission
 from accounts.models import CustomUser
 
-# Create your tests here.
+
 class TeamListViewTest(TestCase):
 
     def setUp(self):
         url = reverse_lazy('teams:team_list')
         self.response = self.client.get(url)
-        
+
     def test_teams_list_view(self):
         #In this test the User is not logged-in.
         self.assertEqual(self.response.status_code, 200)
         self.assertTemplateUsed(self.response, "teams/team_list.html")
         # Authorization Requirements lead to display an empty list
-        self.assertContains(self.response, "Liste des Equipes")
+        self.assertContains(
+            self.response, "Liste des Equipes")
 
 
 class TeamCreateViewTest(TestCase):
@@ -24,11 +25,14 @@ class TeamCreateViewTest(TestCase):
     def setUp(self):
         self.url = reverse_lazy('teams:team_create')
         self.response = self.client.post(self.url)
-        self.user1 = CustomUser.objects.create(username="test_user", password="pwd", is_active=True)
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
 
     def test_team_create_not_authorized(self):
-        self.assertEqual(self.response.status_code, 302)
-        self.assertRedirects(self.response, 
+        self.assertEqual(
+            self.response.status_code, 302)
+        self.assertRedirects(
+            self.response, 
             '/accounts/login/?next=/teams/team/create/')
 
     def test_team_create_authorized(self):
