@@ -1,3 +1,16 @@
+"""
+    This module is composed of two samples:
+    - a database sample for the unitary tests covering almost all aspects of
+    official management.
+
+    - 20 named tuples to play with the official ranking. Those named tuples 
+    are structured as such : 
+    name: OfficialRanking,
+    keys: first_name, last_name, id, propinquity, quantity of interviews, influence.
+    Those tuples have been generated with Faker and present a random distribution
+    useful to discriminate profiles.
+"""
+
 from uuid import UUID
 from officials import models as model
 from interviews.models import Interview

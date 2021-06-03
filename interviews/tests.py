@@ -157,6 +157,7 @@ class InterviewUpdateViewTest(TestCase):
     def test_interview_update_authorized(self):
         perm = Permission.objects.get(codename="change_interview")
         self.user1.user_permissions.add(perm)
+        self.user1.status_type = "MANAGER"
         self.client.force_login(self.user1)
         self.response = self.client.get(reverse('interviews:interview_update', args=[self.interview.id]))
         self.assertEqual(self.response.status_code, 200)
