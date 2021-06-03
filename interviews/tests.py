@@ -2,6 +2,7 @@ from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Permission
 from django.urls import reverse, reverse_lazy
+
 from . import views as views
 from .models import AdvocacyTopic, Interview
 from accounts.models import CustomUser, Volunteer
@@ -45,7 +46,7 @@ class AdvocacyTopicCreateViewTest(TestCase):
         self.response = self.client.get(self.url)
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Plaidoyer")
-# Create your tests here.
+
 
 class AdvocacyTopicUpdateViewTest(TestCase):
     

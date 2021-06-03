@@ -1,6 +1,6 @@
 from django.urls import path, include
 import interviews.views as views
-from django.contrib.auth.decorators import permission_required
+
 
 app_name = 'interviews'
 
