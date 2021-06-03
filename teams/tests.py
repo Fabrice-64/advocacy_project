@@ -11,7 +11,7 @@ class TeamListViewTest(TestCase):
         self.response = self.client.get(url)
 
     def test_teams_list_view(self):
-        #In this test the User is not logged-in.
+        # In this test the User is not logged-in.
         self.assertEqual(self.response.status_code, 200)
         self.assertTemplateUsed(self.response, "teams/team_list.html")
         # Authorization Requirements lead to display an empty list
@@ -32,7 +32,7 @@ class TeamCreateViewTest(TestCase):
         self.assertEqual(
             self.response.status_code, 302)
         self.assertRedirects(
-            self.response, 
+            self.response,
             '/accounts/login/?next=/teams/team/create/')
 
     def test_team_create_authorized(self):

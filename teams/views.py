@@ -17,5 +17,5 @@ class TeamCreateView(UserAccessMixin, CreateView):
     permission_required = "teams.add_team"
     model = Team
     form_class = TeamForm
-    template_name="teams/team_create_form.html"
+    template_name = "teams/team_create_form.html"
     success_url = reverse_lazy("teams:team_list")

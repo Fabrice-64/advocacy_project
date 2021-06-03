@@ -1,18 +1,18 @@
 """
     These views deal with the advocacy topics and the interviews.
 
-    As Interviews with the officials should contain sensitive data, 
+    As Interviews with the officials should contain sensitive data,
     the information sharing is strictly controlled: the assessment of
     an interview is exclusively accessible either to the volunteeer
     designated to lead it or to a manager.
 
     class:
         InterviewAssessmentView
-    
+
     Advocacy Topics are the political guidelines that drive the charity.
     Therefore, their creation is as well strictly controlled: only a manager can update it.
 
-    class: 
+    class:
        AdvocacyTopicUpdateView
 
 """
@@ -26,13 +26,12 @@ from .forms import AdvocacyTopicForm, InterviewForm, InterviewAssessmentForm
 from accounts.user_access import UserAccessMixin
 
 
-
 class AdvocacyTopicListView(UserAccessMixin, ListView):
     permission_required = "interviews.view_advocacytopic"
     model = AdvocacyTopic
     queryset = AdvocacyTopic.objects.order_by('keyword', '-is_active')
     template_name = "advocacy_topics/advocacy_topic_list.html"
-    paginate_by =10
+    paginate_by = 10
 
 
 class AdvocacyTopicDetailView(UserAccessMixin, DetailView):
@@ -55,7 +54,7 @@ class AdvocacyTopicUpdateView(UserAccessMixin, UpdateView):
     form_class = AdvocacyTopicForm
     template_name = "advocacy_topics/advocacy_topic_update_form.html"
     success_url = reverse_lazy("interviews:advocacy_topic_list")
-    
+
 
 class InterviewListView(UserAccessMixin, ListView):
     permission_required = "interviews.view_interview"
