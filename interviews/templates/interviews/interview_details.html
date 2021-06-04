@@ -23,6 +23,10 @@
         {% for topic in object.topics.all %}
             <div>{{ topic }}<br></div>
         {% endfor %}
+        <p>Evaluation de l'entretien: {{interview.get_assessment_display }}</p>
+        <p>Commentaires:</p>
+        {{ interview.comments|default_if_none:"Non Renseigné"}}
+
     
     </div>
     {% if user.status_type == "MANAGER" %}

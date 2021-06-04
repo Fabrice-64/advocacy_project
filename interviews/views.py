@@ -83,7 +83,6 @@ class InterviewUpdateView(UserAccessMixin, UpdateView):
     model = Interview
     form_class = InterviewForm
     template_name = "interviews/interview_update_form.html"
-    success_url = reverse_lazy("interviews:interview_details", args=["uuid"])
 
 
 class InterviewAssessmentView(UserAccessMixin, UserPassesTestMixin, UpdateView):
@@ -91,7 +90,6 @@ class InterviewAssessmentView(UserAccessMixin, UserPassesTestMixin, UpdateView):
     model = Interview
     form_class = InterviewAssessmentForm
     template_name = "interviews/interview_assessment_form.html"
-    success_url = reverse_lazy("interviews:interview_details", args=["uuid"])
 
     def test_func(self):
         # Purpose is to grant access exclusively to to the interviewer and managers.
