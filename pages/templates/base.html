@@ -14,28 +14,68 @@
 
 <body>
     <header>
-        <section id="login-status">
-            <p>Tous Unis</p>
-                {% if user.is_authenticated %}
-                    Bonjour {{ user.username }}
-                    <a id="header-deconnection" href="{% url 'logout' %}">LOGOUT</a>
-                {% else %}
-                    <a id="header-connection" href="{% url 'login' %}">LOGIN</a>
-                {% endif %}
-        </section>
+        <nav class="navbar sticky-top navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" id="login-status" href="{% url 'pages:home' %}">
+                    <img src="{% static 'images/TousUnis.png' %}" alt="logo Tous Unis" height=30 width=30>
+                    Tous Unis 
+                        {% if user.is_authenticated %}
+                            Bonjour {{ user.first_name|capfirst}}
+                            <a class="btn btn-danger" id="header-deconnection" href="{% url 'logout' %}" role="button">DECONNEXION</a>
+                        {% else %}
+                            <a class="btn btn-success" id="header-connection" href="{% url 'login' %}" role="button">CONNEXION</a>
+                        {% endif %}
+                </a>
+            </div>
+        </nav>
         <section>
             {% if user.status_type == "MANAGER" %}
-                <p>Menu Manager</p>
-                <a id="menu-new-user" href="{% url 'new_user' %}">Nouvel Utilisateur</a><br>
-                <a href="{% url 'user_types' %}" id="link-users">Utilisateurs</a><br>
-                <a href="{% url 'teams:team_list' %}">Equipes</a>
+            <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerManagerMenu" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerManagerMenu">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'new_user' %}">Nouvel Utilisateur</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'user_types' %}" id="link-users">Utilisateurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="menu-list-teams" href="{% url 'teams:team_list' %}">Equipes</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </nav>
+            <hr>
             {% endif %}
             {% if user.is_authenticated %}
-                <p>Menu Accueil</p>
-                <a href="{% url 'communities:list' %}" id="link-communities">Collectivités</a>
-                <a href="{% url 'officials:official_dispatch' %}" id="link-officials">Elus</a>
-                <a href="{% url 'interviews:interviews_list' %}" id="link-interviews">Entretiens</a>
-                <a href="{% url 'interviews:advocacy_topic_list' %}" id="link-support-docs">Thèmes de Plaidoyer</a>
+             <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerUserMenu" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerUserMenu">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'communities:list' %}" id="link-communities">Collectivités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'officials:official_dispatch' %}" id="link-officials">Elus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'interviews:interviews_list' %}" id="link-interviews">Entretiens</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'interviews:advocacy_topic_list' %}" id="link-support-docs">Thèmes de Plaidoyer</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </nav>
             {% endif %}
         </section>
     </header>

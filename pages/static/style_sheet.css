@@ -1,3 +1,7 @@
+h1 {
+    font-size: 2rem;
+}
+
 html {
     border: red 5px solid;
     height: 100%;
@@ -8,6 +12,7 @@ body {
     border: blue 4px solid;
     height: 100%;
     overflow: scroll;
+    background-color: rgb(230, 227, 227);
 }
 
 header section {
@@ -15,8 +20,11 @@ header section {
 }
 
 main {
+    color: black;
     border: pink 3px dotted;
+    overflow: scroll;
     height: 80%;
+
 }
 
 footer {
@@ -24,4 +32,8 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%
+}
+
+.nav-item:hover {
+    font-weight: bolder;
 }
