@@ -6,7 +6,17 @@
 """
 
 from django.views.generic import TemplateView
+from django.shortcuts import render
 
 
 class HomePageView(TemplateView):
-    template_name = "home.html"
+    template_name = "pages/home.html"
+
+
+class ContactView(TemplateView):
+    template_name = "pages/contact.html"
+
+
+class SecurityInfo(TemplateView):
+    template_name = "pages/security_info.html"
+
