@@ -3,41 +3,49 @@
     <h1>Fiche d'Entretien</h1>
 
     <div id='interview-details'>
-        <p>Date Prévue : 
+        <p><h5>Date Prévue :</h5> 
             {% if not interview.date_planned %}
                 Sans Objet
             {% else %}
                 {{ interview.date_planned }}
-            {% endif %}</p>
-        <p>Date Effective: 
+            {% endif %}
+        <br><br>
+        <h5>Date Effective :</h5>
          {% if not interview.date_effective %}
                 Sans Objet
             {% else %}
                 {{ interview.date_effective}}
-            {% endif %}</p>
-
-        <p>Bénévole : {{ interview.volunteer }}</p>
-        <p>Elu : {{ interview.official }}</p>
-        <p>Objectif : {{ interview.goal }}</p>
-        <p>Thèmes à Aborder :
+            {% endif %}
+        <br><br>
+        <h5>Bénévole :</h5> {{ interview.volunteer }}
+        <br><br>
+        <h5>Elu :</h5> {{ interview.official }}
+        <br><br>
+        <h5>Objectif : </h5>{{ interview.goal }}
+        <br><br>
+        <h5>Thèmes à Aborder :</h5>
         {% for topic in object.topics.all %}
             <div>{{ topic }}<br></div>
+        {% empty %}
+            Non Renseigné
         {% endfor %}
-        <p>Evaluation de l'entretien: {{interview.get_assessment_display }}</p>
-        <p>Commentaires:</p>
+        <br><br>
+        <h5>Evaluation de l'entretien: </h5> {{interview.get_assessment_display }}
+        <br><br>
+        <h5>Commentaires:</h5>
         {{ interview.comments|default_if_none:"Non Renseigné"}}
-
+        <br><br>
     
     </div>
     {% if user.status_type == "MANAGER" %}
         <form action="{% url 'interviews:interview_update' interview.id %}">
-            <input type="submit" value="Modifier">
+            <input class="btn btn-secondary" type="submit" value="Modifier">
         </form>
     {% endif %}
-
+    <br>
     {% if user == interview.volunteer or user.status_type == "MANAGER" %}
         <form action="{% url 'interviews:interview_assessment' interview.id %}">
-            <input type="submit" value="Evaluer">
+            <input class="btn btn-secondary" type="submit" value="Evaluer">
     {% endif %}
     {% endblock %}
 

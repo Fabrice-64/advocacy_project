@@ -260,6 +260,33 @@ class OfficialCreateTest(TestCase):
         self.assertContains(self.response, "Nouvel Elu")
 
 
+class OfficialUpdateTest(TestCase):
+
+    def setUp(self):
+        self.url = reverse_lazy('officials:official_update')
+        self.official = Official.objects.create(
+            first_name="test_official",
+            last_name="test_official_name")
+        self.response = self.client.get(
+            reverse('officials:official_update',args=[self.official.id]))
+        self.user1 = CustomUser.objects.create(
+            username="test_user", password="pwd", is_active=True)
+
+    def test_official_create_not_authorized(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertRedirects(
+            self.response,
+            f'/accounts/login/?next=/officials/official/update/{self.official.id}/')
+
+    def test_official_create_authorized(self):
+        perm = Permission.objects.get(codename="change_official")
+        self.user1.user_permissions.add(perm)
+        self.client.force_login(self.user1)
+        self.response = self.client.get(reverse(
+            'officials:official_update', args=[self.official.id]))
+        self.assertEqual(self.response.status_code, 200)
+        self.assertContains(self.response, "Actualisation d'un Elu")
+
 class OfficialRankingTest(TestCase):
     fixtures = [
         'communities.json', 'users.json', 'teams.json',

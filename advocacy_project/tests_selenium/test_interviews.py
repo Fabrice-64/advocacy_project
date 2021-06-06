@@ -124,7 +124,7 @@ class InterviewTest(LiveServerTestCase):
         self.browser.find_element_by_xpath('//select[@name="volunteer"]')
         self.browser.find_element_by_xpath('//option[@value="2c49b9ff-b56a-47a0-8ab1-e2a60881c560"]').click()
         # Then L. can select a topic among several
-        self.browser.find_element_by_id("id_topics")
+        self.browser.find_element_by_id("div_id_topics")
         # And L. selects a topic
         self.browser.find_element_by_xpath("//input[@id='id_topics_2']").click()
         # Then L. sets the goal of the interview

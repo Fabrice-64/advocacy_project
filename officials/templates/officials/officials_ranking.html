@@ -4,31 +4,35 @@
     <h1>Catégories d'Elus</h1>
 
     <h2>Elus Influents et avec une Forte Proximité Intellectuelle</h2>
+        <ul>
         {% for official in high_proximity_high_influence %}
-           <p><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</a></p>
+           <li><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</a></li>
         {% empty %}
             <p>Aucun Elu n'est considéré appartenant à cette catégorie</p>
         {% endfor %}
-
+        </ul>
     <h2>Elus Influents et avec une Moindre Proximité Intellectuelle</h2>
+        <ul>
         {% for official in little_proximity_high_influence %}
-            <p><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</a></p>
+            <li><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</a></li>
         {% empty %}
             <p>Aucun Elu n'est considéré appartenant à cette catégorie</p>
         {% endfor %}
-
+        </ul>
     <h2>Elus Peu Influents et avec une Forte Proximité Intellectuelle</h2>
+        <ul>
         {% for official in high_proximity_little_influence %}
-           <p><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</a></p>
+           <li><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</a></li>
         {% empty %}
             <p>Aucun Elu n'est considéré appartenant à cette catégorie</p>
         {% endfor %}
-
+        </ul>
     <h2>Elus Peu Influents et avec une Moindre Proximité Intellectuelle</h2>
+        <ul>
          {% for official in little_proximity_little_influence %}
-           <p><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</a></p>
+           <li><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</li></p>
         {% empty %}
             <p>Aucun Elu n'est considéré appartenant à cette catégorie</p>
         {% endfor %}
-
+        </ul>
 {% endblock %}

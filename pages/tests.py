@@ -11,8 +11,8 @@ class HomePageTest(SimpleTestCase):
 
     def test_homepage_status(self):
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, 'home.html')
-        self.assertContains(self.response, "Bienvenue Sur notre Application de Plaidoyer")
+        self.assertTemplateUsed(self.response, 'pages/home.html')
+        self.assertContains(self.response, "Bienvenue")
         self.assertNotContains(self.response, "<h1>Connexion<h1>")
 
     def test_homepage_resolves_homepage_view(self):

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Actualisation d'un Elu</h1>
+    <form method="post" action="{% url 'officials:official_update' official.id %}">{% csrf_token %}
+        {{ form|crispy}}
+        <input class="btn btn-secondary" type="submit" value="Actualiser">
+    </form>
+    
+{% endblock %}

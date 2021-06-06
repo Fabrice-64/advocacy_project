@@ -10,7 +10,7 @@
     </ul>
     {% if user.status_type == "MANAGER" %}
     <form action="{% url 'communities:intercom_create' %}" id="intercom-create">
-        <button type="submit">Créer Une Intercommunalité</button>
+        <button class="btn btn-secondary" type="submit">Créer Une Intercommunalité</button>
     </form>
     {% endif %}
     {% include "pagination_snippet.html" %}

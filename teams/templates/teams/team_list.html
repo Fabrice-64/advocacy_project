@@ -9,7 +9,7 @@
     </ul>
     {% if user.status_type == "MANAGER" %}
     <form action="{% url 'teams:team_create' %}" id="team-create">
-        <button type="submit">Créer Une Equipe</button>
+        <button class="btn btn-secondary" type="submit">Créer Une Equipe</button>
     </form>
     {% endif %}
     {% include "pagination_snippet.html" %}

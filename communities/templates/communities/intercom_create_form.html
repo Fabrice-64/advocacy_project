@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
     <h1>Créer une Intercommunalité</h1>
     <form method="post" id="intercomForm" data-departments-url="{% url 'communities:ajax_load_departments' %}" novalidate>
         {% csrf_token %}
         <table>
-        {{ form.as_table}}
+        {{ form|crispy}}
         </table>
-        <button type="submit">Créer une Intercommunalité</button>
+        <button class="btn btn-secondary" type="submit">Créer une Intercommunalité</button>
     </form>
 
 

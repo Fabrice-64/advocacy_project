@@ -25,11 +25,11 @@
                 {% endfor %}
             </ul>
        {% endfor %}
-       {% if user.status_type == "MANAGER" %}
+   </ul>
+   {% if user.status_type == "MANAGER" %}
        <form action="{% url 'interviews:interview_create' %}" id="interview-create">
-           <button type="submit">Créer Un Nouvel Entretien</button>
+           <button class="btn btn-secondary" type="submit">Créer Un Nouvel Entretien</button>
        </form>
        {% endif %}
-   </ul>
     {% include "pagination_snippet.html" %}
 {% endblock %}

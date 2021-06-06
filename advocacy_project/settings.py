@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'pages',
     'officials',
     'interviews',
+    'crispy_forms',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -152,3 +153,5 @@ EMAIL_HOST = "localhost"
 EMAIL_PORT = ""
 EMAIL_HOST_PASSWORD = ""
 EMAIL_HOST_USER = ''
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"

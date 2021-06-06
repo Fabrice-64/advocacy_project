@@ -3,11 +3,11 @@
 {% block content %}
     <h1>Elus à Engager</h1>
 
-    
+    <ul>
     {% for official in officials_to_engage %}
-        <p><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</a></p>
+        <li><a href="{% url 'officials:official_details' official.id %}" target="_blank">{{ official.first_name }} {{ official.last_name }}</a></li>
     {% empty %}
         <p>Aucun Elu n'est considéré appartenant à cette catégorie</p>
     {% endfor %}
-
+    </ul>
 {% endblock %}

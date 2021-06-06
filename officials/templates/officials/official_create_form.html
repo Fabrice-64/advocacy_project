@@ -1,26 +1,16 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
 
 <h1>Création d'un Nouvel Elu</h1>
+    <p>Le cas échéant, vous pouvez ajouter des mandats : <a href="{% url 'officials:mandate_add' %}" target="_blank">Mandats</a>
+    <p>Pour sélectionner plusieurs mandats : ctrl+clic sur PC, cmd+clic sur Mac</p>
 <form method="post">
     {% csrf_token %}
-    <h2>Identifiants :</h2>
-    <p class="intput-field" id="first_name" required>Prénom : {{ form.first_name }}</p>
-    <p class="intput-field" id="last_name" required>Nom : {{ form.last_name }}</p>
-    <hr>
-    <h2>Mandats Locaux : </h2>
-    <p>Le cas échéant, vous pouvez ajouter des mandats : <a href="{% url 'officials:mandate_add' %}" target="_blank">Mandats</a>
-    <p class="multiple-choice" id="mandate-city">Mandat Municipal: {{ form.mandate_city }}</p>
-    <p class="multiple-choice">Mandat Intercommunal : {{ form.mandate_intercom }}</p>
-    <p class="multiple-choice">Mandat Départemental : {{ form.mandate_department }}</p>
-    <p class="multiple-choice">Mandat Régional: {{ form.mandate_region }}</p>
-    <h2>Mandats Nationaux :</h2>
-    <p class="single-choice">Mandat de Député: {{ form.mp_mandate }}</p>
-    <p class="multiple-choice">Mandat de Sénateur : {{ form.senator_mandate }}</p>
+     {{ form|crispy }}
 
-    <input type="submit" value="Créer">
+    <input class="btn btn-secondary" type="submit" value="Créer">
 </form>
 
 {% endblock %}

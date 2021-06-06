@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 <h1>Ajout de Mandat Sénatorial</h1></p>
 
 <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Créer">
+    {{ form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="Créer">
 </form>
 
 {% endblock %}

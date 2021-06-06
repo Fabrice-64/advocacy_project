@@ -10,7 +10,7 @@
     {% endfor %}
     {% if user.status_type == "MANAGER" %}
        <form action="{% url 'officials:official_create' %}" id="official-create">
-           <button type="submit">Créer un Elu</button>
+           <button class="btn btn-secondary" type="submit">Créer un Elu</button>
        </form>
        {% endif %}
     </ul>

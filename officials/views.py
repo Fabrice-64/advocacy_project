@@ -107,6 +107,13 @@ class OfficialCreateView(UserAccessMixin, CreateView):
     success_url = reverse_lazy("officials:official_dispatch")
 
 
+class OfficialUpdateView(UserAccessMixin, UpdateView):
+    permission_required = "officials.change_official"
+    model = models.Official
+    form_class = forms.OfficialCreationForm
+    template_name = "officials/official_update_form.html"
+
+
 @login_required
 @permission_required("officials.view_official", login_url='login/')
 def officials_ranking(request):

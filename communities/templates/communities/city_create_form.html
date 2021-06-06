@@ -1,14 +1,13 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
     <h1>Créer une Commune</h1>
     <form method="post" id="cityForm" data-intercoms-url="{% url 'communities:ajax_load_intercoms' %}" novalidate>
         {% csrf_token %}
         <table>
-        {{ form.as_table}}
+        {{ form|crispy}}
         </table>
-        <button type="submit">Créer une Commune</button>
-        <a href="">Retour</a>
+        <button class="btn btn-secondary" type="submit">Créer une Commune</button>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

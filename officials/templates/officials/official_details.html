@@ -8,53 +8,65 @@
     <p>Nom de Famille: {{ official.last_name }}</p>
     <hr>
     <h2>Mandats:</h2>
-    <p>Communes: <br>
+    <div>Communes:
+        <ul>
         {% for mandate in object.mandate_city.all %}
-            <div>{{ mandate }}<br></div>
+            <li>{{ mandate }}<br></li>
         {% empty %}
-            <div>Sans Objet<br></div>
+            Sans Objet
         {% endfor %}
-        </div>
-    <p>Intercommunalités: <br>
+        </ul>
+    </div>
+    <div>Intercommunalités:
+        <ul>
         {% for mandate in object.mandate_intercom.all %}
-            <div>{{ mandate }}<br></div>
+            <li>{{ mandate }}<br></li>
         {% empty %}
-             <div>Sans Objet<br></div>
+             Sans Objet
         {% endfor %}
-    <p>Conseil Départemental: <br>
+        </ul>
+    </div>
+    <div>Conseil Départemental:
+        <ul>
         {% for mandate in object.mandate_department.all %}
-            <div>{{ mandate }}<br></div>
+            <li>{{ mandate }}<br></li>
         {% empty %}
-             <div>Sans Objet<br></div>
+             Sans Objet
         {% endfor %}
-    <p>Conseil Régional: <br>
+        </ul>
+    </div>
+    <div>Conseil Régional:
+        <ul>
         {% for mandate in object.mandate_region.all %}
-            <div>{{ mandate }}<br></div>
+            <li>{{ mandate }}<br></li>
         {% empty %}
-             <div>Sans Objet<br></div>
+             Sans Objet
         {% endfor %}
-        </div>
-    <p>Député: <br>
+        </ul>
+    </div>
+    <div>Député:
+        <ul>
         {% for mandate in object.mp_mandate.all %}
-            <div>{{ mandate }}<br></div>
+            <li>{{ mandate }}</li>
         {% empty %}
-             <div>Sans Objet<br></div>
+            Sans Objet
         {% endfor %}
-        </div>
-    <p>Sénateur: <br>
+        </ul>
+    </div>
+    <div>Sénateur:
+        <ul>
         {% for mandate in object.senator_mandate.all %}
-            <div>{{ mandate }}<br></div>
+            <li>{{ mandate }}</li>
         {% empty %}
-             <div>Sans Objet<br></div>
+            Sans Objet
         {% endfor %}
-        </div>
+        </ul>
+    </div>
 
     </div>
-    
-    </div>
     {% if user.status_type == "MANAGER" %}
-        <form action="">
-            <input type="submit" value="Modifier">
+        <form action="{% url 'officials:official_update' official.id %}">
+            <input class="btn btn-secondary" type="submit" value="Modifier">
         </form>
     {% endif %}
     <hr>

@@ -16,12 +16,13 @@
                 {% endfor %}
             </ul>
        {% endfor %}
-       {% if user.status_type == "MANAGER" %}
-       <form action="{% url 'interviews:advocacy_topic_create' %}" id="topic-create">
-           <button type="submit">Créer Un Nouveau Thème</button>
-       </form>
+       
+    </ul>
+    {% if user.status_type == "MANAGER" %}
+        <form action="{% url 'interviews:advocacy_topic_create' %}" id="topic-create">
+           <button class="btn btn-secondary" type="submit">Créer Un Nouveau Thème</button>
+        </form>
        {% endif %}
-   </ul>
     {% include "pagination_snippet.html" %}
 {% endblock %}
 
