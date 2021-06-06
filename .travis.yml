@@ -22,7 +22,7 @@ install:
   - pip install -r requirements.txt
   
 env:
-  DJANGO_SETTINGS_MODULE="advocacy_project.settings"
+  DJANGO_SETTINGS_MODULE="advocacy_project.settings.production"
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres

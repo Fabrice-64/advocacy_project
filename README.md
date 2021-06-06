@@ -59,6 +59,9 @@ The apps implemented in this project are:
 `pages` is exclusively used to accomodate the general purpose html files, like `base.html` and `home.html`.  
 It also accomodates the fixtures used for testing the other apps.
 
+## Start a local server
+The settings demand that you add the basic one by starting the server:
+`$ python manage.py runserver --settings advocacy_project.settings.base`
 ## Tests:
 ### Test Coverage
 This project has been largely develop in TDD mode. 
