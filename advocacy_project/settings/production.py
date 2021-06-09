@@ -3,7 +3,7 @@ from .base import *
 DEBUG = False
 ALLOWED_HOSTS = ['*']
 ADMINS = (
-    ('Fabrice Jaouën', 'fabricejaouen@yahoo.com')
+    ('Fabrice Jaouën', 'fabricejaouen@yahoo.com'),
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
