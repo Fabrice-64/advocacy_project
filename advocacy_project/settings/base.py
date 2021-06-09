@@ -137,9 +137,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_FILES_DIRS = [
+    ("pages", "static"),
+]
+STATIC_URL = '/pages/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '/pages/static')
 
 
 # Needed to implement the account creation workflow.
