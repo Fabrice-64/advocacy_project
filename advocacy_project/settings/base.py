@@ -141,7 +141,7 @@ STATIC_FILES_DIRS = [
     ("pages", "static"),
 ]
 STATIC_URL = '/pages/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/pages/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Needed to implement the account creation workflow.
