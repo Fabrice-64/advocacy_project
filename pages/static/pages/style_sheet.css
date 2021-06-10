@@ -3,37 +3,39 @@ h1 {
 }
 
 html {
-    border: red 5px solid;
+    border: none;
     height: 100%;
 }
 
 body {
-    border: blue 4px solid;
+    border: black solid 1px;
     height: 100%;
     background-color: rgb(230, 227, 227);
+    padding: auto;
 }
 
 header {
-    border: darkgoldenrod 4px solid;
+    border: black solid 1px;
     background-color: none;
     min-height: 10%;
     overflow: visible;
 }
 
 header section {
-    border: green 2px solid;
+    border: none;
 }
 
 main {
     color: black;
-    border: pink 20px dotted;
+    border: none;
     height: 80%;
     overflow: scroll;
+    padding: 10px;
 
 }
 
 footer {
-    border: green 3px dotted;
+    border: none;
     position: fixed;
     bottom: 0;
     width: 100%;
