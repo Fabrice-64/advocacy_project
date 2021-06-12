@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", '207.154.202.213', "www.advocacy-project.fr", "advocacy-project.fr"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
