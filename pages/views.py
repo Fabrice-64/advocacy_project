@@ -19,4 +19,3 @@ class ContactView(TemplateView):
 
 class SecurityInfo(TemplateView):
     template_name = "pages/security_info.html"
-

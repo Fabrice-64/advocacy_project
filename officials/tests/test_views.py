@@ -16,7 +16,8 @@ class MandatesChangeTest(TestCase):
         self.assertEqual(self.response.status_code, 302)
         self.assertRedirects(
             self.response,
-            '/accounts/login/?next=/officials/mandate/add/')
+            '/accounts/login/?next=/officials/mandate/add/'
+        )
 
     def test_display_mandate_add_authorized(self):
         perm = Permission.objects.get(codename="view_official")
@@ -268,7 +269,8 @@ class OfficialUpdateTest(TestCase):
             first_name="test_official",
             last_name="test_official_name")
         self.response = self.client.get(
-            reverse('officials:official_update',args=[self.official.id]))
+            reverse('officials:official_update',
+                    args=[self.official.id]))
         self.user1 = CustomUser.objects.create(
             username="test_user", password="pwd", is_active=True)
 
@@ -286,6 +288,7 @@ class OfficialUpdateTest(TestCase):
             'officials:official_update', args=[self.official.id]))
         self.assertEqual(self.response.status_code, 200)
         self.assertContains(self.response, "Actualisation d'un Elu")
+
 
 class OfficialRankingTest(TestCase):
     fixtures = [
