@@ -12,7 +12,7 @@
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import Group
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -32,18 +32,18 @@ def change_password(request):
         This function implements the Group to which the user belongs.
     """
     if request.method == "POST":
-        form = PasswordChangeForm(user=request.user, data=request.POST)
+        form = SetPasswordForm(user=request.user, data=request.POST)
         if form.is_valid():
             user = form.save()
             # Attributes to a user a group depending on his status.
             user.groups.add(Group.objects.get(name=user.status_type))
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Votre mot de passe a été changé')
-            return redirect('change_password')
+            return redirect(reverse_lazy('pages:home'))
         else:
             messages.error(request, 'S\'il vous plait, corrigez l\'erreur.')
     else:
-        form = PasswordChangeForm(request.user)
+        form = SetPasswordForm(request.user)
     return render(request, 'accounts/change_password.html', {'form': form})
 
 
