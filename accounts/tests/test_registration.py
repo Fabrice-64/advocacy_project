@@ -137,4 +137,4 @@ class ChangePasswordTest(TestCase):
         self.assertNotContains(
             self.response,
             "S\'il vous plait, corrigez l\'erreur.")
-        self.assertContains(self.response, "Votre mot de passe a été changé")
+        self.assertContains(self.response, "Bienvenue")
