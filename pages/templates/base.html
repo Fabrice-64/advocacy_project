@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'pages/style_sheet.css' %}">
     <link rel="icon" href="{% static 'pages/images/favicon.ico' %}">
     <title>{% block title %}Advocacy Project{% endblock %}</title>
-
+<!--block needed to redirect from some pages-->
+{% block meta%} {% endblock meta %}
 </head>
 
 <body>

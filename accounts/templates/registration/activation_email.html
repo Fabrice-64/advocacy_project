@@ -8,19 +8,16 @@
 
 <body>
 <p>
-    {{ user.username }}
-    {% blocktrans with site_name=site.name %}
-    You (or someone pretending to be you) have asked to register an account at
-    {{ site_name }}.  If this wasn't you, please ignore this email
-    and your address will be removed from our records.
-    {% endblocktrans %}
+    {{ user.first_name }}, <br>
+    Vous avez été ajouté dans la liste des utilisateurs du site de plaidoyer de 
+    notre association, Tous Unis.
+    
 </p>
 <p>
-    {% blocktrans %}
-    To activate this account, please click the following link within the next
-    {{ expiration_days }} days:
-    {% endblocktrans %}
-</p>
+    
+    Pour activer votre compte, veuillez vous cliquer sur le lien suivant d'ici
+    {{ expiration_days }} jour:
+   </p>
 
 <p>
     <a href="http://{{site.domain}}{% url 'registration_activate' activation_key %}">
@@ -28,11 +25,10 @@
     </a>
 </p>
 <p>
-    {% blocktrans with site_name=site.name %}
-    Sincerely,
-    {{ site_name }} Management
-    {% endblocktrans %}
-</p>
+    
+    Bien cordialement, <br>
+    Votre Equipe Tous Unis.<br>
+   </p>
 </body>
 
 </html>
