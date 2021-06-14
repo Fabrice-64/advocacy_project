@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <h1>Créer une Commune</h1>
-    <form method="post" id="cityForm" data-intercoms-url="{% url 'communities:ajax_load_intercoms' %}" novalidate>
+    <form method="post" id="cityForm" novalidate>
         {% csrf_token %}
         <table>
         {{ form|crispy}}
