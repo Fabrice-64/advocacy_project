@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 from accounts.models import Volunteer, CustomUser
 from officials.models import Official
 from datetime import date
@@ -54,6 +55,12 @@ class AdvocacyTopic(models.Model):
     created_by = models.ForeignKey(
         CustomUser, models.SET_NULL,
         null=True, blank=True, verbose_name="Rédacteur")
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug  = slugify(self.key_statement)
+        super().save(*args, **kwargs)
+
 
     def get_absolute_url(self):
         return reverse(
