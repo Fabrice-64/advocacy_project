@@ -80,6 +80,8 @@ class CustomUser(AbstractUser):
         verbose_name="Equipe",
         on_delete=models.DO_NOTHING,
         null=True, blank=True)
+    
+    email = models.EmailField("Courrier Electronique", max_length=254, blank=False, null=False)
 
 
 class VolunteerManager(models.Manager):
